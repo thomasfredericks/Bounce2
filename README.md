@@ -14,5 +14,5 @@ Download the latest version here : https://github.com/thomasfredericks/Bounce-Ar
 DOCUMENTATION
 =====================
 
-Documentation can be found here : https://github.com/thomasfredericks/Bounce-Arduino-Wiring/wiki
+The documentation can be found here : https://github.com/thomasfredericks/Bounce-Arduino-Wiring/wiki
 
