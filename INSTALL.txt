@@ -1,1 +1,1 @@
-Put the "Bounce" folder in your Arduino "libraries" folder. 
+Put the "Bounce" folder in your Arduino or Wiring "libraries" folder. 
