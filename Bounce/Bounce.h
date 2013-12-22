@@ -24,7 +24,7 @@
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 // Uncomment the following line for "rapid fire" mode
-//#define BOUNCE_RAPID_FIRE
+//#define BOUNCE_LOCK-OUT
 
 
 #ifndef Bounce_h
