@@ -1,5 +1,17 @@
 #include <Bounce.h>
 
+/* 
+DESCRIPTION
+====================
+Simple example of the bounce library that shows how to retrigger an event when a button is held down.
+In this case, the debug LED will blink every 500 ms as long as the button is held down.
+Open the Serial Monitor (57600 baud) for debug messages.
+
+CIRCUIT
+====================
+https://raw.github.com/thomasfredericks/Bounce-Arduino-Wiring/master/Bounce/examples/circuit-bounce-change-duration-retrigger.png
+*/
+
 #define BUTTON_PIN 2
 #define LED_PIN 13
 
@@ -17,6 +29,7 @@ void setup() {
   
   // Setup the button
   pinMode(BUTTON_PIN,INPUT);
+  // Activate internal pull-up
   digitalWrite(BUTTON_PIN,HIGH);
   
   // After setting up the button, setup debouncer

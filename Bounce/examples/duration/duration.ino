@@ -1,12 +1,27 @@
 #include <Bounce.h>
 
+/* 
+DESCRIPTION
+====================
+Simple example of the bounce library that sets three states for a button through the duration of the press.
+Open the Serial Monitor (57600 baud) for debug messages.
+
+CIRCUIT
+====================
+https://raw.github.com/thomasfredericks/Bounce-Arduino-Wiring/master/Bounce/examples/circuit-bounce-change-duration-retrigger.png
+*/
+
 #define BUTTON_PIN 2
 #define LED_PIN 13
 
 // Instantiate a Bounce object
 Bounce debouncer = Bounce(); 
 
-int buttonState;
+// The current buttonState
+// 0 : released
+// 1 : pressed less than 2 seconds
+// 2 : pressed longer than 2 seconds
+int buttonState; 
 unsigned long buttonPressTimeStamp;
 
 void setup() {
@@ -15,6 +30,7 @@ void setup() {
   
   // Setup the button
   pinMode(BUTTON_PIN,INPUT);
+  // Activate internal pull-up
   digitalWrite(BUTTON_PIN,HIGH);
   
   // After setting up the button, setup debouncer

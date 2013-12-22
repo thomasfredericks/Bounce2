@@ -1,4 +1,8 @@
 #include <Bounce.h>
+
+// Circuit :
+// https://raw.github.com/thomasfredericks/Bounce-Arduino-Wiring/master/Bounce/examples/circuit-bounce-change-duration-retrigger.png
+
 #define BUTTON_PIN 2
 #define LED_PIN 13
 

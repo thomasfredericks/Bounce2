@@ -1,7 +1,19 @@
 #include <Bounce.h>
 
+/* 
+DESCRIPTION
+====================
+Simple example of the bounce library that switches the debug LED when a button is pressed.
+
+CIRCUIT
+====================
+https://raw.github.com/thomasfredericks/Bounce-Arduino-Wiring/master/Bounce/examples/circuit-bounce-change-duration-retrigger.png
+*/
+
+
 #define BUTTON_PIN 2
 #define LED_PIN 13
+
 
 
 // Instantiate a Bounce object
@@ -10,6 +22,7 @@ Bounce debouncer = Bounce();
 void setup() {
   // Setup the button
   pinMode(BUTTON_PIN,INPUT);
+  // Activate internal pull-up
   digitalWrite(BUTTON_PIN,HIGH);
   
   // After setting up the button, setup debouncer
