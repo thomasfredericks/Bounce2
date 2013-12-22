@@ -1,0 +1,1 @@
+Put the "Bounce" folder in your Arduino "libraries" folder. 
