@@ -23,7 +23,7 @@
  Previous contributions by Eric Lowry, Jim Schimpf and Tom Harkaway
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-// Uncomment the following line for "rapid fire" mode
+// Uncomment the following line for "LOCK-OUT" debounce method
 //#define BOUNCE_LOCK-OUT
 
 
