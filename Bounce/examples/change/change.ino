@@ -1,5 +1,7 @@
 #include <Bounce.h>
 
+// Detect the falling edge
+
 // Circuit :
 // https://raw.github.com/thomasfredericks/Bounce-Arduino-Wiring/master/Bounce/examples/circuit-bounce-change-duration-retrigger.png
 
@@ -33,7 +35,7 @@ void loop() {
   boolean stateChanged = debouncer.update();
   int state = debouncer.read();
   
-  // Detect the raising edge
+  // Detect the falling edge
    if ( stateChanged && state == LOW ) {
     
        if ( ledState == LOW ) {
