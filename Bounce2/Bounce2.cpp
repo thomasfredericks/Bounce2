@@ -6,7 +6,7 @@
 #else
 #include "WProgram.h"
 #endif
-#include "Bounce.h"
+#include "Bounce2.h"
 
 
 

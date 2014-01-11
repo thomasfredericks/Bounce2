@@ -27,8 +27,8 @@
 //#define BOUNCE_LOCK-OUT
 
 
-#ifndef Bounce_h
-#define Bounce_h
+#ifndef Bounce2_h
+#define Bounce2_h
 
 #include <inttypes.h>
 
