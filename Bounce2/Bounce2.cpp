@@ -38,17 +38,17 @@ bool Bounce::update()
 {
 
 #ifdef BOUNCE_LOCK-OUT
-
+    stateChanged = false;
 	// Ignore everything if we are locked out
 	if (millis() - previous_millis >= interval_millis) {
 		uint8_t currentState = digitalRead(pin);
 		if (debouncedState != currentState ) {
 			previous_millis = millis();
 			debouncedState = currentState;
-			return 1;
+			stateChanged = true;
 		}
 	}
-	return 0;
+	return stateChanged;
 
 #else
 	// Lire l'etat de l'interrupteur dans une variable temporaire.
