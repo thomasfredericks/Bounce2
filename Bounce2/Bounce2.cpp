@@ -8,16 +8,24 @@
 #endif
 #include "Bounce2.h"
 
+#define DEBOUNCED_STATE 0
+#define UNSTABLE_STATE  1
+#define STATE_CHANGED   3
 
-
-Bounce::Bounce() {
-	this->interval_millis = 10;
-	
-}
+Bounce::Bounce()
+: previous_millis(0)
+, interval_millis(10)
+, state(0)
+, pin(0)
+{}
 
 void Bounce::attach(int pin) {
  this->pin = pin;
- debouncedState = unstableState = digitalRead(pin);
+ bool read = digitalRead(pin);
+ state = 0;
+ if (digitalRead(pin)) {
+   state = _BV(DEBOUNCED_STATE) | _BV(UNSTABLE_STATE);
+ }
  #ifdef BOUNCE_LOCK-OUT
  previous_millis = 0;
  #else
@@ -25,60 +33,51 @@ void Bounce::attach(int pin) {
  #endif
 }
 
-
-
-void Bounce::interval(unsigned long interval_millis)
+void Bounce::interval(uint16_t interval_millis)
 {
   this->interval_millis = interval_millis;
-  
 }
-
 
 bool Bounce::update()
 {
-
 #ifdef BOUNCE_LOCK-OUT
-    stateChanged = false;
+    state &= ~_BV(STATE_CHANGED);
 	// Ignore everything if we are locked out
 	if (millis() - previous_millis >= interval_millis) {
-		uint8_t currentState = digitalRead(pin);
-		if (debouncedState != currentState ) {
+		bool currentState = digitalRead(pin);
+		if ((bool)(state & _BV(DEBOUNCED_STATE)) != currentState) {
 			previous_millis = millis();
-			debouncedState = currentState;
-			stateChanged = true;
+			state ^= _BV(DEBOUNCED_STATE);
+			state |= _BV(STATE_CHANGED);
 		}
 	}
-	return stateChanged;
-
+	return state & _BV(STATE_CHANGED);
 #else
 	// Lire l'etat de l'interrupteur dans une variable temporaire.
-	uint8_t currentState = digitalRead(pin);
-	stateChanged = false;
+	bool currentState = digitalRead(pin);
+    state &= ~_BV(STATE_CHANGED);
 
 	// Redemarrer le compteur timeStamp tant et aussi longtemps que
 	// la lecture ne se stabilise pas.
-	if ( currentState != unstableState ) {
-			previous_millis = millis();
+	if ( currentState != (bool)(state & _BV(UNSTABLE_STATE)) ) {
+		previous_millis = millis();
+		state ^= _BV(UNSTABLE_STATE);
 	} else 	if ( millis() - previous_millis >= interval_millis ) {
-				// Rendu ici, la lecture est stable
-
-				// Est-ce que la lecture est diffÃ©rente de l'etat emmagasine de l'interrupteur?
-				if ( currentState != debouncedState ) {
-						debouncedState = currentState;
-						stateChanged = true;
-						
-				}
-
+		// Rendu ici, la lecture est stable
+		// Est-ce que la lecture est diffÃ©rente de l'etat emmagasine de l'interrupteur?
+		if ((bool)(state & _BV(DEBOUNCED_STATE)) != currentState) {
+			previous_millis = millis();
+			state ^= _BV(DEBOUNCED_STATE);
+			state |= _BV(STATE_CHANGED);
+		}
 	}
-	 
-	unstableState = currentState;
-	return stateChanged;
-#endif
 
+	return state & _BV(STATE_CHANGED);
+#endif
 }
 
-uint8_t Bounce::read()
+bool Bounce::read()
 {
-	return debouncedState;
+	return state & _BV(DEBOUNCED_STATE);
 }
 
