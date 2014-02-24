@@ -35,18 +35,15 @@ void setup() {
 }
 
 void loop() {
- // Update the debouncer
-  debouncer.update();
- 
- // Get the update value
- int value = debouncer.read();
- 
- // Turn on or off the LED
- if ( value == HIGH) {
-   digitalWrite(LED_PIN, HIGH );
- } else {
-    digitalWrite(LED_PIN, LOW );
- }
+  if (debouncer.update())
+  {
+    int value = debouncer.read();
+
+    if (value == HIGH)
+      digitalWrite(LED_PIN, HIGH );
+    else
+      digitalWrite(LED_PIN, LOW );
+  }
  
 }
 
