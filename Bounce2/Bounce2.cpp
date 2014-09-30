@@ -12,6 +12,7 @@
 #define UNSTABLE_STATE  1
 #define STATE_CHANGED   3
 
+
 Bounce::Bounce()
 : previous_millis(0)
 , interval_millis(10)
@@ -81,3 +82,12 @@ bool Bounce::read()
 	return state & _BV(DEBOUNCED_STATE);
 }
 
+bool Bounce::rose()
+{
+	return ( state & _BV(DEBOUNCED_STATE) ) && ( state & _BV(STATE_CHANGED));
+}
+
+bool Bounce::fell()
+{
+	return !( state & _BV(DEBOUNCED_STATE) ) && ( state & _BV(STATE_CHANGED));
+}

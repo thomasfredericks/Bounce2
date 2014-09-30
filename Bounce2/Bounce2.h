@@ -54,6 +54,10 @@ public:
   bool update(); 
 	// Returns the updated pin state
   bool read();
+  	// Returns the falling pin state
+  bool fell();
+  	// Returns the rising pin state
+  bool rose();
 
   
 protected:
