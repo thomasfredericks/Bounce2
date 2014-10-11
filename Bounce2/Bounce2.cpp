@@ -53,19 +53,18 @@ bool Bounce::update()
     }
     return state & _BV(STATE_CHANGED);
 #else
-    // Lire l'etat de l'interrupteur dans une variable temporaire.
+    // Read the state of the switch in a temporary variable.
     bool currentState = digitalRead(pin);
     state &= ~_BV(STATE_CHANGED);
 
-    // Redemarrer le compteur timeStamp tant et aussi longtemps que
-    // la lecture ne se stabilise pas.
+    // If the reading is different from last reading, reset the debounce counter
     if ( currentState != (bool)(state & _BV(UNSTABLE_STATE)) ) {
         previous_millis = millis();
         state ^= _BV(UNSTABLE_STATE);
     } else
         if ( millis() - previous_millis >= interval_millis ) {
-            // Rendu ici, la lecture est stable
-            // Est-ce que la lecture est diffÃ©rente de l'etat emmagasine de l'interrupteur?
+            // We have passed the threshold time, so the input is now stable
+            // If it is different from last state, set the STATE_CHANGED flag
             if ((bool)(state & _BV(DEBOUNCED_STATE)) != currentState) {
                 previous_millis = millis();
                 state ^= _BV(DEBOUNCED_STATE);
