@@ -30,7 +30,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 // Uncomment the following line for "LOCK-OUT" debounce method
-//#define BOUNCE_LOCK-OUT
+//#define BOUNCE_LOCK_OUT
 
 
 #ifndef Bounce2_h
