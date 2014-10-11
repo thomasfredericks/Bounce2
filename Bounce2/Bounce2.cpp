@@ -64,14 +64,14 @@ bool Bounce::update()
         state ^= _BV(UNSTABLE_STATE);
     } else
         if ( millis() - previous_millis >= interval_millis ) {
-        // Rendu ici, la lecture est stable
-        // Est-ce que la lecture est diffÃ©rente de l'etat emmagasine de l'interrupteur?
-        if ((bool)(state & _BV(DEBOUNCED_STATE)) != currentState) {
-            previous_millis = millis();
-            state ^= _BV(DEBOUNCED_STATE);
-            state |= _BV(STATE_CHANGED);
+            // Rendu ici, la lecture est stable
+            // Est-ce que la lecture est diffÃ©rente de l'etat emmagasine de l'interrupteur?
+            if ((bool)(state & _BV(DEBOUNCED_STATE)) != currentState) {
+                previous_millis = millis();
+                state ^= _BV(DEBOUNCED_STATE);
+                state |= _BV(STATE_CHANGED);
+            }
         }
-    }
 
     return state & _BV(STATE_CHANGED);
 #endif
