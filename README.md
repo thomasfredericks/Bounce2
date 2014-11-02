@@ -10,12 +10,18 @@ with contributions from:
 Eric Lowry, Jim Schimpf and Tom Harkaway
 
 
+HAVE A QUESTION?
+=====================
+Please post your questions here :
+http://forum.arduino.cc/index.php?topic=266132.0
+
 DOWNLOAD
 =====================
 
 Download the latest version (version 2) here :
 
 https://github.com/thomasfredericks/Bounce-Arduino-Wiring/archive/master.zip
+
 
 DOCUMENTATION
 =====================
