@@ -20,7 +20,7 @@ DOWNLOAD
 
 Download the latest version (version 2) here :
 
-https://github.com/thomasfredericks/Bounce-Arduino-Wiring/archive/master.zip
+https://github.com/thomasfredericks/Bounce2/archive/master.zip
 
 
 DOCUMENTATION
@@ -28,7 +28,7 @@ DOCUMENTATION
 
 The latest version (version 2) documentation can be found here : 
 
-https://github.com/thomasfredericks/Bounce-Arduino-Wiring/wiki
+https://github.com/thomasfredericks/Bounce2/wiki
 
 
 ABOUT BOUNCE 1 (ORIGINAL VERSION)
