@@ -19,11 +19,9 @@ Bounce::Bounce()
     , pin(0)
 {}
 
-void Bounce::attach(int pin) {
-    this->pin = pin;
-    bool read = digitalRead(pin);
+void Bounce::init(bool initialState) {
     state = 0;
-    if (digitalRead(pin)) {
+    if (initialState) {
         state = _BV(DEBOUNCED_STATE) | _BV(UNSTABLE_STATE);
     }
 #ifdef BOUNCE_LOCK_OUT
@@ -33,18 +31,22 @@ void Bounce::attach(int pin) {
 #endif
 }
 
+void Bounce::attach(int pin) {
+    this->pin = pin;
+    init(digitalRead(pin));
+}
+
 void Bounce::interval(uint16_t interval_millis)
 {
     this->interval_millis = interval_millis;
 }
 
-bool Bounce::update()
+bool Bounce::update(bool currentState)
 {
 #ifdef BOUNCE_LOCK_OUT
     state &= ~_BV(STATE_CHANGED);
     // Ignore everything if we are locked out
     if (millis() - previous_millis >= interval_millis) {
-        bool currentState = digitalRead(pin);
         if ((bool)(state & _BV(DEBOUNCED_STATE)) != currentState) {
             previous_millis = millis();
             state ^= _BV(DEBOUNCED_STATE);
@@ -54,7 +56,6 @@ bool Bounce::update()
     return state & _BV(STATE_CHANGED);
 #else
     // Read the state of the switch in a temporary variable.
-    bool currentState = digitalRead(pin);
     state &= ~_BV(STATE_CHANGED);
 
     // If the reading is different from last reading, reset the debounce counter
@@ -74,6 +75,11 @@ bool Bounce::update()
 
     return state & _BV(STATE_CHANGED);
 #endif
+}
+
+bool Bounce::update()
+{
+    return update(digitalRead(pin));
 }
 
 bool Bounce::read()

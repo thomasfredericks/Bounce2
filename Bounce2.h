@@ -23,7 +23,7 @@
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * *
   Main code by Thomas O Fredericks (tof@t-o-f.info)
-  Previous contributions by Eric Lowry, Jim Schimpf and Tom Harkaway
+  Previous contributions by Eric Lowry, Jim Schimpf, Tom Harkaway and Florian Kuersch
   * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifdef BOUNCE_LOCK
@@ -48,6 +48,9 @@ class Bounce
     // Attach to a pin (and also sets initial state)
     void attach(int pin);
 
+    // Sets the initial state only (doesn't read any pin)
+    void init(bool initialState);
+
     // Sets the debounce interval
     void interval(uint16_t interval_millis);
 
@@ -55,6 +58,10 @@ class Bounce
     // Returns 1 if the state changed
     // Returns 0 if the state did not change
     bool update();
+
+    // Like update(), but updates the state
+    // by the given value (doesn't read any pin)
+    bool update(bool currentState);
 
     // Returns the updated pin state
     bool read();

@@ -18,6 +18,7 @@ read	 KEYWORD2
 attach	 KEYWORD2
 rose	KEYWORD2
 fell	KEYWORD2
+init	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)
