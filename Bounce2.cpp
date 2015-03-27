@@ -20,7 +20,7 @@ Bounce::Bounce(int pin, uint16_t interval_millis, uint16_t interval_retrigger, u
 	interval(interval_millis);
 	holdinterval(interval_hold);
 	retriggerinterval(interval_retrigger);
-	previous_millis_retrigger = 0;
+	previous_millis_state_changed = 0;
 	state = _BV(FIRSTUPDATE);
 }
 
