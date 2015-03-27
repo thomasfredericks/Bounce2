@@ -75,13 +75,12 @@ class Bounce
 	// Returns 0 if not
 	bool held();
 	
-	// After the button has been held down, retriggers every interval_repeat(default is 50 ms)
+	// After the button has been held down, returns a 1 every interval_repeat(default is 50 ms)
 	bool retrigger();
 
  protected:
     unsigned long previous_millis;
 	unsigned long previous_millis_state_changed;
-	unsigned long previous_millis_retrigger;
 	uint16_t interval_hold;
 	uint16_t interval_retrigger;
     uint16_t interval_millis;

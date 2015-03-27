@@ -31,7 +31,6 @@ unsigned long buttonPressTimeStamp;
 unsigned char ledState = 0;
 
 void setup() {
-	
 	Serial.begin(57600);
 	
 	// Setup the button
@@ -47,15 +46,16 @@ void loop() {
 	// Update the debouncer
 	debouncer.update();
 
+	// If button had a rising transition, turn on led.
 	if(debouncer.rose())
 	{
 		ledState = 1;
 		digitalWrite(LED_PIN, ledState);
-                buttonPressTimeStamp = millis();
+		buttonPressTimeStamp = millis();
 		Serial.print(buttonPressTimeStamp);
 		Serial.println(" Button rose!");
 	}
-	// toggle led everytime it retriggers
+	// After holding down the button, retrigger returns a 1 every interval_hold (default = 50 ms)
 	if (debouncer.retrigger())
 	{
 		buttonPressTimeStamp = millis();
@@ -65,12 +65,12 @@ void loop() {
 		ledState = !ledState;
 		digitalWrite(LED_PIN, ledState);
 	}
-	
+	// When button has a falling transition, turn off led.
 	if(debouncer.fell())
 	{
 		ledState = 0;
 		digitalWrite(LED_PIN, ledState);
-                buttonPressTimeStamp = millis();
+		buttonPressTimeStamp = millis();
 		Serial.print(buttonPressTimeStamp);
 		Serial.println(" Button fell!");
 	}

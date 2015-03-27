@@ -3,3 +3,4 @@ examples/retrigger/Debug/Makefile
 examples/retrigger/retrigger.cppproj
 *.xml
 examples/retrigger/Visual Micro/.retrigger.vsarduino.h
+*.a
