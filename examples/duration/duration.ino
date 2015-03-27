@@ -14,8 +14,15 @@ a button press (transition from HIGH to LOW).
 #define BUTTON_PIN 2
 #define LED_PIN 13
 
-// Instantiate a Bounce object :
-Bounce debouncer = Bounce(); 
+#define DEBOUNCE_TIME 5
+#define HOLD_TIME 1000
+#define RETRIGGER_TIME 100
+
+// Instantiate a Bounce object with default values
+Bounce debouncer(BUTTON_PIN);
+
+// Or set your own values when instantiating Bounce object
+// Bounce debouncer(BUTTON_PIN,DEBOUNCE_TIME, RETRIGGER_TIME, HOLD_TIME);
 
 unsigned long buttonPressTimeStamp;
 
@@ -25,10 +32,6 @@ void setup() {
   
   // Setup the button with an internal pull-up :
   pinMode(BUTTON_PIN,INPUT_PULLUP);
-  
-  // After setting up the button, setup the Bounce instance :
-  debouncer.attach(BUTTON_PIN);
-  debouncer.interval(5);
   
   // Setup the LED :
   pinMode(LED_PIN,OUTPUT);

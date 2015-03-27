@@ -1,0 +1,5 @@
+examples/retrigger/Debug/Makefile
+*.atsuo
+examples/retrigger/retrigger.cppproj
+*.xml
+examples/retrigger/Visual Micro/.retrigger.vsarduino.h

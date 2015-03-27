@@ -9,20 +9,23 @@
 #define BUTTON_PIN 2
 #define LED_PIN 13
 
+#define DEBOUNCE_TIME 5
+#define HOLD_TIME 1000
+#define RETRIGGER_TIME 100
+
 int ledState = LOW;
 
+// Instantiate a Bounce object with default values
+Bounce debouncer(BUTTON_PIN);
 
-// Instantiate a Bounce object :
-Bounce debouncer = Bounce(); 
+// Or set your own values when instantiating Bounce object
+// Bounce debouncer(BUTTON_PIN,DEBOUNCE_TIME, RETRIGGER_TIME, HOLD_TIME);
+
 
 void setup() {
   
   // Setup the button with an internal pull-up :
-  pinMode(BUTTON_PIN,INPUT_PULLUP);
-  
-  // After setting up the button, setup the Bounce instance :
-  debouncer.attach(BUTTON_PIN);
-  debouncer.interval(500);
+  pinMode(BUTTON_PIN,INPUT);
   
   // Setup the LED :
   pinMode(LED_PIN,OUTPUT);
