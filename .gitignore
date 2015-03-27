@@ -4,3 +4,10 @@ examples/retrigger/retrigger.cppproj
 *.xml
 examples/retrigger/Visual Micro/.retrigger.vsarduino.h
 *.a
+*.eep
+examples/held/Debug/held.elf
+*.hex
+examples/held/held.cppproj
+examples/retrigger/Debug/retrigger.elf
+*.atsln
+examples/held/Visual Micro/.held.vsarduino.h
