@@ -151,8 +151,6 @@ bool Bounce::retrigger()
 		{
 			// sets the millis when first going into function
 			previous_millis_state_changed = millis();
-			return false;
-			
 		}
 	}
 	return false;
