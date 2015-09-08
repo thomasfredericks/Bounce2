@@ -33,13 +33,8 @@ void Bounce::attach(int pin) {
 #endif
 }
 
-void Bounce::attach(int pin, byte mode){
-  if(mode == INPUT_PULLUP){
-    pinMode(pin, INPUT_PULLUP);
-  }
-  else{
-    pinMode(pin, INPUT);
-  }
+void Bounce::attach(int pin, int mode){
+  pinMode(pin, mode);
   
   this->attach(pin);
 }
