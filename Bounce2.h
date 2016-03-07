@@ -68,6 +68,14 @@ class Bounce
     // Returns the rising pin state
     bool rose();
 
+    // Partial compatibility for programs written with Bounce version 1
+    bool risingEdge() { return rose(); }
+    bool fallingEdge() { return fell(); }
+    Bounce(uint8_t pin, unsigned long interval_millis ) : Bounce() {
+        attach(pin);
+        interval(interval_millis);
+    }
+
  protected:
     unsigned long previous_millis;
     uint16_t interval_millis;
