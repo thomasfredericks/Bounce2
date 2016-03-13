@@ -1,86 +1,81 @@
 
-/* 
+/*
 DESCRIPTION
 ====================
-Example of the bounce library that shows how to retrigger an event when a button is held down.
-In this case, the debug LED will blink every 500 ms as long as the button is held down.
+Example of the retrigger() function of the Bounce 2 library. This function will retrigger a HIGH value after
+the button has been held on for at least the hold interval (default 500 ms) and then retrigger every retrigger_interval afterwards (default 50ms)
+This function is great for editing values without repeatedly pressing the button.
 Open the Serial Monitor (57600 baud) for debug messages.
 
 */
 
 // Include the Bounce2 library found here :
 // https://github.com/thomasfredericks/Bounce-Arduino-Wiring
-#include <Bounce2.h>
 
+#include <Bounce2.h>
 
 #define BUTTON_PIN 2
 #define LED_PIN 13
 
-// Instantiate a Bounce object
-Bounce debouncer = Bounce(); 
+#define DEBOUNCE_TIME 5
+#define HOLD_TIME 1000
+#define RETRIGGER_TIME 100
 
-int buttonState;
+// Instantiate a Bounce object with default values
+Bounce debouncer(BUTTON_PIN);
+
+// Or set your own values when instantiating Bounce object
+// Bounce debouncer(BUTTON_PIN,DEBOUNCE_TIME, RETRIGGER_TIME, HOLD_TIME);
+
 unsigned long buttonPressTimeStamp;
-
-int ledState;
+unsigned char ledState = 0;
 
 void setup() {
-  
-  Serial.begin(57600);
-  
-  // Setup the button
-  pinMode(BUTTON_PIN,INPUT);
-  // Activate internal pull-up
-  digitalWrite(BUTTON_PIN,HIGH);
-  
-  // After setting up the button, setup debouncer
-  debouncer.attach(BUTTON_PIN);
-  debouncer.interval(5);
-  
-  //Setup the LED
-  pinMode(LED_PIN,OUTPUT);
-  digitalWrite(LED_PIN,ledState);
-  
+	Serial.begin(57600);
+	
+	// Setup the button
+	pinMode(BUTTON_PIN,INPUT);
+	
+	//Setup the LED
+	pinMode(LED_PIN,OUTPUT);
+	digitalWrite(LED_PIN,LOW);
+	
 }
 
 void loop() {
- // Update the debouncer and get the changed state
-  boolean changed = debouncer.update();
+	// Update the debouncer
+	debouncer.update();
 
+	// If button had a rising transition, turn on led.
+	if(debouncer.rose())
+	{
+		ledState = 1;
+		digitalWrite(LED_PIN, ledState);
+		buttonPressTimeStamp = millis();
+		Serial.print(buttonPressTimeStamp);
+		Serial.println(" Button rose!");
+	}
+	// After holding down the button, retrigger returns a 1 every interval_hold (default = 50 ms)
+	if (debouncer.retrigger())
+	{
+		buttonPressTimeStamp = millis();
+		Serial.print(buttonPressTimeStamp);
+		Serial.println(" Button retriggered!");
+		
+		ledState = !ledState;
+		digitalWrite(LED_PIN, ledState);
+	}
+	// When button has a falling transition, turn off led.
+	if(debouncer.fell())
+	{
+		ledState = 0;
+		digitalWrite(LED_PIN, ledState);
+		buttonPressTimeStamp = millis();
+		Serial.print(buttonPressTimeStamp);
+		Serial.println(" Button fell!");
+	}
 
-  
-  if ( changed ) {
-       // Get the update value
-     int value = debouncer.read();
-    if ( value == HIGH) {
-       ledState = LOW;
-       digitalWrite(LED_PIN, ledState );
-   
-       buttonState = 0;
-       Serial.println("Button released (state 0)");
-   
-   } else {
-          ledState = HIGH;
-       digitalWrite(LED_PIN, ledState );
-       
-         buttonState = 1;
-         Serial.println("Button pressed (state 1)");
-         buttonPressTimeStamp = millis();
-     
-   }
-  }
-  
-  if  ( buttonState == 1 ) {
-    if ( millis() - buttonPressTimeStamp >= 500 ) {
-         buttonPressTimeStamp = millis();
-         if ( ledState == HIGH ) ledState = LOW;
-         else if ( ledState == LOW ) ledState = HIGH;
-         digitalWrite(LED_PIN, ledState );
-        Serial.println("Retriggering button");
-    }
-  }
- 
- 
+	
 }
 
 

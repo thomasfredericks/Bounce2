@@ -23,7 +23,7 @@
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * *
   Main code by Thomas O Fredericks (tof@t-o-f.info)
-  Previous contributions by Eric Lowry, Jim Schimpf and Tom Harkaway
+  Previous contributions by Eric Lowry, Jim Schimpf and Tom Harkaway, Albert Phan
   * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifdef BOUNCE_LOCK
@@ -43,7 +43,7 @@ class Bounce
 {
  public:
     // Create an instance of the bounce library
-    Bounce();
+	Bounce(int pin, uint16_t interval_millis = 10, uint16_t interval_retrigger = 50, uint16_t interval_hold = 500);
 
     // Attach to a pin (and also sets initial state)
     void attach(int pin);
@@ -54,7 +54,13 @@ class Bounce
     // Sets the debounce interval
     void interval(uint16_t interval_millis);
 
-    // Updates the pin
+    // Changes the interval for held()
+    void holdinterval(uint16_t interval_hold);
+	
+	// Changes the retrigger interval for retrigger()
+	void retriggerinterval(uint16_t interval_retrigger);
+	
+	// Updates the pin
     // Returns 1 if the state changed
     // Returns 0 if the state did not change
     bool update();
@@ -67,6 +73,13 @@ class Bounce
 
     // Returns the rising pin state
     bool rose();
+	
+	// Returns 1 if state has been held for held interval (default is 500ms)
+	// Returns 0 if not
+	bool held();
+	
+	// After the button has been held down, returns a 1 every interval_repeat(default is 50 ms)
+	bool retrigger();
 
     // Partial compatibility for programs written with Bounce version 1
     bool risingEdge() { return rose(); }
@@ -78,6 +91,9 @@ class Bounce
 
  protected:
     unsigned long previous_millis;
+	unsigned long previous_millis_state_changed;
+	uint16_t interval_hold;
+	uint16_t interval_retrigger;
     uint16_t interval_millis;
     uint8_t state;
     uint8_t pin;

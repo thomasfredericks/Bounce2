@@ -2,7 +2,11 @@
 /* 
  DESCRIPTION
  ====================
- Simple example of the Bounce library that switches the debug LED when a button is pressed.
+ Example of the held() function for the Bounce 2 library
+ The held() function returns a 1 when the button has been held for a minimum of the hold interval or 500ms which is the default
+ 
+ An example of using this is in a menu where a user must hold a key down before he/she can edit something.
+ 
  */
 // Include the Bounce2 library found here :
 // https://github.com/thomasfredericks/Bounce-Arduino-Wiring
@@ -21,11 +25,13 @@ Bounce debouncer(BUTTON_PIN);
 // Or set your own values when instantiating Bounce object
 // Bounce debouncer(BUTTON_PIN,DEBOUNCE_TIME, RETRIGGER_TIME, HOLD_TIME);
 
+
 void setup() {
 
   // Setup the button with an internal pull-up :
-  pinMode(BUTTON_PIN,INPUT_PULLUP);
-
+  //pinMode(BUTTON_PIN,INPUT_PULLUP);
+  pinMode(BUTTON_PIN, INPUT);
+  
   //Setup the LED :
   pinMode(LED_PIN,OUTPUT);
 
@@ -36,10 +42,10 @@ void loop() {
   debouncer.update();
 
   // Get the updated value :
-  int value = debouncer.read();
+  int value = debouncer.held();
 
   // Turn on or off the LED as determined by the state :
-  if ( value == LOW ) {
+  if (value) {
     digitalWrite(LED_PIN, HIGH );
   } 
   else {
