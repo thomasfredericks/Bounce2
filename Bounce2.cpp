@@ -21,7 +21,6 @@ Bounce::Bounce()
 
 void Bounce::attach(int pin) {
     this->pin = pin;
-    bool read = digitalRead(pin);
     state = 0;
     if (digitalRead(pin)) {
         state = _BV(DEBOUNCED_STATE) | _BV(UNSTABLE_STATE);
@@ -57,6 +56,36 @@ bool Bounce::update()
             state |= _BV(STATE_CHANGED);
         }
     }
+    return state & _BV(STATE_CHANGED);
+
+#elif defined BOUNCE_WITH_PROMPT_DETECTION
+    // Read the state of the switch port into a temporary variable.
+    bool readState = digitalRead(pin);
+
+    // Clear Changed State Flag - will be reset if we confirm a button state change.
+    state &= ~_BV(STATE_CHANGED);
+
+    if ( readState != (bool)(state & _BV(DEBOUNCED_STATE))) {
+      // We have seen a change from the current button state.
+
+      if ( millis() - previous_millis >= interval_millis ) {
+	// We have passed the time threshold, so a new change of state is allowed.
+	// set the STATE_CHANGED flag and the new DEBOUNCED_STATE.
+	// This will be prompt as long as there has been greater than interval_misllis ms since last change of input.
+	// Otherwise debounced state will not change again until bouncing is stable for the timeout period.
+	state ^= _BV(DEBOUNCED_STATE);
+	state |= _BV(STATE_CHANGED);
+      }
+    }
+
+    // If the readState is different from previous readState, reset the debounce timer - as input is still unstable
+    // and we want to prevent new button state changes until the previous one has remained stable for the timeout.
+    if ( readState != (bool)(state & _BV(UNSTABLE_STATE)) ) {
+	// Update Unstable Bit to macth readState
+        state ^= _BV(UNSTABLE_STATE);
+        previous_millis = millis();
+    }
+    // return just the sate changed bit
     return state & _BV(STATE_CHANGED);
 #else
     // Read the state of the switch in a temporary variable.
