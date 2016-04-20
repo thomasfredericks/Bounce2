@@ -26,16 +26,14 @@
   Previous contributions by Eric Lowry, Jim Schimpf and Tom Harkaway
   * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifdef BOUNCE_LOCK
-#error You are using the invalid BOUNCE_LOCK-OUT define. Please update your sources to use BOUNCE_LOCK_OUT
-#endif
+#ifndef Bounce2_h
+#define Bounce2_h
 
 // Uncomment the following line for "LOCK-OUT" debounce method
 //#define BOUNCE_LOCK_OUT
 
-
-#ifndef Bounce2_h
-#define Bounce2_h
+// Uncomment the following line for "BOUNCE_WITH_PROMPT_DETECTION" debounce method
+//#define BOUNCE_WITH_PROMPT_DETECTION
 
 #include <inttypes.h>
 
