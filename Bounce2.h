@@ -37,6 +37,10 @@
 
 #include <inttypes.h>
 
+#ifndef _BV
+#define _BV(n) (1<<(n))
+#endif
+
 class Bounce
 {
  public:
