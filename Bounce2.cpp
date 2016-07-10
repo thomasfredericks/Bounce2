@@ -48,7 +48,7 @@ bool Bounce::update()
 #ifdef BOUNCE_LOCK_OUT
     state &= ~_BV(STATE_CHANGED);
     // Ignore everything if we are locked out
-    if (millis() - previous_millis >= interval_millis) {
+    if ( (unsigned long)(millis() - previous_millis) >= interval_millis ) {
         bool currentState = digitalRead(pin);
         if ((bool)(state & _BV(DEBOUNCED_STATE)) != currentState) {
             previous_millis = millis();
@@ -68,7 +68,7 @@ bool Bounce::update()
     if ( readState != (bool)(state & _BV(DEBOUNCED_STATE))) {
       // We have seen a change from the current button state.
 
-      if ( millis() - previous_millis >= interval_millis ) {
+      if ( (unsigned long)(millis() - previous_millis) >= interval_millis ) {
 	// We have passed the time threshold, so a new change of state is allowed.
 	// set the STATE_CHANGED flag and the new DEBOUNCED_STATE.
 	// This will be prompt as long as there has been greater than interval_misllis ms since last change of input.
@@ -97,7 +97,7 @@ bool Bounce::update()
         previous_millis = millis();
         state ^= _BV(UNSTABLE_STATE);
     } else
-        if ( millis() - previous_millis >= interval_millis ) {
+        if ( (unsigned long)(millis() - previous_millis) >= interval_millis ) {
             // We have passed the threshold time, so the input is now stable
             // If it is different from last state, set the STATE_CHANGED flag
             if ((bool)(state & _BV(DEBOUNCED_STATE)) != currentState) {
