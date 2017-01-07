@@ -59,7 +59,7 @@ bool Bounce::update()
 	if(state & _BV(FIRSTUPDATE))
 	{
 		attach(pin);
-		state &= _BV(FIRSTUPDATE);
+		state &= ~_BV(FIRSTUPDATE);
 	}
 	else
 	{
