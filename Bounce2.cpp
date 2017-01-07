@@ -38,6 +38,12 @@ void Bounce::attach(int pin) {
 	#endif
 }
 
+void Bounce::attach(int pin, int mode){
+  pinMode(pin, mode);
+  
+  this->attach(pin);
+}
+
 void Bounce::interval(uint16_t interval_millis)
 {
 	this->interval_millis = interval_millis;
