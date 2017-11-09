@@ -11,6 +11,9 @@
 #define UNSTABLE_STATE  1
 #define STATE_CHANGED   3
 
+#ifndef _BV
+#define _BV(i) (1<<i)
+#endif
 
 Bounce::Bounce()
     : previous_millis(0)
