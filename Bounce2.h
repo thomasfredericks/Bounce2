@@ -29,6 +29,9 @@
 #ifndef Bounce2_h
 #define Bounce2_h
 
+// Uncomment the following line for analog pins in use
+//#define ANALOG_PINS
+
 // Uncomment the following line for "LOCK-OUT" debounce method
 //#define BOUNCE_LOCK_OUT
 
@@ -37,38 +40,38 @@
 
 #include <inttypes.h>
 
-#ifndef _BV
-#define _BV(n) (1<<(n))
-#endif
-
 class Bounce
 {
- public:
+public:
     // Create an instance of the bounce library
     Bounce();
 
     // Attach to a pin (and also sets initial state)
-    void attach(int pin);
+    void attach(uint8_t pin);
     
     // Attach to a pin (and also sets initial state) and sets pin to mode (INPUT/INPUT_PULLUP/OUTPUT)
-    void attach(int pin, int mode);
+    void attach(uint8_t pin, uint8_t mode);
 
     // Sets the debounce interval
     void interval(uint16_t interval_millis);
 
     // Updates the pin
-    // Returns 1 if the state changed
-    // Returns 0 if the state did not change
+    // Returns whether the state changed or not
     bool update();
 
     // Returns the updated pin state
-    bool read();
+    bool read() const;
 
     // Returns the falling pin state
-    bool fell();
+    bool fell() const;
 
     // Returns the rising pin state
-    bool rose();
+    bool rose() const;
+
+#ifdef ANALOG_PINS
+    // Returns the updated pin value
+    uint16_t getValue() const;
+#endif
 
     // Partial compatibility for programs written with Bounce version 1
     bool risingEdge() { return rose(); }
@@ -78,7 +81,7 @@ class Bounce
         interval(interval_millis);
     }
 
- protected:
+protected:
     unsigned long previous_millis;
     uint16_t interval_millis;
     uint8_t state;
