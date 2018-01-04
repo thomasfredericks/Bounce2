@@ -82,10 +82,13 @@ public:
     }
 
 protected:
-    unsigned long previous_millis;
-    uint16_t interval_millis;
-    uint8_t state;
-    uint8_t pin;
+    unsigned long previous_millis = 0;
+    uint16_t interval_millis = 10;
+#ifdef ANALOG_PINS
+    uint16_t value;
+#endif
+    uint8_t state = 0;
+    uint8_t pin = 0;
 };
 
 #endif

@@ -18,13 +18,6 @@ namespace {
 }
 
 Bounce::Bounce()
-    : previous_millis(0)
-    , interval_millis(10)
-#ifdef ANALOG_PINS
-      value(0),
-#endif
-    , state(0)
-    , pin(0)
 {}
 
 void Bounce::attach(uint8_t pin) {
@@ -149,3 +142,9 @@ bool Bounce::fell() const ///return if !DEBOUNCED or !CHANGED
 {
     return !rose();
 }
+
+#ifdef ANALOG_PINS
+uint16_t Bounce::getValue() const {
+    return this->value;
+}
+#endif
