@@ -40,6 +40,10 @@
 
 #include <inttypes.h>
 
+namespace BouncerConstants {
+    constexpr uint16_t NOISE_TOLERANCE = 50;
+}
+
 class Bounce
 {
 public:
@@ -85,7 +89,7 @@ protected:
     unsigned long previous_millis = 0;
     uint16_t interval_millis = 10;
 #ifdef ANALOG_PINS
-    uint16_t value;
+    uint16_t value = 0;
 #endif
     uint8_t state = 0;
     uint8_t pin = 0;
