@@ -5,7 +5,7 @@
  Simple example of the Bounce library that switches the debug LED when a button is pressed.
  */
 // Include the Bounce2 library found here :
-// https://github.com/thomasfredericks/Bounce-Arduino-Wiring
+// https://github.com/thomasfredericks/Bounce2
 #include <Bounce2.h>
 
 #define BUTTON_PIN 2

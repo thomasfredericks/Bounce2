@@ -7,7 +7,7 @@ a button press (transition from HIGH to LOW).
 */
 
 // Include the Bounce2 library found here :
-// https://github.com/thomasfredericks/Bounce-Arduino-Wiring
+// https://github.com/thomasfredericks/Bounce2
 #include <Bounce2.h>
 
 
