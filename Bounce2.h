@@ -37,9 +37,11 @@
 
 #include <inttypes.h>
 
+/*
 #ifndef _BV
 #define _BV(n) (1<<(n))
 #endif
+*/
 
 class Bounce
 {
@@ -83,6 +85,13 @@ class Bounce
     uint16_t interval_millis;
     uint8_t state;
     uint8_t pin;
+    virtual bool readCurrentState() { return digitalRead(pin); }
+
+  private:
+    inline void setStateFlag(const uint8_t flag)    {state |= flag;}
+    inline void unsetStateFlag(const uint8_t flag)  {state &= ~flag;}
+    inline void toggleStateFlag(const uint8_t flag) {state ^= flag;}
+    inline bool getStateFlag(const uint8_t flag)    {return((state & flag) != 0);}
 };
 
 #endif
