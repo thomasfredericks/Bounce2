@@ -7,7 +7,7 @@ by Thomas Ouellet Fredericks
 
 with contributions from:
 
-Eric Lowry, Jim Schimpf and Tom Harkaway
+Eric Lowry, Jim Schimpf, Tom Harkaway and Joachim Krüger.
 
 
 HAVE A QUESTION?
