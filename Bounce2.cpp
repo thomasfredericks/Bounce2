@@ -33,12 +33,8 @@ void Bounce::attach(int pin) {
 }
 
 void Bounce::attach(int pin, int mode){
-#if defined(ARDUINO_STM_NUCLEO_F103RB) || defined(ARDUINO_GENERIC_STM32F103C)
-    pinMode(pin, (WiringPinMode)mode);
-#else
-    pinMode(pin, mode);
-#endif
-  this->attach(pin);
+    setPinMode(pin, mode);
+    this->attach(pin);
 }
 
 void Bounce::interval(uint16_t interval_millis)

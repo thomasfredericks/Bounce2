@@ -86,6 +86,13 @@ class Bounce
     uint8_t state;
     uint8_t pin;
     virtual bool readCurrentState() { return digitalRead(pin); }
+    virtual void setPinMode(int pin, int mode) {
+#if defined(ARDUINO_STM_NUCLEO_F103RB) || defined(ARDUINO_GENERIC_STM32F103C)
+        pinMode(pin, (WiringPinMode)mode);
+#else
+        pinMode(pin, mode);
+#endif
+    }
 
   private:
     inline void setStateFlag(const uint8_t flag)    {state |= flag;}
