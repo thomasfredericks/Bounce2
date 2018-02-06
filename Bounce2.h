@@ -29,6 +29,12 @@
 #ifndef Bounce2_h
 #define Bounce2_h
 
+#if defined(ARDUINO) && ARDUINO >= 100
+#include "Arduino.h"
+#else
+#include "WProgram.h"
+#endif
+
 // Uncomment the following line for "LOCK-OUT" debounce method
 //#define BOUNCE_LOCK_OUT
 
