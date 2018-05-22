@@ -1,1 +1,0 @@
-Put the "Bounce2" folder in your Arduino or Wiring "libraries" folder. 
