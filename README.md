@@ -23,6 +23,11 @@ Download the latest version (version 2) here :
 https://github.com/thomasfredericks/Bounce2/archive/master.zip
 
 
+INSTALLATION
+=====================
+Put the "Bounce2" folder in your Arduino or Wiring "libraries" folder. 
+
+
 DOCUMENTATION
 =====================
 
