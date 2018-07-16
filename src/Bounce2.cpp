@@ -49,8 +49,7 @@ bool Bounce::update()
         bool currentState = readCurrentState();
         if ( currentState != getStateFlag(DEBOUNCED_STATE) ) {
             previous_millis = millis();
-            toggleStateFlag(DEBOUNCED_STATE);
-            setStateFlag(CHANGED_STATE);
+            changeState();
         }
     }
     
@@ -68,8 +67,7 @@ bool Bounce::update()
 	// set the STATE_CHANGED flag and the new DEBOUNCED_STATE.
 	// This will be prompt as long as there has been greater than interval_misllis ms since last change of input.
 	// Otherwise debounced state will not change again until bouncing is stable for the timeout period.
-	 toggleStateFlag(DEBOUNCED_STATE);
-     setStateFlag(CHANGED_STATE );
+		 changeState();
       }
     }
 
@@ -97,16 +95,33 @@ bool Bounce::update()
             // If it is different from last state, set the STATE_CHANGED flag
             if (currentState != getStateFlag(DEBOUNCED_STATE) ) {
                 previous_millis = millis();
-                 toggleStateFlag(DEBOUNCED_STATE);
-                 setStateFlag(CHANGED_STATE) ;
+                 
+
+                 changeState();
             }
         }
 
     
 #endif
 
-return  getStateFlag(CHANGED_STATE); 
+		return  getStateFlag(CHANGED_STATE); 
 
+}
+/*
+// WIP HELD
+unsigned long Bounce::held() {
+	return durationOfPreviousState;
+}
+*/
+unsigned long Bounce::duration() {
+	return (millis() - stateChangeLastTime);
+}
+
+inline void Bounce::changeState() {
+	toggleStateFlag(DEBOUNCED_STATE);
+	setStateFlag(CHANGED_STATE) ;
+	// WIP HELD : durationOfPreviousState = millis() - stateChangeLastTime;
+	stateChangeLastTime = millis();
 }
 
 bool Bounce::read()

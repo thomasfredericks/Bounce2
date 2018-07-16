@@ -85,12 +85,20 @@ class Bounce
         attach(pin);
         interval(interval_millis);
     }
+    
+    // Returns the duration of the current state
+    unsigned long duration();
+
+
+    // WIP HELD : unsigned long held();     // Returns the duration the previous state was held
 
  protected:
     unsigned long previous_millis;
     uint16_t interval_millis;
     uint8_t state;
     uint8_t pin;
+    unsigned long stateChangeLastTime;
+    // WIP HELD : unsigned long durationOfPreviousState;
     virtual bool readCurrentState() { return digitalRead(pin); }
     virtual void setPinMode(int pin, int mode) {
 #if defined(ARDUINO_STM_NUCLEO_F103RB) || defined(ARDUINO_GENERIC_STM32F103C)
@@ -101,6 +109,7 @@ class Bounce
     }
 
   private:
+    inline void changeState();
     inline void setStateFlag(const uint8_t flag)    {state |= flag;}
     inline void unsetStateFlag(const uint8_t flag)  {state &= ~flag;}
     inline void toggleStateFlag(const uint8_t flag) {state ^= flag;}
