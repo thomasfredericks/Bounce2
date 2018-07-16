@@ -43,39 +43,52 @@
 
 #include <inttypes.h>
 
-/*
-#ifndef _BV
-#define _BV(n) (1<<(n))
-#endif
-*/
 
+/**
+     The Bounce class.
+     */
 class Bounce
 {
  public:
-    // Create an instance of the bounce library
+    /**
+     Create an instance of the Bounce class.
+     */
     Bounce();
 
-    // Attach to a pin (and also sets initial state)
-    void attach(int pin);
-    
-    // Attach to a pin (and also sets initial state) and sets pin to mode (INPUT/INPUT_PULLUP/OUTPUT)
+    /**
+     Attach to a pin and sets that pin's mode (INPUT/INPUT_PULLUP/OUTPUT)
+     */
     void attach(int pin, int mode);
 
-    // Sets the debounce interval
+    /**
+    Attach to a pin for advanced users. Only attach the pin this way once you have previously set it up. Otherwise use attach(int pin, int mode).
+    */
+    void attach(int pin);
+    
+
+    /**
+     Sets the debounce interval in milliseconds.
+     */
     void interval(uint16_t interval_millis);
 
-    // Updates the pin
-    // Returns 1 if the state changed
-    // Returns 0 if the state did not change
+    /**
+     Updates the pin's state. Returns 1 if the state changed. Returns 0 if the state did not change. Because Bounce does not use interrupts, you have to "update" the object before reading its value and it has to be done as often as possible (that means to include it in your loop()). Only call update() once per loop().
+    */
     bool update();
 
-    // Returns the updated pin state
+    /**
+     Returns the pin's state (HIGH or LOW).
+     */
     bool read();
 
-    // Returns the falling pin state
+    /**
+    Returns true if pin signal transitions from high to low.
+    */
     bool fell();
 
-    // Returns the rising pin state
+    /**
+    Returns true if pin signal transitions from low to high.
+    */
     bool rose();
 
     // Partial compatibility for programs written with Bounce version 1
@@ -86,7 +99,9 @@ class Bounce
         interval(interval_millis);
     }
     
-    // Returns the duration of the current state
+    /**
+     Returns the duration in milliseconds of the current state. Is reset to 0 once the pin rises or falls.
+     */
     unsigned long duration();
 
 
