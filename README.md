@@ -1,7 +1,7 @@
 BOUNCE 2
 =====================
 
-Debouncing library for Arduino or Wiring
+Debouncing library for Arduino and Wiring
 
 by Thomas Ouellet Fredericks
 
