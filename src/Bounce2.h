@@ -43,6 +43,11 @@
 
 #include <inttypes.h>
 
+/**
+    @example bounce.ino
+    This is an example of how to use the Example_Test class.
+    More details about this example.
+*/
 
 /**
      The Bounce class.
@@ -50,14 +55,29 @@
 class Bounce
 {
  public:
-    /**
-     Create an instance of the Bounce class.
-     */
+
+/*!
+    @brief  Create an instance of the Bounce class.
+
+    @code
+
+    // Create an instance of the Bounce class.
+    Bounce() button;
+
+    @endcode
+*/
     Bounce();
 
-    /**
-     Attach to a pin and sets that pin's mode (INPUT/INPUT_PULLUP/OUTPUT)
-     */
+
+/*!
+    @brief  Attach to a pin and sets that pin's mode (INPUT, INPUT_PULLUP or OUTPUT).
+            
+    @param    pin
+              The pin that is to be debounced.
+    @param    mode
+              A valid Arduino pin mode (INPUT, INPUT_PULLUP or OUTPUT).
+    @return True if the event read was successful, otherwise false.
+*/
     void attach(int pin, int mode);
 
     /**
@@ -67,41 +87,67 @@ class Bounce
     
 
     /**
-     Sets the debounce interval in milliseconds.
+    @brief  Sets the debounce interval in milliseconds.
+            
+    @param    interval_millis
+    		The interval time in milliseconds.
+     
      */
     void interval(uint16_t interval_millis);
 
-    /**
-     Updates the pin's state. Returns 1 if the state changed. Returns 0 if the state did not change. Because Bounce does not use interrupts, you have to "update" the object before reading its value and it has to be done as often as possible (that means to include it in your loop()). Only call update() once per loop().
-    */
+
+/*!
+    @brief   Updates the pin's state. 
+
+    Because Bounce does not use interrupts, you have to "update" the object before reading its value and it has to be done as often as possible (that means to include it in your loop()). Only call update() once per loop().
+
+    @return True if the pin changed state.
+*/
+
     bool update();
 
     /**
-     Returns the pin's state (HIGH or LOW).
+     @brief Returns the pin's state (HIGH or LOW).
+
+     @return HIGH or LOW.
      */
     bool read();
 
     /**
-    Returns true if pin signal transitions from high to low.
+    @brief Returns true if pin signal transitions from high to low.
     */
     bool fell();
 
     /**
-    Returns true if pin signal transitions from low to high.
+    @brief Returns true if pin signal transitions from low to high.
     */
     bool rose();
 
-    // Partial compatibility for programs written with Bounce version 1
+     
+     /**
+    @brief Deprecated (i.e. do not use). Included for partial compatibility for programs written with Bounce version 1
+    */
     bool risingEdge() { return rose(); }
+     /**
+    @brief Deprecated (i.e. do not use). Included for partial compatibility for programs written with Bounce version 1
+    */
     bool fallingEdge() { return fell(); }
-    Bounce(uint8_t pin, unsigned long interval_millis ) : Bounce() {
+     /**
+    @brief Deprecated (i.e. do not use). Included for partial compatibility for programs written with Bounce version 1
+    */
+     Bounce(uint8_t pin, unsigned long interval_millis ) : Bounce() {
         attach(pin);
         interval(interval_millis);
     }
     
     /**
-     Returns the duration in milliseconds of the current state. Is reset to 0 once the pin rises or falls.
+     @brief Returns the duration in milliseconds of the current state. 
+
+     Is reset to 0 once the pin rises ( rose() ) or falls ( fell() ).
+    
+      @return The duration in milliseconds (unsigned long) of the current state.
      */
+
     unsigned long duration();
 
 

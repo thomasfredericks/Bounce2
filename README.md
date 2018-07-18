@@ -1,42 +1,38 @@
-BOUNCE 2
-=====================
+# BOUNCE 2
 
-Debouncing library for Arduino and Wiring
+Debouncing library for Arduino and Wiring by Thomas Ouellet Fredericks with contributions from: Eric Lowry, Jim Schimpf, Tom Harkaway and Joachim Krüger.
 
-by Thomas Ouellet Fredericks
-
-with contributions from:
-
-Eric Lowry, Jim Schimpf, Tom Harkaway and Joachim Krüger.
+More about debouncing: http://en.wikipedia.org/wiki/Debounce#Contact_bounce
 
 
-HAVE A QUESTION?
-=====================
-Please post your questions here :
+# HAVE A QUESTION?
+
+Please post your questions here
 http://forum.arduino.cc/index.php?topic=266132.0
 
-DOWNLOAD
-=====================
+# INSTALLATION & DOWNLOAD
 
-Download the latest version (version 2) here :
+Install through your software's Library Manager or download the latest version [here](https://github.com/thomasfredericks/Bounce2/archive/master.zip) and put the "Bounce2" folder in your "libraries" folder. 
 
-https://github.com/thomasfredericks/Bounce2/archive/master.zip
+The original version of Bounce (Bounce 1) is included in the download but not supported anymore.
 
+# DOCUMENTATION
 
-INSTALLATION
-=====================
-Put the "Bounce2" folder in your Arduino or Wiring "libraries" folder. 
+The complet documentation can be found in the "docs" folder or [online here](http://thomasfredericks.github.io/Bounce2/).
 
-
-DOCUMENTATION
-=====================
-
-The latest version (version 2) documentation can be found here : 
-
-https://github.com/thomasfredericks/Bounce2/wiki
+# DEBOUNCE ALGORITHMS 
 
 
-ABOUT BOUNCE 1 (ORIGINAL VERSION)
-=====================
+## Stable interval
 
-The original version of Bounce (Bounce 1) is included but not supported anymore.
+By default, the Bounce library uses a stable interval to process the debouncing. This is simpler to understand and can cancel unwanted noise.
+
+![](https://raw.github.com/thomasfredericks/Bounce-Arduino-Wiring/master/extras/BouncySwitch_stable.png)
+
+## Lock-out interval
+
+By defining "#define BOUNCE_LOCK_OUT" in "Bounce.h" you can activate the alternative debouncing method. This method is a lot more responsive, but does not cancel noise.
+
+![](https://raw.github.com/thomasfredericks/Bounce-Arduino-Wiring/master/extras/BouncySwitch_lockout.png)
+
+
