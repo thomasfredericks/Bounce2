@@ -77,7 +77,7 @@ Bounce debouncer = Bounce(); // Instantiate a Bounce object
 void setup() {
   
   debouncer.attach(BUTTON_PIN,INPUT_PULLUP); // Attach the debouncer to a pin with INPUT_PULLUP mode
-  debouncer.interval(500);
+  debouncer.interval(25); // Use a debounce interval of 25 milliseconds
   
   
   pinMode(LED_PIN,OUTPUT); // Setup the LED

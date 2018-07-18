@@ -62,23 +62,37 @@ $(function() {
 <div class="title">BOUNCE 2 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Debouncing library for Arduino and Wiring</p>
-<p>by Thomas Ouellet Fredericks</p>
-<p>with contributions from:</p>
-<p>Eric Lowry, Jim Schimpf, Tom Harkaway and Joachim Krüger.</p>
-<h1>HAVE A QUESTION? </h1>
-<p>Please post your questions here : <a href="http://forum.arduino.cc/index.php?topic=266132.0">http://forum.arduino.cc/index.php?topic=266132.0</a></p>
-<h1>DOWNLOAD </h1>
-<p>Download the latest version (version 2) here :</p>
-<p><a href="https://github.com/thomasfredericks/Bounce2/archive/master.zip">https://github.com/thomasfredericks/Bounce2/archive/master.zip</a></p>
-<h1>INSTALLATION </h1>
-<p>Put the "Bounce2" folder in your Arduino or Wiring "libraries" folder.</p>
-<h1>DOCUMENTATION </h1>
-<p>The latest version (version 2) documentation can be found here :</p>
-<p><a href="https://github.com/thomasfredericks/Bounce2/wiki">https://github.com/thomasfredericks/Bounce2/wiki</a></p>
-<h1>ABOUT BOUNCE 1 (ORIGINAL VERSION) </h1>
-<p>The original version of <a class="el" href="class_bounce.html">Bounce</a> (<a class="el" href="class_bounce.html">Bounce</a> 1) is included but not supported anymore. </p>
-</div></div><!-- contents -->
+<div class="textblock"><p>Debouncing library for Arduino and Wiring by Thomas Ouellet Fredericks with contributions from: Eric Lowry, Jim Schimpf, Tom Harkaway, Joachim Krüger and MrGradgrind.</p>
+<p>More about debouncing: <a href="http://en.wikipedia.org/wiki/Debounce#Contact_bounce">http://en.wikipedia.org/wiki/Debounce#Contact_bounce</a></p>
+<p>See the bottom of this page for a basic usage example and the "examples" folder for more.</p>
+<h2>GITHUB PAGE</h2>
+<p><a href="https://github.com/thomasfredericks/Bounce2">https://github.com/thomasfredericks/Bounce2</a></p>
+<h2>DOCUMENTATION</h2>
+<p>The complete class documentation can be found in the "docs" folder or <a href="http://thomasfredericks.github.io/Bounce2/">online here</a>.</p>
+<h1>HAVE A QUESTION?</h1>
+<p>Please post your questions <a href="http://forum.arduino.cc/index.php?topic=266132.0">here</a>.</p>
+<h1>INSTALLATION &amp; DOWNLOAD</h1>
+<p>Install through your software's Library Manager or download the latest version <a href="https://github.com/thomasfredericks/Bounce2/archive/master.zip">here</a> and put the "Bounce2" folder in your "libraries" folder.</p>
+<p>The original version of <a class="el" href="class_bounce.html">Bounce</a> (<a class="el" href="class_bounce.html">Bounce</a> 1) is included in the download but not supported anymore.</p>
+<h1>DEBOUNCE ALGORITHMS (FOR ADVANCED USERS)</h1>
+<h2>STABLE INTERVAL</h2>
+<p>By default, the <a class="el" href="class_bounce.html">Bounce</a> library uses a stable interval to process the debouncing. This is simpler to understand and can cancel unwanted noise.</p>
+<div class="image">
+<img src="https://raw.github.com/thomasfredericks/Bounce-Arduino-Wiring/master/extras/BouncySwitch_stable.png"/>
+</div>
+<h2>LOCK-OUT INTERVAL</h2>
+<p>By defining "#define BOUNCE_LOCK_OUT" in "Bounce.h" (or in your code before including "Bounce.h") you can activate an alternative debouncing method. This method is a lot more responsive, but does not cancel noise.</p>
+<div class="fragment"><div class="line">#define BOUNCE_LOCK_OUT</div></div><!-- fragment --><div class="image">
+<img src="https://raw.github.com/thomasfredericks/Bounce-Arduino-Wiring/master/extras/BouncySwitch_lockout.png"/>
+</div>
+<h2>WITH PROMPT DETECTION</h2>
+<p>By defining "#define BOUNCE_WITH_PROMPT_DETECTION" in "Bounce.h" (or in your code before including "Bounce.h") you can activate an alternative debouncing method. Button state changes are available immediately so long as the previous state has been stable for the timeout period. Otherwise the state will be updated as soon as the timeout period allows.</p>
+<ul>
+<li>Able to report acurate switch time normally with no delay.</li>
+<li>Use when accurate switch transition timing is important.</li>
+</ul>
+<div class="fragment"><div class="line">#define BOUNCE_WITH_PROMPT_DETECTION</div></div><!-- fragment --><h1>BASIC EXAMPLE</h1>
+<div class="fragment"><div class="line"><span class="comment">// This example toggles the debug LED (pin 13) on or off</span></div><div class="line"><span class="comment">// when a button on pin 2 is pressed.</span></div><div class="line"></div><div class="line"><span class="comment">// Include the Bounce2 library found here :</span></div><div class="line"><span class="comment">// https://github.com/thomasfredericks/Bounce2</span></div><div class="line"><span class="preprocessor">#include &lt;Bounce2.h&gt;</span></div><div class="line"></div><div class="line"><span class="preprocessor">#define BUTTON_PIN 2</span></div><div class="line"><span class="preprocessor">#define LED_PIN 13</span></div><div class="line"></div><div class="line"><span class="keywordtype">int</span> ledState = LOW;</div><div class="line"></div><div class="line"></div><div class="line"><a class="code" href="class_bounce.html">Bounce</a> debouncer = <a class="code" href="class_bounce.html">Bounce</a>(); <span class="comment">// Instantiate a Bounce object</span></div><div class="line"></div><div class="line"><span class="keywordtype">void</span> setup() {</div><div class="line"></div><div class="line">  debouncer.<a class="code" href="class_bounce.html#aba08e592941465d033e3eba3dde66eaf">attach</a>(BUTTON_PIN,INPUT_PULLUP); <span class="comment">// Attach the debouncer to a pin with INPUT_PULLUP mode</span></div><div class="line">  debouncer.<a class="code" href="class_bounce.html#a2c6e68bf749497c597a9437b488b3d7c">interval</a>(25); <span class="comment">// Use a debounce interval of 25 milliseconds</span></div><div class="line"></div><div class="line"></div><div class="line">  pinMode(LED_PIN,OUTPUT); <span class="comment">// Setup the LED</span></div><div class="line">  digitalWrite(LED_PIN,ledState);</div><div class="line"></div><div class="line">}</div><div class="line"></div><div class="line"><span class="keywordtype">void</span> loop() {</div><div class="line"></div><div class="line">   debouncer.<a class="code" href="class_bounce.html#ab36d7b83bf32e0935a0c2c6a05096441">update</a>(); <span class="comment">// Update the Bounce instance</span></div><div class="line"></div><div class="line">   <span class="keywordflow">if</span> ( debouncer.<a class="code" href="class_bounce.html#abfbb0910f5b1ec4e25315cff26dd6289">fell</a>() ) {  <span class="comment">// Call code if button transitions from HIGH to LOW</span></div><div class="line">     ledState = !ledState; <span class="comment">// Toggle LED state</span></div><div class="line">     digitalWrite(LED_PIN,ledState); <span class="comment">// Apply new LED state</span></div><div class="line">   }</div><div class="line">}</div></div><!-- fragment --> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
