@@ -1,10 +1,10 @@
 
-// Detect the falling edge
+// This example toggles the debug LED (pin 13) on or off
+// when a button on pin 2 is pressed.
 
 // Include the Bounce2 library found here :
 // https://github.com/thomasfredericks/Bounce2
 #include <Bounce2.h>
-
 
 #define BUTTON_PIN 2
 #define LED_PIN 13
@@ -12,37 +12,26 @@
 int ledState = LOW;
 
 
-// Instantiate a Bounce object :
-Bounce debouncer = Bounce(); 
+Bounce debouncer = Bounce(); // Instantiate a Bounce object
 
 void setup() {
   
-  // Setup the button with an internal pull-up :
-  pinMode(BUTTON_PIN,INPUT_PULLUP);
-  
-  // After setting up the button, setup the Bounce instance :
-  debouncer.attach(BUTTON_PIN);
+  debouncer.attach(BUTTON_PIN,INPUT_PULLUP); // Attach the debouncer to a pin with INPUT_PULLUP mode
   debouncer.interval(500);
   
-  // Setup the LED :
-  pinMode(LED_PIN,OUTPUT);
+  
+  pinMode(LED_PIN,OUTPUT); // Setup the LED
   digitalWrite(LED_PIN,ledState);
  
-  
 }
 
 void loop() {
 
-  // Update the Bounce instance :
-   debouncer.update();
+   debouncer.update(); // Update the Bounce instance
    
-   // Call code if Bounce fell (transition from HIGH to LOW) :
-   if ( debouncer.fell() ) {
-      
-     // Toggle LED state :
-     ledState = !ledState;
-     digitalWrite(LED_PIN,ledState);
-     
+   if ( debouncer.fell() ) {  // Call code if button transitions from HIGH to LOW
+     ledState = !ledState; // Toggle LED state
+     digitalWrite(LED_PIN,ledState); // Apply new LED state
    }
 }
 
