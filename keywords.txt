@@ -6,16 +6,16 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-Bounce	 KEYWORD1
+Bounce	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
-update	 KEYWORD2
-interval	 KEYWORD2
-read	 KEYWORD2
-attach	 KEYWORD2
+update	KEYWORD2
+interval	KEYWORD2
+read	KEYWORD2
+attach	KEYWORD2
 rose	KEYWORD2
 fell	KEYWORD2
 duration	KEYWORD2
