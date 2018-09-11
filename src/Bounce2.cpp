@@ -107,12 +107,12 @@ bool Bounce::update()
 		return  getStateFlag(CHANGED_STATE); 
 
 }
-/*
+
 // WIP HELD
-unsigned long Bounce::held() {
+unsigned long Bounce::previousDuration() {
 	return durationOfPreviousState;
 }
-*/
+
 unsigned long Bounce::duration() {
 	return (millis() - stateChangeLastTime);
 }
@@ -120,7 +120,7 @@ unsigned long Bounce::duration() {
 inline void Bounce::changeState() {
 	toggleStateFlag(DEBOUNCED_STATE);
 	setStateFlag(CHANGED_STATE) ;
-	// WIP HELD : durationOfPreviousState = millis() - stateChangeLastTime;
+	durationOfPreviousState = millis() - stateChangeLastTime;
 	stateChangeLastTime = millis();
 }
 

@@ -164,8 +164,14 @@ class Bounce
 
     unsigned long duration();
 
+  /**
+     @brief Returns the duration in milliseconds of the previous state. 
 
-    // WIP HELD : unsigned long held();     // Returns the duration the previous state was held
+     Takes the values of duration() once the pin changes state.
+    
+      @return The duration in milliseconds (unsigned long) of the previous state. 
+     */
+    unsigned long previousDuration();     
 
  protected:
     unsigned long previous_millis;
@@ -173,7 +179,7 @@ class Bounce
     uint8_t state;
     uint8_t pin;
     unsigned long stateChangeLastTime;
-    // WIP HELD : unsigned long durationOfPreviousState;
+    unsigned long durationOfPreviousState;
     virtual bool readCurrentState() { return digitalRead(pin); }
     virtual void setPinMode(int pin, int mode) {
 #if defined(ARDUINO_STM_NUCLEO_F103RB) || defined(ARDUINO_GENERIC_STM32F103C)
