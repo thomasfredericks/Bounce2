@@ -90,7 +90,6 @@ class Bounce
               The pin that is to be debounced.
     @param    mode
               A valid Arduino pin mode (INPUT, INPUT_PULLUP or OUTPUT).
-    @return True if the event read was successful, otherwise false.
 */
     void attach(int pin, int mode);
 
