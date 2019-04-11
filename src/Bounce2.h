@@ -97,7 +97,7 @@ class Bounce
     Attach to a pin for advanced users. Only attach the pin this way once you have previously set it up. Otherwise use attach(int pin, int mode).
     */
     void attach(int pin);
-    
+    void attachAnalog(int pin, uint16_t r_threshold);
 
     /**
     @brief  Sets the debounce interval in milliseconds.
@@ -177,9 +177,18 @@ class Bounce
     uint16_t interval_millis;
     uint8_t state;
     uint8_t pin;
+
+    bool analog;
+    int16_t threshold;
+
     unsigned long stateChangeLastTime;
     unsigned long durationOfPreviousState;
-    virtual bool readCurrentState() { return digitalRead(pin); }
+    virtual bool readCurrentState() {
+        if ( !analog ) {
+            return digitalRead(pin);
+        }
+        return ( analogRead(pin) > threshold );
+    }
     virtual void setPinMode(int pin, int mode) {
 #if defined(ARDUINO_STM_NUCLEO_F103RB) || defined(ARDUINO_GENERIC_STM32F103C)
         pinMode(pin, (WiringPinMode)mode);
