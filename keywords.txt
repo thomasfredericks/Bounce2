@@ -7,6 +7,7 @@
 #######################################
 
 Bounce	KEYWORD1
+Bounce2	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
