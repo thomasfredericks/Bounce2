@@ -99,7 +99,10 @@ class Bounce
 	void attach(int pin);
 
 	/**
-	
+	@brief  current values are provides externally from this library (eg from shifting registred). readDigital can be slow when reading a lot of buttons
+            
+    @param    currentValue
+
 	*/
 	void attach(bool currentValue);
 
@@ -124,10 +127,17 @@ class Bounce
 
 	bool update();
 
-	bool update(bool);
+	/*!
+		@brief    "update" the object state value externally. This has to be done as often as possible (that means to include it in your loop()). Only call update() once per loop().
+
+		@return True if the pin changed state.
+	*/
+	bool update(bool currentValue);
 
     /**
-     @brief Returns the pin's state (HIGH or LOW).
+     @brief Returns the pin's state (HIGH or LOW). 
+
+	 Do not use when providing values externally
 
      @return HIGH or LOW.
      */
