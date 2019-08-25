@@ -93,11 +93,16 @@ class Bounce
 */
     void attach(int pin, int mode);
 
-    /**
-    Attach to a pin for advanced users. Only attach the pin this way once you have previously set it up. Otherwise use attach(int pin, int mode).
-    */
-    void attach(int pin);
-    
+	/**
+	Attach to a pin for advanced users. Only attach the pin this way once you have previously set it up. Otherwise use attach(int pin, int mode).
+	*/
+	void attach(int pin);
+
+	/**
+	
+	*/
+	void attach(bool currentValue);
+
 
     /**
     @brief  Sets the debounce interval in milliseconds.
@@ -117,7 +122,9 @@ class Bounce
     @return True if the pin changed state.
 */
 
-    bool update();
+	bool update();
+
+	bool update(bool);
 
     /**
      @brief Returns the pin's state (HIGH or LOW).

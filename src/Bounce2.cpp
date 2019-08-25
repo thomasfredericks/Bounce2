@@ -17,20 +17,25 @@ Bounce::Bounce()
 
 void Bounce::attach(int pin) {
     this->pin = pin;
-    state = 0;
-    if (readCurrentState()) {
-        setStateFlag(DEBOUNCED_STATE | UNSTABLE_STATE);
-    }
-#ifdef BOUNCE_LOCK_OUT
-    previous_millis = 0;
-#else
-    previous_millis = millis();
-#endif
+	bool currentState = readCurrentState();
+	attach(currentState);
 }
 
-void Bounce::attach(int pin, int mode){
-    setPinMode(pin, mode);
-    this->attach(pin);
+void Bounce::attach(int pin, int mode) {
+	setPinMode(pin, mode);
+	this->attach(pin);
+}
+
+void Bounce::attach(bool currentState) {
+	state = 0;
+	if (currentState) {
+		setStateFlag(DEBOUNCED_STATE | UNSTABLE_STATE);
+	}
+#ifdef BOUNCE_LOCK_OUT
+	previous_millis = 0;
+#else
+	previous_millis = millis();
+#endif
 }
 
 void Bounce::interval(uint16_t interval_millis)
@@ -40,13 +45,20 @@ void Bounce::interval(uint16_t interval_millis)
 
 bool Bounce::update()
 {
+	// Read the state of the switch in a temporary variable.
+	bool currentState = readCurrentState();
+
+	update(currentState);
+}
+
+bool Bounce::update(bool currentState)
+{
 
     unsetStateFlag(CHANGED_STATE);
 #ifdef BOUNCE_LOCK_OUT
     
     // Ignore everything if we are locked out
     if (millis() - previous_millis >= interval_millis) {
-        bool currentState = readCurrentState();
         if ( currentState != getStateFlag(DEBOUNCED_STATE) ) {
             previous_millis = millis();
             changeState();
@@ -55,9 +67,6 @@ bool Bounce::update()
     
 
 #elif defined BOUNCE_WITH_PROMPT_DETECTION
-    // Read the state of the switch port into a temporary variable.
-    bool readState = readCurrentState();
-
 
     if ( readState != getStateFlag(DEBOUNCED_STATE) ) {
       // We have seen a change from the current button state.
@@ -81,10 +90,6 @@ bool Bounce::update()
     
     
 #else
-    // Read the state of the switch in a temporary variable.
-    bool currentState = readCurrentState();
-    
-
     // If the reading is different from last reading, reset the debounce counter
     if ( currentState != getStateFlag(UNSTABLE_STATE) ) {
         previous_millis = millis();
