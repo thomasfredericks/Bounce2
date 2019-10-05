@@ -104,7 +104,7 @@ bool Bounce::update()
     
 #endif
 
-		return  getStateFlag(CHANGED_STATE); 
+		return  changed(); 
 
 }
 

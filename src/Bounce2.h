@@ -194,6 +194,10 @@ class Bounce
     inline void unsetStateFlag(const uint8_t flag)  {state &= ~flag;}
     inline void toggleStateFlag(const uint8_t flag) {state ^= flag;}
     inline bool getStateFlag(const uint8_t flag)    {return((state & flag) != 0);}
+ 
+  protected:
+    bool Bounce::changed( ) { return getStateFlag(CHANGED_STATE); }
+
 };
 
 #endif
