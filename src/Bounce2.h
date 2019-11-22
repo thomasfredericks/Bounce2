@@ -206,7 +206,7 @@ class Bounce
     inline bool getStateFlag(const uint8_t flag)    {return((state & flag) != 0);}
  
   public:
-    bool Bounce::changed( ) { return getStateFlag(CHANGED_STATE); }
+    bool changed( ) { return getStateFlag(CHANGED_STATE); }
 
 };
 
