@@ -69,6 +69,10 @@
      Example of two instances of the Bounce class that switches the debug LED when either one of the two buttons is pressed.
  */
 
+static const uint8_t DEBOUNCED_STATE = 0b00000001;
+static const uint8_t UNSTABLE_STATE  = 0b00000010;
+static const uint8_t CHANGED_STATE   = 0b00000100;
+
 /**
      The Bounce class.
      */
