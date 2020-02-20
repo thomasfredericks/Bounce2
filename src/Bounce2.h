@@ -191,7 +191,7 @@ class Bounce
     unsigned long durationOfPreviousState;
     virtual bool readCurrentState() { return digitalRead(pin); }
     virtual void setPinMode(int pin, int mode) {
-#if defined(ARDUINO_STM_NUCLEO_F103RB) || defined(ARDUINO_GENERIC_STM32F103C)
+#if defined(ARDUINO_ARCH_STM32F1)
         pinMode(pin, (WiringPinMode)mode);
 #else
         pinMode(pin, mode);
