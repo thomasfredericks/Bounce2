@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/thomasfredericks/Bounce2.git"
   },
-  "version": "2.52",
+  "version": "2.53",
   "exclude": [
     "*.png",
     "*.zip"
