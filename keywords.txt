@@ -20,6 +20,7 @@ attach	KEYWORD2
 rose	KEYWORD2
 fell	KEYWORD2
 duration	KEYWORD2
+setInvert	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)
