@@ -30,6 +30,12 @@ void Bounce::attach(int pin, int mode){
     setPinMode(pin, mode);
     this->attach(pin);
 }
+void Bounce::setInvert(bool invert){
+  if(_invert ^ invert){
+    state ^= ALL_STATES;
+  }
+  _invert = invert;
+}
 
 void Bounce::interval(uint16_t interval_millis)
 {

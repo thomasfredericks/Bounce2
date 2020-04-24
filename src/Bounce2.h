@@ -72,6 +72,7 @@
 static const uint8_t DEBOUNCED_STATE = 0b00000001;
 static const uint8_t UNSTABLE_STATE  = 0b00000010;
 static const uint8_t CHANGED_STATE   = 0b00000100;
+static const uint8_t ALL_STATES      = 0b00000111;
 
 /**
      The Bounce class.
@@ -109,6 +110,13 @@ class Bounce
     void attach(int pin);
     
 
+/*!
+    @brief  Invert fell and rise and read for INPUT_PULLUP.
+            
+    @param    invert
+              true or false
+*/
+    void setInvert(bool invert);
     /**
     @brief  Sets the debounce interval in milliseconds.
             
@@ -189,7 +197,8 @@ class Bounce
     uint8_t pin;
     unsigned long stateChangeLastTime;
     unsigned long durationOfPreviousState;
-    virtual bool readCurrentState() { return digitalRead(pin); }
+    bool _invert = false;
+    virtual bool readCurrentState() { return digitalRead(pin) ^ _invert; }
     virtual void setPinMode(int pin, int mode) {
 #if defined(ARDUINO_ARCH_STM32F1)
         pinMode(pin, (WiringPinMode)mode);
