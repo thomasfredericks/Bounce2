@@ -108,7 +108,6 @@ class Bounce
     */
     void attach(int pin);
     
-
     /**
     @brief  Sets the debounce interval in milliseconds.
             
@@ -197,8 +196,6 @@ class Bounce
         pinMode(pin, mode);
 #endif
     }
-
-  private:
     inline void changeState();
     inline void setStateFlag(const uint8_t flag)    {state |= flag;}
     inline void unsetStateFlag(const uint8_t flag)  {state &= ~flag;}
