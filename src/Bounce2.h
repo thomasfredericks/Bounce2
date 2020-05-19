@@ -210,4 +210,52 @@ class Bounce
 
 };
 
+/**
+     The Button class.
+     */
+class Button : public Bounce{
+protected:
+    bool stateForPressed = 0;
+public:
+	/*!
+    @brief  Create an instance of the Button class.
+
+    @code
+
+    // Create an instance of the Button class.
+    Button() button;
+
+    @endcode
+*/
+    Button(){ }
+    
+    /*!
+    @brief Set the electrical state (HIGH/LOW) that corresponds to a physical press.
+            
+    @param    state
+              The electrical state (HIGH/LOW) that corresponds to a physical press.
+
+*/
+    void setPressedState(bool state){
+    	stateForPressed = state;
+    }
+
+    /*!
+    @brief Returns true if the button was physically pressed          
+*/
+    bool pressed() {
+    	return changed() && (read() == stateForPressed);
+    };
+
+        /*!
+    @brief Returns true if the button was physically released          
+*/
+    bool released() {
+    	return  changed() && (read() != stateForPressed);
+    };
+
+    
+
+};
+
 #endif
