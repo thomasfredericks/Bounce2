@@ -215,10 +215,10 @@ class Bounce
      */
 class Button : public Bounce{
 protected:
-    bool stateForPressed = 0;
+    bool stateForPressed = 1; // 
 public:
 	/*!
-    @brief  Create an instance of the Button class.
+    @brief  Create an instance of the Button class. By default, the pressed state is matched to a HIGH electrical level.
 
     @code
 
@@ -230,7 +230,7 @@ public:
     Button(){ }
     
     /*!
-    @brief Set the electrical state (HIGH/LOW) that corresponds to a physical press.
+    @brief Set the electrical state (HIGH/LOW) that corresponds to a physical press. By default, the pressed state is matched to a HIGH electrical level.
             
     @param    state
               The electrical state (HIGH/LOW) that corresponds to a physical press.

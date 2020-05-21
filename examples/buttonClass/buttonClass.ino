@@ -18,7 +18,7 @@
 #define BUTTON_PIN_B 3
 
 
-#define LED_PIN 13
+#define LED_PIN LED_BUILTIN
 
 // Instantiate a Button object
 Button buttonA = Button(); 
@@ -50,12 +50,10 @@ void loop() {
   buttonB.update();
 
 
-  // TURN ON LED IF EITHER BUTTON IS PRESSED
+  // TOGGLE THE LED IF EITHER BUTTON IS PRESSED
   if ( buttonA.pressed()  || buttonB.pressed()  ) {
-    digitalWrite(LED_PIN, HIGH );
+    digitalWrite(LED_PIN,  !digitalRead(LED_PIN)  );
   } 
-  else {
-    digitalWrite(LED_PIN, LOW );
-  }
+
 
 }
