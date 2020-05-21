@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['update',['update',['../class_bounce.html#ab36d7b83bf32e0935a0c2c6a05096441',1,'Bounce']]]
+  ['read',['read',['../class_bounce.html#ae1936fdf44501992707e6cbaee9bbc76',1,'Bounce']]],
+  ['released',['released',['../class_button.html#a0b3d2033eb8a6e93141e0b2d8375e9dd',1,'Button']]],
+  ['risingedge',['risingEdge',['../class_bounce.html#a3417beb80eb6593d768c2e9884c57aa0',1,'Bounce']]],
+  ['rose',['rose',['../class_bounce.html#a9e4187934576e568cdfa8f94efeff6f2',1,'Bounce']]]
 ];

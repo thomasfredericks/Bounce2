@@ -69,6 +69,15 @@ $(function() {
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="_bounce2_8h_source.html">Bounce2.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for Bounce:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_bounce.png" usemap="#Bounce_map" alt=""/>
+  <map id="Bounce_map" name="Bounce_map">
+<area href="class_button.html" alt="Button" shape="rect" coords="0,56,55,80"/>
+</map>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -112,6 +121,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a62412d814d36102ab3d285e801d5d29a"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#a62412d814d36102ab3d285e801d5d29a">duration</a> ()</td></tr>
 <tr class="memdesc:a62412d814d36102ab3d285e801d5d29a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the duration in milliseconds of the current state.  <a href="#a62412d814d36102ab3d285e801d5d29a">More...</a><br /></td></tr>
 <tr class="separator:a62412d814d36102ab3d285e801d5d29a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6226be8000f4cec9f2c997a5bc98a9c"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#ad6226be8000f4cec9f2c997a5bc98a9c">previousDuration</a> ()</td></tr>
+<tr class="memdesc:ad6226be8000f4cec9f2c997a5bc98a9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the duration in milliseconds of the previous state.  <a href="#ad6226be8000f4cec9f2c997a5bc98a9c">More...</a><br /></td></tr>
+<tr class="separator:ad6226be8000f4cec9f2c997a5bc98a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2a5369e2c042e0d35b933ed07f7e208"><td class="memItemLeft" align="right" valign="top"><a id="ad2a5369e2c042e0d35b933ed07f7e208"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>changed</b> ()</td></tr>
+<tr class="separator:ad2a5369e2c042e0d35b933ed07f7e208"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -139,6 +154,9 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>pin</b></td></tr>
 <tr class="memitem:ad5aa630c50e7b783bac50aad0385262e"><td class="memItemLeft" align="right" valign="top"><a id="ad5aa630c50e7b783bac50aad0385262e"></a>
 unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>stateChangeLastTime</b></td></tr>
 <tr class="separator:ad5aa630c50e7b783bac50aad0385262e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5854f7205af72b77ce08faee50bdaff"><td class="memItemLeft" align="right" valign="top"><a id="ad5854f7205af72b77ce08faee50bdaff"></a>
+unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>durationOfPreviousState</b></td></tr>
+<tr class="separator:ad5854f7205af72b77ce08faee50bdaff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="class_bounce.html">Bounce</a> class. </p>
@@ -197,7 +215,6 @@ unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>stateChangeL
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the event read was successful, otherwise false. </dd></dl>
 
 </div>
 </div>
@@ -264,6 +281,27 @@ unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>stateChangeL
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ad6226be8000f4cec9f2c997a5bc98a9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6226be8000f4cec9f2c997a5bc98a9c">&#9670;&nbsp;</a></span>previousDuration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long Bounce::previousDuration </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the duration in milliseconds of the previous state. </p>
+<p>Takes the values of <a class="el" href="class_bounce.html#a62412d814d36102ab3d285e801d5d29a" title="Returns the duration in milliseconds of the current state. ">duration()</a> once the pin changes state.</p>
+<dl class="section return"><dt>Returns</dt><dd>The duration in milliseconds (unsigned long) of the previous state. </dd></dl>
 
 </div>
 </div>
