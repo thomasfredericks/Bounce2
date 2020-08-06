@@ -69,16 +69,114 @@
      Example of two instances of the Bounce class that switches the debug LED when either one of the two buttons is pressed.
  */
 
-static const uint8_t DEBOUNCED_STATE = 0b00000001;
-static const uint8_t UNSTABLE_STATE  = 0b00000010;
-static const uint8_t CHANGED_STATE   = 0b00000100;
+
 
 /**
-     The Bounce class.
-     */
-class Bounce
+     The Debouce class. Just the deboucing code separated from all harware.
+*/
+class Debouncer
 {
- public:
+ // Note : this is private as it migh change in the futur
+private:
+  static const uint8_t DEBOUNCED_STATE = 0b00000001;
+  static const uint8_t UNSTABLE_STATE  = 0b00000010;
+  static const uint8_t CHANGED_STATE   = 0b00000100;
+
+private:
+  inline void changeState();
+  inline void setStateFlag(const uint8_t flag)    {state |= flag;}
+  inline void unsetStateFlag(const uint8_t flag)  {state &= ~flag;}
+  inline void toggleStateFlag(const uint8_t flag) {state ^= flag;}
+  inline bool getStateFlag(const uint8_t flag)    {return((state & flag) != 0);}
+
+public:
+	/*!
+    @brief  Create an instance of the Debounce class.
+
+    @endcode
+*/
+	Debouncer();
+
+	    /**
+    @brief  Sets the debounce interval in milliseconds.
+            
+    @param    interval_millis
+    		The interval time in milliseconds.
+     
+     */
+	void interval(uint16_t interval_millis);
+
+	/*!
+    @brief   Updates the pin's state. 
+
+    Because Bounce does not use interrupts, you have to "update" the object before reading its value and it has to be done as often as possible (that means to include it in your loop()). Only call update() once per loop().
+
+    @return True if the pin changed state.
+*/
+
+	bool update();
+
+    /**
+     @brief Returns the pin's state (HIGH or LOW).
+
+     @return HIGH or LOW.
+     */
+	bool read();
+
+    /**
+    @brief Returns true if pin signal transitions from high to low.
+    */
+	bool fell();
+
+    /**
+    @brief Returns true if pin signal transitions from low to high.
+    */
+	bool rose();
+
+
+
+public:
+  bool changed( ) { return getStateFlag(CHANGED_STATE); }
+
+      /**
+     @brief Returns the duration in milliseconds of the current state. 
+
+     Is reset to 0 once the pin rises ( rose() ) or falls ( fell() ).
+    
+      @return The duration in milliseconds (unsigned long) of the current state.
+     */
+
+  unsigned long duration();
+
+  /**
+     @brief Returns the duration in milliseconds of the previous state. 
+
+     Takes the values of duration() once the pin changes state.
+    
+      @return The duration in milliseconds (unsigned long) of the previous state. 
+     */
+  unsigned long previousDuration();     
+
+protected:
+  void begin();
+  virtual bool readCurrentState() =0;
+  unsigned long previous_millis;
+  uint16_t interval_millis;
+  uint8_t state;
+  unsigned long stateChangeLastTime;
+  unsigned long durationOfPreviousState;
+
+};
+
+
+/**
+     The Bounce class. Links the Deboucing class to a hardware pin.
+     */
+class Bounce : public Debouncer
+{
+
+
+public:
 
 /*!
     @brief  Create an instance of the Bounce class.
@@ -90,7 +188,7 @@ class Bounce
 
     @endcode
 */
-    Bounce();
+	Bounce();
 
 
 /*!
@@ -101,112 +199,50 @@ class Bounce
     @param    mode
               A valid Arduino pin mode (INPUT, INPUT_PULLUP or OUTPUT).
 */
-    void attach(int pin, int mode);
+	void attach(int pin, int mode);
 
     /**
     Attach to a pin for advanced users. Only attach the pin this way once you have previously set it up. Otherwise use attach(int pin, int mode).
     */
-    void attach(int pin);
-    
+	void attach(int pin);
 
-    /**
-    @brief  Sets the debounce interval in milliseconds.
-            
-    @param    interval_millis
-    		The interval time in milliseconds.
-     
-     */
-    void interval(uint16_t interval_millis);
+  Bounce(uint8_t pin, unsigned long interval_millis ) : Bounce() {
+    attach(pin);
+    interval(interval_millis);
+  }
 
+  ////////////////
+  // Deprecated //
+  ////////////////
 
-/*!
-    @brief   Updates the pin's state. 
-
-    Because Bounce does not use interrupts, you have to "update" the object before reading its value and it has to be done as often as possible (that means to include it in your loop()). Only call update() once per loop().
-
-    @return True if the pin changed state.
-*/
-
-    bool update();
-
-    /**
-     @brief Returns the pin's state (HIGH or LOW).
-
-     @return HIGH or LOW.
-     */
-    bool read();
-
-    /**
-    @brief Returns true if pin signal transitions from high to low.
-    */
-    bool fell();
-
-    /**
-    @brief Returns true if pin signal transitions from low to high.
-    */
-    bool rose();
-
-     
      /**
     @brief Deprecated (i.e. do not use). Included for partial compatibility for programs written with Bounce version 1
     */
-    bool risingEdge() { return rose(); }
+	bool risingEdge() { return rose(); }
      /**
     @brief Deprecated (i.e. do not use). Included for partial compatibility for programs written with Bounce version 1
     */
-    bool fallingEdge() { return fell(); }
+	bool fallingEdge() { return fell(); }
      /**
     @brief Deprecated (i.e. do not use). Included for partial compatibility for programs written with Bounce version 1
     */
-     Bounce(uint8_t pin, unsigned long interval_millis ) : Bounce() {
-        attach(pin);
-        interval(interval_millis);
-    }
-    
-    /**
-     @brief Returns the duration in milliseconds of the current state. 
 
-     Is reset to 0 once the pin rises ( rose() ) or falls ( fell() ).
-    
-      @return The duration in milliseconds (unsigned long) of the current state.
-     */
 
-    unsigned long duration();
+protected:
 
-  /**
-     @brief Returns the duration in milliseconds of the previous state. 
 
-     Takes the values of duration() once the pin changes state.
-    
-      @return The duration in milliseconds (unsigned long) of the previous state. 
-     */
-    unsigned long previousDuration();     
+	uint8_t pin;
 
- protected:
-    unsigned long previous_millis;
-    uint16_t interval_millis;
-    uint8_t state;
-    uint8_t pin;
-    unsigned long stateChangeLastTime;
-    unsigned long durationOfPreviousState;
-    virtual bool readCurrentState() { return digitalRead(pin); }
-    virtual void setPinMode(int pin, int mode) {
+	virtual bool readCurrentState() { return digitalRead(pin); }
+	virtual void setPinMode(int pin, int mode) {
 #if defined(ARDUINO_ARCH_STM32F1)
-        pinMode(pin, (WiringPinMode)mode);
+		pinMode(pin, (WiringPinMode)mode);
 #else
-        pinMode(pin, mode);
+		pinMode(pin, mode);
 #endif
-    }
+	}
 
-  private:
-    inline void changeState();
-    inline void setStateFlag(const uint8_t flag)    {state |= flag;}
-    inline void unsetStateFlag(const uint8_t flag)  {state &= ~flag;}
-    inline void toggleStateFlag(const uint8_t flag) {state ^= flag;}
-    inline bool getStateFlag(const uint8_t flag)    {return((state & flag) != 0);}
- 
-  public:
-    bool changed( ) { return getStateFlag(CHANGED_STATE); }
+
 
 };
 
@@ -216,7 +252,7 @@ class Bounce
 class Button : public Bounce{
 protected:
     bool stateForPressed = 1; // 
-public:
+  public:
 	/*!
     @brief  Create an instance of the Button class. By default, the pressed state is matched to a HIGH electrical level.
 
@@ -227,8 +263,8 @@ public:
 
     @endcode
 */
-    Button(){ }
-    
+   Button(){ }
+
     /*!
     @brief Set the electrical state (HIGH/LOW) that corresponds to a physical press. By default, the pressed state is matched to a HIGH electrical level.
             
@@ -236,25 +272,25 @@ public:
               The electrical state (HIGH/LOW) that corresponds to a physical press.
 
 */
-    void setPressedState(bool state){
-    	stateForPressed = state;
-    }
+   void setPressedState(bool state){
+    stateForPressed = state;
+  }
 
     /*!
     @brief Returns true if the button was physically pressed          
 */
-    bool pressed() {
-    	return changed() && (read() == stateForPressed);
-    };
+  bool pressed() {
+    return changed() && (read() == stateForPressed);
+  };
 
         /*!
     @brief Returns true if the button was physically released          
 */
-    bool released() {
-    	return  changed() && (read() != stateForPressed);
-    };
+  bool released() {
+    return  changed() && (read() != stateForPressed);
+  };
 
-    
+
 
 };
 
