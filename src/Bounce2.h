@@ -72,7 +72,7 @@
 
 
 /**
-     The Debouce class. Just the deboucing code separated from all harware.
+     @brief  The Debouce class. Just the deboucing code separated from all harware.
 */
 class Debouncer
 {
@@ -136,6 +136,11 @@ public:
 
 
 public:
+    /**
+     @brief Returns true if the state changed on last update.
+
+     @return True if the state changed on last update. Otherwise, returns false.
+*/
   bool changed( ) { return getStateFlag(CHANGED_STATE); }
 
       /**
@@ -170,7 +175,8 @@ protected:
 
 
 /**
-     The Bounce class. Links the Deboucing class to a hardware pin.
+@brief The Debouncer:Bounce class. Links the Deboucing class to a hardware pin.
+     
      */
 class Bounce : public Debouncer
 {
@@ -247,7 +253,7 @@ protected:
 };
 
 /**
-     The Button class.
+     @brief The Debouncer:Bounce:Button class. The Button class matches an electrical state to a physical action.
      */
 class Button : public Bounce{
 protected:

@@ -68,6 +68,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>The <a class="el" href="class_debouncer.html" title="The Debouce class. Just the deboucing code separated from all harware. ">Debouncer</a>:<a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin. ">Bounce</a> class. Links the Deboucing class to a hardware pin.  
+ <a href="class_bounce.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_bounce2_8h_source.html">Bounce2.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Bounce:</div>
@@ -75,58 +78,62 @@ Inheritance diagram for Bounce:</div>
  <div class="center">
   <img src="class_bounce.png" usemap="#Bounce_map" alt=""/>
   <map id="Bounce_map" name="Bounce_map">
-<area href="class_button.html" alt="Button" shape="rect" coords="0,56,55,80"/>
+<area href="class_debouncer.html" title="The Debouce class. Just the deboucing code separated from all harware. " alt="Debouncer" shape="rect" coords="0,0,75,24"/>
+<area href="class_button.html" title="The Debouncer:Bounce:Button class. The Button class matches an electrical state to a physical action..." alt="Button" shape="rect" coords="0,112,75,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa62a2e2b5ad0ee6913a95f2f2a0e7606"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#aa62a2e2b5ad0ee6913a95f2f2a0e7606">Bounce</a> ()</td></tr>
-<tr class="memdesc:aa62a2e2b5ad0ee6913a95f2f2a0e7606"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an instance of the <a class="el" href="class_bounce.html">Bounce</a> class.  <a href="#aa62a2e2b5ad0ee6913a95f2f2a0e7606">More...</a><br /></td></tr>
+<tr class="memdesc:aa62a2e2b5ad0ee6913a95f2f2a0e7606"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an instance of the <a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin. ">Bounce</a> class.  <a href="#aa62a2e2b5ad0ee6913a95f2f2a0e7606">More...</a><br /></td></tr>
 <tr class="separator:aa62a2e2b5ad0ee6913a95f2f2a0e7606"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba08e592941465d033e3eba3dde66eaf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#aba08e592941465d033e3eba3dde66eaf">attach</a> (int pin, int mode)</td></tr>
+<tr class="memitem:aba08e592941465d033e3eba3dde66eaf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#aba08e592941465d033e3eba3dde66eaf">attach</a> (int <a class="el" href="class_bounce.html#a1cb79cb0ba2379cd12cc7c098d97053a">pin</a>, int mode)</td></tr>
 <tr class="memdesc:aba08e592941465d033e3eba3dde66eaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attach to a pin and sets that pin's mode (INPUT, INPUT_PULLUP or OUTPUT).  <a href="#aba08e592941465d033e3eba3dde66eaf">More...</a><br /></td></tr>
 <tr class="separator:aba08e592941465d033e3eba3dde66eaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a163477dbcbaf1a3dee6cb3b62eedf09e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#a163477dbcbaf1a3dee6cb3b62eedf09e">attach</a> (int pin)</td></tr>
+<tr class="memitem:a163477dbcbaf1a3dee6cb3b62eedf09e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#a163477dbcbaf1a3dee6cb3b62eedf09e">attach</a> (int <a class="el" href="class_bounce.html#a1cb79cb0ba2379cd12cc7c098d97053a">pin</a>)</td></tr>
 <tr class="separator:a163477dbcbaf1a3dee6cb3b62eedf09e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c6e68bf749497c597a9437b488b3d7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#a2c6e68bf749497c597a9437b488b3d7c">interval</a> (uint16_t interval_millis)</td></tr>
-<tr class="memdesc:a2c6e68bf749497c597a9437b488b3d7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the debounce interval in milliseconds.  <a href="#a2c6e68bf749497c597a9437b488b3d7c">More...</a><br /></td></tr>
-<tr class="separator:a2c6e68bf749497c597a9437b488b3d7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab36d7b83bf32e0935a0c2c6a05096441"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#ab36d7b83bf32e0935a0c2c6a05096441">update</a> ()</td></tr>
-<tr class="memdesc:ab36d7b83bf32e0935a0c2c6a05096441"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the pin's state.  <a href="#ab36d7b83bf32e0935a0c2c6a05096441">More...</a><br /></td></tr>
-<tr class="separator:ab36d7b83bf32e0935a0c2c6a05096441"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1936fdf44501992707e6cbaee9bbc76"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#ae1936fdf44501992707e6cbaee9bbc76">read</a> ()</td></tr>
-<tr class="memdesc:ae1936fdf44501992707e6cbaee9bbc76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the pin's state (HIGH or LOW).  <a href="#ae1936fdf44501992707e6cbaee9bbc76">More...</a><br /></td></tr>
-<tr class="separator:ae1936fdf44501992707e6cbaee9bbc76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfbb0910f5b1ec4e25315cff26dd6289"><td class="memItemLeft" align="right" valign="top"><a id="abfbb0910f5b1ec4e25315cff26dd6289"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#abfbb0910f5b1ec4e25315cff26dd6289">fell</a> ()</td></tr>
-<tr class="memdesc:abfbb0910f5b1ec4e25315cff26dd6289"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if pin signal transitions from high to low. <br /></td></tr>
-<tr class="separator:abfbb0910f5b1ec4e25315cff26dd6289"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e4187934576e568cdfa8f94efeff6f2"><td class="memItemLeft" align="right" valign="top"><a id="a9e4187934576e568cdfa8f94efeff6f2"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#a9e4187934576e568cdfa8f94efeff6f2">rose</a> ()</td></tr>
-<tr class="memdesc:a9e4187934576e568cdfa8f94efeff6f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if pin signal transitions from low to high. <br /></td></tr>
-<tr class="separator:a9e4187934576e568cdfa8f94efeff6f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab34517094faf21d4f38b36da2915132b"><td class="memItemLeft" align="right" valign="top"><a id="ab34517094faf21d4f38b36da2915132b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Bounce</b> (uint8_t <a class="el" href="class_bounce.html#a1cb79cb0ba2379cd12cc7c098d97053a">pin</a>, unsigned long interval_millis)</td></tr>
+<tr class="separator:ab34517094faf21d4f38b36da2915132b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3417beb80eb6593d768c2e9884c57aa0"><td class="memItemLeft" align="right" valign="top"><a id="a3417beb80eb6593d768c2e9884c57aa0"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#a3417beb80eb6593d768c2e9884c57aa0">risingEdge</a> ()</td></tr>
-<tr class="memdesc:a3417beb80eb6593d768c2e9884c57aa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deprecated (i.e. do not use). Included for partial compatibility for programs written with <a class="el" href="class_bounce.html">Bounce</a> version 1. <br /></td></tr>
+<tr class="memdesc:a3417beb80eb6593d768c2e9884c57aa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deprecated (i.e. do not use). Included for partial compatibility for programs written with <a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin. ">Bounce</a> version 1. <br /></td></tr>
 <tr class="separator:a3417beb80eb6593d768c2e9884c57aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac756559419bfa1c5060e5e4a4ad6406f"><td class="memItemLeft" align="right" valign="top"><a id="ac756559419bfa1c5060e5e4a4ad6406f"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#ac756559419bfa1c5060e5e4a4ad6406f">fallingEdge</a> ()</td></tr>
-<tr class="memdesc:ac756559419bfa1c5060e5e4a4ad6406f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deprecated (i.e. do not use). Included for partial compatibility for programs written with <a class="el" href="class_bounce.html">Bounce</a> version 1. <br /></td></tr>
+<tr class="memdesc:ac756559419bfa1c5060e5e4a4ad6406f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deprecated (i.e. do not use). Included for partial compatibility for programs written with <a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin. ">Bounce</a> version 1. <br /></td></tr>
 <tr class="separator:ac756559419bfa1c5060e5e4a4ad6406f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab34517094faf21d4f38b36da2915132b"><td class="memItemLeft" align="right" valign="top"><a id="ab34517094faf21d4f38b36da2915132b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#ab34517094faf21d4f38b36da2915132b">Bounce</a> (uint8_t pin, unsigned long interval_millis)</td></tr>
-<tr class="memdesc:ab34517094faf21d4f38b36da2915132b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deprecated (i.e. do not use). Included for partial compatibility for programs written with <a class="el" href="class_bounce.html">Bounce</a> version 1. <br /></td></tr>
-<tr class="separator:ab34517094faf21d4f38b36da2915132b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62412d814d36102ab3d285e801d5d29a"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#a62412d814d36102ab3d285e801d5d29a">duration</a> ()</td></tr>
-<tr class="memdesc:a62412d814d36102ab3d285e801d5d29a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the duration in milliseconds of the current state.  <a href="#a62412d814d36102ab3d285e801d5d29a">More...</a><br /></td></tr>
-<tr class="separator:a62412d814d36102ab3d285e801d5d29a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6226be8000f4cec9f2c997a5bc98a9c"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#ad6226be8000f4cec9f2c997a5bc98a9c">previousDuration</a> ()</td></tr>
-<tr class="memdesc:ad6226be8000f4cec9f2c997a5bc98a9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the duration in milliseconds of the previous state.  <a href="#ad6226be8000f4cec9f2c997a5bc98a9c">More...</a><br /></td></tr>
-<tr class="separator:ad6226be8000f4cec9f2c997a5bc98a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2a5369e2c042e0d35b933ed07f7e208"><td class="memItemLeft" align="right" valign="top"><a id="ad2a5369e2c042e0d35b933ed07f7e208"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>changed</b> ()</td></tr>
-<tr class="separator:ad2a5369e2c042e0d35b933ed07f7e208"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_debouncer"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_debouncer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_debouncer.html">Debouncer</a></td></tr>
+<tr class="memitem:a34c46ca04d4178933cc0049436d10fe6 inherit pub_methods_class_debouncer"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_debouncer.html#a34c46ca04d4178933cc0049436d10fe6">Debouncer</a> ()</td></tr>
+<tr class="memdesc:a34c46ca04d4178933cc0049436d10fe6 inherit pub_methods_class_debouncer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an instance of the Debounce class.  <a href="class_debouncer.html#a34c46ca04d4178933cc0049436d10fe6">More...</a><br /></td></tr>
+<tr class="separator:a34c46ca04d4178933cc0049436d10fe6 inherit pub_methods_class_debouncer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a930bf3945e698d77b889f6309079857d inherit pub_methods_class_debouncer"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_debouncer.html#a930bf3945e698d77b889f6309079857d">interval</a> (uint16_t interval_millis)</td></tr>
+<tr class="memdesc:a930bf3945e698d77b889f6309079857d inherit pub_methods_class_debouncer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the debounce interval in milliseconds.  <a href="class_debouncer.html#a930bf3945e698d77b889f6309079857d">More...</a><br /></td></tr>
+<tr class="separator:a930bf3945e698d77b889f6309079857d inherit pub_methods_class_debouncer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72f3e8d483555031d2ac21b0b7702c06 inherit pub_methods_class_debouncer"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_debouncer.html#a72f3e8d483555031d2ac21b0b7702c06">update</a> ()</td></tr>
+<tr class="memdesc:a72f3e8d483555031d2ac21b0b7702c06 inherit pub_methods_class_debouncer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the pin's state.  <a href="class_debouncer.html#a72f3e8d483555031d2ac21b0b7702c06">More...</a><br /></td></tr>
+<tr class="separator:a72f3e8d483555031d2ac21b0b7702c06 inherit pub_methods_class_debouncer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cae68910c19c778507f257842fc41bf inherit pub_methods_class_debouncer"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_debouncer.html#a2cae68910c19c778507f257842fc41bf">read</a> ()</td></tr>
+<tr class="memdesc:a2cae68910c19c778507f257842fc41bf inherit pub_methods_class_debouncer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the pin's state (HIGH or LOW).  <a href="class_debouncer.html#a2cae68910c19c778507f257842fc41bf">More...</a><br /></td></tr>
+<tr class="separator:a2cae68910c19c778507f257842fc41bf inherit pub_methods_class_debouncer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ef5a04b4ebe97352ff3bb227476035c inherit pub_methods_class_debouncer"><td class="memItemLeft" align="right" valign="top"><a id="a1ef5a04b4ebe97352ff3bb227476035c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_debouncer.html#a1ef5a04b4ebe97352ff3bb227476035c">fell</a> ()</td></tr>
+<tr class="memdesc:a1ef5a04b4ebe97352ff3bb227476035c inherit pub_methods_class_debouncer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if pin signal transitions from high to low. <br /></td></tr>
+<tr class="separator:a1ef5a04b4ebe97352ff3bb227476035c inherit pub_methods_class_debouncer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9990de6fa7256842c35c246d7dea8dbb inherit pub_methods_class_debouncer"><td class="memItemLeft" align="right" valign="top"><a id="a9990de6fa7256842c35c246d7dea8dbb"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_debouncer.html#a9990de6fa7256842c35c246d7dea8dbb">rose</a> ()</td></tr>
+<tr class="memdesc:a9990de6fa7256842c35c246d7dea8dbb inherit pub_methods_class_debouncer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if pin signal transitions from low to high. <br /></td></tr>
+<tr class="separator:a9990de6fa7256842c35c246d7dea8dbb inherit pub_methods_class_debouncer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47c83f13a03920d21fbfafd8469ec06b inherit pub_methods_class_debouncer"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_debouncer.html#a47c83f13a03920d21fbfafd8469ec06b">changed</a> ()</td></tr>
+<tr class="memdesc:a47c83f13a03920d21fbfafd8469ec06b inherit pub_methods_class_debouncer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the state changed on last update.  <a href="class_debouncer.html#a47c83f13a03920d21fbfafd8469ec06b">More...</a><br /></td></tr>
+<tr class="separator:a47c83f13a03920d21fbfafd8469ec06b inherit pub_methods_class_debouncer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a462994f1f9a20876b2ee239eeee97448 inherit pub_methods_class_debouncer"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_debouncer.html#a462994f1f9a20876b2ee239eeee97448">duration</a> ()</td></tr>
+<tr class="memdesc:a462994f1f9a20876b2ee239eeee97448 inherit pub_methods_class_debouncer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the duration in milliseconds of the current state.  <a href="class_debouncer.html#a462994f1f9a20876b2ee239eeee97448">More...</a><br /></td></tr>
+<tr class="separator:a462994f1f9a20876b2ee239eeee97448 inherit pub_methods_class_debouncer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89ab95e7ac24874bb8cb684dc36a98b9 inherit pub_methods_class_debouncer"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_debouncer.html#a89ab95e7ac24874bb8cb684dc36a98b9">previousDuration</a> ()</td></tr>
+<tr class="memdesc:a89ab95e7ac24874bb8cb684dc36a98b9 inherit pub_methods_class_debouncer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the duration in milliseconds of the previous state.  <a href="class_debouncer.html#a89ab95e7ac24874bb8cb684dc36a98b9">More...</a><br /></td></tr>
+<tr class="separator:a89ab95e7ac24874bb8cb684dc36a98b9 inherit pub_methods_class_debouncer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -134,32 +141,38 @@ Protected Member Functions</h2></td></tr>
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>readCurrentState</b> ()</td></tr>
 <tr class="separator:ad6efc6dd65035de20f015cc44be37873"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a231a992bf2a1f4521043068e35eb50a6"><td class="memItemLeft" align="right" valign="top"><a id="a231a992bf2a1f4521043068e35eb50a6"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setPinMode</b> (int pin, int mode)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setPinMode</b> (int <a class="el" href="class_bounce.html#a1cb79cb0ba2379cd12cc7c098d97053a">pin</a>, int mode)</td></tr>
 <tr class="separator:a231a992bf2a1f4521043068e35eb50a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_debouncer"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_debouncer')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_debouncer.html">Debouncer</a></td></tr>
+<tr class="memitem:a38f85f1c1819a5634d93565e0459117b inherit pro_methods_class_debouncer"><td class="memItemLeft" align="right" valign="top"><a id="a38f85f1c1819a5634d93565e0459117b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr>
+<tr class="separator:a38f85f1c1819a5634d93565e0459117b inherit pro_methods_class_debouncer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a223ab27b8094acd12d77a3a9145f56c9"><td class="memItemLeft" align="right" valign="top"><a id="a223ab27b8094acd12d77a3a9145f56c9"></a>
-unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>previous_millis</b></td></tr>
-<tr class="separator:a223ab27b8094acd12d77a3a9145f56c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c1991db9415ccc5acf9b24779b332c7"><td class="memItemLeft" align="right" valign="top"><a id="a8c1991db9415ccc5acf9b24779b332c7"></a>
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>interval_millis</b></td></tr>
-<tr class="separator:a8c1991db9415ccc5acf9b24779b332c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af013db8b02e1e252eb60dd5b40d5480b"><td class="memItemLeft" align="right" valign="top"><a id="af013db8b02e1e252eb60dd5b40d5480b"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
-<tr class="separator:af013db8b02e1e252eb60dd5b40d5480b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1cb79cb0ba2379cd12cc7c098d97053a"><td class="memItemLeft" align="right" valign="top"><a id="a1cb79cb0ba2379cd12cc7c098d97053a"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>pin</b></td></tr>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bounce.html#a1cb79cb0ba2379cd12cc7c098d97053a">pin</a></td></tr>
+<tr class="memdesc:a1cb79cb0ba2379cd12cc7c098d97053a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deprecated (i.e. do not use). Included for partial compatibility for programs written with <a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin. ">Bounce</a> version 1. <br /></td></tr>
 <tr class="separator:a1cb79cb0ba2379cd12cc7c098d97053a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5aa630c50e7b783bac50aad0385262e"><td class="memItemLeft" align="right" valign="top"><a id="ad5aa630c50e7b783bac50aad0385262e"></a>
+<tr class="inherit_header pro_attribs_class_debouncer"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_debouncer')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_debouncer.html">Debouncer</a></td></tr>
+<tr class="memitem:afab369aec42a15595ebac695a088cccd inherit pro_attribs_class_debouncer"><td class="memItemLeft" align="right" valign="top"><a id="afab369aec42a15595ebac695a088cccd"></a>
+unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>previous_millis</b></td></tr>
+<tr class="separator:afab369aec42a15595ebac695a088cccd inherit pro_attribs_class_debouncer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25f000f08b3291f80154ec620abfe52a inherit pro_attribs_class_debouncer"><td class="memItemLeft" align="right" valign="top"><a id="a25f000f08b3291f80154ec620abfe52a"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>interval_millis</b></td></tr>
+<tr class="separator:a25f000f08b3291f80154ec620abfe52a inherit pro_attribs_class_debouncer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50b7f921222452bf7328ad84d09c15af inherit pro_attribs_class_debouncer"><td class="memItemLeft" align="right" valign="top"><a id="a50b7f921222452bf7328ad84d09c15af"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
+<tr class="separator:a50b7f921222452bf7328ad84d09c15af inherit pro_attribs_class_debouncer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bcf1b5c2a67b6409fea2e8705bcab57 inherit pro_attribs_class_debouncer"><td class="memItemLeft" align="right" valign="top"><a id="a1bcf1b5c2a67b6409fea2e8705bcab57"></a>
 unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>stateChangeLastTime</b></td></tr>
-<tr class="separator:ad5aa630c50e7b783bac50aad0385262e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5854f7205af72b77ce08faee50bdaff"><td class="memItemLeft" align="right" valign="top"><a id="ad5854f7205af72b77ce08faee50bdaff"></a>
+<tr class="separator:a1bcf1b5c2a67b6409fea2e8705bcab57 inherit pro_attribs_class_debouncer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbe8de6a1cfff329629e9136a4efea6c inherit pro_attribs_class_debouncer"><td class="memItemLeft" align="right" valign="top"><a id="adbe8de6a1cfff329629e9136a4efea6c"></a>
 unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>durationOfPreviousState</b></td></tr>
-<tr class="separator:ad5854f7205af72b77ce08faee50bdaff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:adbe8de6a1cfff329629e9136a4efea6c inherit pro_attribs_class_debouncer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The <a class="el" href="class_bounce.html">Bounce</a> class. </p>
+<div class="textblock"><p>The <a class="el" href="class_debouncer.html" title="The Debouce class. Just the deboucing code separated from all harware. ">Debouncer</a>:<a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin. ">Bounce</a> class. Links the Deboucing class to a hardware pin. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa62a2e2b5ad0ee6913a95f2f2a0e7606"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa62a2e2b5ad0ee6913a95f2f2a0e7606">&#9670;&nbsp;</a></span>Bounce()</h2>
@@ -176,7 +189,7 @@ unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>durationOfPr
       </table>
 </div><div class="memdoc">
 
-<p>Create an instance of the <a class="el" href="class_bounce.html">Bounce</a> class. </p>
+<p>Create an instance of the <a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin. ">Bounce</a> class. </p>
 <div class="fragment"><div class="line"><span class="comment">// Create an instance of the Bounce class.</span></div><div class="line"><a class="code" href="class_bounce.html#aa62a2e2b5ad0ee6913a95f2f2a0e7606">Bounce</a>() button;</div></div><!-- fragment --> 
 </div>
 </div>
@@ -234,115 +247,6 @@ unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>durationOfPr
       </table>
 </div><div class="memdoc">
 <p>Attach to a pin for advanced users. Only attach the pin this way once you have previously set it up. Otherwise use <a class="el" href="class_bounce.html#aba08e592941465d033e3eba3dde66eaf" title="Attach to a pin and sets that pin&#39;s mode (INPUT, INPUT_PULLUP or OUTPUT). ">attach(int pin, int mode)</a>. </p>
-
-</div>
-</div>
-<a id="a62412d814d36102ab3d285e801d5d29a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62412d814d36102ab3d285e801d5d29a">&#9670;&nbsp;</a></span>duration()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned long Bounce::duration </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the duration in milliseconds of the current state. </p>
-<p>Is reset to 0 once the pin rises ( <a class="el" href="class_bounce.html#a9e4187934576e568cdfa8f94efeff6f2" title="Returns true if pin signal transitions from low to high. ">rose()</a> ) or falls ( <a class="el" href="class_bounce.html#abfbb0910f5b1ec4e25315cff26dd6289" title="Returns true if pin signal transitions from high to low. ">fell()</a> ).</p>
-<dl class="section return"><dt>Returns</dt><dd>The duration in milliseconds (unsigned long) of the current state. </dd></dl>
-
-</div>
-</div>
-<a id="a2c6e68bf749497c597a9437b488b3d7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c6e68bf749497c597a9437b488b3d7c">&#9670;&nbsp;</a></span>interval()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Bounce::interval </td>
-          <td>(</td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>interval_millis</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the debounce interval in milliseconds. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">interval_millis</td><td>The interval time in milliseconds. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ad6226be8000f4cec9f2c997a5bc98a9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6226be8000f4cec9f2c997a5bc98a9c">&#9670;&nbsp;</a></span>previousDuration()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned long Bounce::previousDuration </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the duration in milliseconds of the previous state. </p>
-<p>Takes the values of <a class="el" href="class_bounce.html#a62412d814d36102ab3d285e801d5d29a" title="Returns the duration in milliseconds of the current state. ">duration()</a> once the pin changes state.</p>
-<dl class="section return"><dt>Returns</dt><dd>The duration in milliseconds (unsigned long) of the previous state. </dd></dl>
-
-</div>
-</div>
-<a id="ae1936fdf44501992707e6cbaee9bbc76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1936fdf44501992707e6cbaee9bbc76">&#9670;&nbsp;</a></span>read()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Bounce::read </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the pin's state (HIGH or LOW). </p>
-<dl class="section return"><dt>Returns</dt><dd>HIGH or LOW. </dd></dl>
-
-</div>
-</div>
-<a id="ab36d7b83bf32e0935a0c2c6a05096441"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab36d7b83bf32e0935a0c2c6a05096441">&#9670;&nbsp;</a></span>update()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Bounce::update </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Updates the pin's state. </p>
-<p>Because <a class="el" href="class_bounce.html">Bounce</a> does not use interrupts, you have to "update" the object before reading its value and it has to be done as often as possible (that means to include it in your loop()). Only call <a class="el" href="class_bounce.html#ab36d7b83bf32e0935a0c2c6a05096441" title="Updates the pin&#39;s state. ">update()</a> once per loop().</p>
-<dl class="section return"><dt>Returns</dt><dd>True if the pin changed state. </dd></dl>
 
 </div>
 </div>

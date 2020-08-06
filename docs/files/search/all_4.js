@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['interval',['interval',['../class_bounce.html#a2c6e68bf749497c597a9437b488b3d7c',1,'Bounce']]]
+  ['fallingedge',['fallingEdge',['../class_bounce.html#ac756559419bfa1c5060e5e4a4ad6406f',1,'Bounce']]],
+  ['fell',['fell',['../class_debouncer.html#a1ef5a04b4ebe97352ff3bb227476035c',1,'Debouncer']]]
 ];

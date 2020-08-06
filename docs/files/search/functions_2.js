@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['duration',['duration',['../class_bounce.html#a62412d814d36102ab3d285e801d5d29a',1,'Bounce']]]
+  ['changed',['changed',['../class_debouncer.html#a47c83f13a03920d21fbfafd8469ec06b',1,'Debouncer']]]
 ];

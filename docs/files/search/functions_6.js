@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['read',['read',['../class_bounce.html#ae1936fdf44501992707e6cbaee9bbc76',1,'Bounce']]],
-  ['released',['released',['../class_button.html#a0b3d2033eb8a6e93141e0b2d8375e9dd',1,'Button']]],
-  ['risingedge',['risingEdge',['../class_bounce.html#a3417beb80eb6593d768c2e9884c57aa0',1,'Bounce']]],
-  ['rose',['rose',['../class_bounce.html#a9e4187934576e568cdfa8f94efeff6f2',1,'Bounce']]]
+  ['pressed',['pressed',['../class_button.html#a8e37fb754907685539ea71183204b033',1,'Button']]],
+  ['previousduration',['previousDuration',['../class_debouncer.html#a89ab95e7ac24874bb8cb684dc36a98b9',1,'Debouncer']]]
 ];

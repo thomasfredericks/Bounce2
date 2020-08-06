@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['pressed',['pressed',['../class_button.html#a8e37fb754907685539ea71183204b033',1,'Button']]],
-  ['previousduration',['previousDuration',['../class_bounce.html#ad6226be8000f4cec9f2c997a5bc98a9c',1,'Bounce']]]
+  ['interval',['interval',['../class_debouncer.html#a930bf3945e698d77b889f6309079857d',1,'Debouncer']]]
 ];
