@@ -7,7 +7,8 @@
 #######################################
 
 Bounce	KEYWORD1
-Bounce2	KEYWORD1
+Bounce2		KEYWORD1
+Button		KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -20,6 +21,9 @@ attach	KEYWORD2
 rose	KEYWORD2
 fell	KEYWORD2
 duration	KEYWORD2
+pressed	KEYWORD2
+released	KEYWORD2
+setPressedState	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['fallingedge',['fallingEdge',['../class_bounce.html#ac756559419bfa1c5060e5e4a4ad6406f',1,'Bounce']]],
-  ['fell',['fell',['../class_bounce.html#abfbb0910f5b1ec4e25315cff26dd6289',1,'Bounce']]]
+  ['debouncer',['Debouncer',['../class_debouncer.html',1,'Debouncer'],['../class_debouncer.html#a34c46ca04d4178933cc0049436d10fe6',1,'Debouncer::Debouncer()']]],
+  ['duration',['duration',['../class_debouncer.html#a462994f1f9a20876b2ee239eeee97448',1,'Debouncer']]]
 ];
