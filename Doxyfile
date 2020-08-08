@@ -906,7 +906,7 @@ EXCLUDE_SYMBOLS        =
 # that contain example code fragments that are included (see the \include
 # command).
 
-EXAMPLE_PATH           = examples/bounce/bounce.ino examples/change/change.ino examples/bounce_multiple/bounce_multiple.ino examples/bounce2buttons/bounce2buttons.ino
+EXAMPLE_PATH           = examples/bounce_basic/bounce_basic.ino examples/change/button_basic.ino
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp and

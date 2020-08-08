@@ -50,24 +50,14 @@
 #include <inttypes.h>
 
 /**
-    @example bounce.ino
-    Simple example of the Bounce library that switches the debug LED when a button is pressed.
+    @example bounce_basic.ino
+    Basic example of the Bounce class.
 */
 
 /**
-    @example change.ino
-    This example toggles the debug LED (pin 13) on or off when a button on pin 2 is pressed.
+    @example button_basic.ino
+    Basic example of the Button class.
 */
-
-/**
-    @example bounce_multiple.ino
-    Detect the falling edge of multiple buttons. Eight buttons with internal pullups. Toggles a LED when any button is pressed. Buttons on pins 2,3,4,5,6,7,8,9
-*/
-
-/**
-    @example bounce2buttons.ino
-     Example of two instances of the Bounce class that switches the debug LED when either one of the two buttons is pressed.
- */
 
 
 
