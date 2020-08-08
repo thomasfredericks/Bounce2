@@ -26,11 +26,6 @@
   Previous contributions by Eric Lowry, Jim Schimpf and Tom Harkaway
   * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-/**
- * @todo Make Bounce2 more abstract. Split it from the hardware layer.
- * @body Remove deboucing code from Bounce2 and make a new Debounce class from that code. Bounce2 should extend Debounce. 
- */
-
 
 #ifndef Bounce2_h
 #define Bounce2_h
