@@ -28,7 +28,7 @@
 Bounce bounce = Bounce();
 
 // SET A VARIABLE TO STORE THE LED STATE
-bool ledState = LOW;
+int ledState = LOW;
 
 void setup() {
 
