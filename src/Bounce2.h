@@ -67,7 +67,7 @@ private:
   static const uint8_t UNSTABLE_STATE  = 0b00000010;
   static const uint8_t CHANGED_STATE   = 0b00000100;
 
-private:
+protected:
   inline void changeState();
   inline void setStateFlag(const uint8_t flag)    {state |= flag;}
   inline void unsetStateFlag(const uint8_t flag)  {state &= ~flag;}
@@ -241,8 +241,9 @@ protected:
      @brief The Debouncer:Bounce:Button class. The Button class matches an electrical state to a physical action.
      */
 class Button : public Bounce{
-protected:
-    bool stateForPressed = 1; // 
+  private:
+    // Note : this is private as it might change in the future
+    static const uint8_t PRESSED_STATE = 0b00001000;
   public:
 	/*!
     @brief  Create an instance of the Button class. By default, the pressed state is matched to a HIGH electrical level.
@@ -254,7 +255,10 @@ protected:
 
     @endcode
 */
-   Button(){ }
+   Button(){
+     // Default to pressed state is HIGH
+     setStateFlag(PRESSED_STATE);
+   }
 
     /*!
     @brief Set the electrical state (HIGH/LOW) that corresponds to a physical press. By default, the pressed state is matched to a HIGH electrical level.
@@ -264,14 +268,17 @@ protected:
 
 */
    void setPressedState(bool state){
-    stateForPressed = state;
+    if (state)
+      setStateFlag(PRESSED_STATE);
+    else
+      unsetStateFlag(PRESSED_STATE);
   }
 
   /*!
   @brief Get the electrical state (HIGH/LOW) that corresponds to a physical press. 
   */
   inline bool getPressedState() {
-    return stateForPressed;
+    return getStateFlag(PRESSED_STATE);
   };
 
   /*!
