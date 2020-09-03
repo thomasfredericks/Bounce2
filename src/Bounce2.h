@@ -267,21 +267,33 @@ protected:
     stateForPressed = state;
   }
 
+  /*!
+  @brief Get the electrical state (HIGH/LOW) that corresponds to a physical press. 
+  */
+  inline bool getPressedState() {
+    return stateForPressed;
+  };
+
+  /*!
+  @brief Returns true if the button is currently physically pressed.
+  */
+  inline bool isPressed() {
+    return read() == getPressedState();
+  };
+
     /*!
     @brief Returns true if the button was physically pressed          
 */
-  bool pressed() {
-    return changed() && (read() == stateForPressed);
+  inline bool pressed() {
+    return changed() && isPressed();
   };
 
         /*!
     @brief Returns true if the button was physically released          
 */
-  bool released() {
-    return  changed() && (read() != stateForPressed);
+  inline bool released() {
+    return  changed() && !isPressed();
   };
-
-
 
 };
 
