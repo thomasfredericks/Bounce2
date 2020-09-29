@@ -1,8 +1,10 @@
 # BOUNCE 2
 
-Debouncing library for Arduino and Wiring by Thomas Ouellet Fredericks with contributions from: Eric Lowry, Jim Schimpf, Tom Harkaway, Joachim Krüger and MrGradgrind.
+Debouncing library for Arduino and Wiring by Thomas Ouellet Fredericks with contributions from the community : https://github.com/thomasfredericks/Bounce2/graphs/contributors
 
-Basically, the mechanical part of buttons and switches vibrate slightly when closed or opened causing multiple undesired false states (similar to noise). This library filters out these undesired state changes. More about debouncing: http://en.wikipedia.org/wiki/Debounce#Contact_bounce
+Basically, the mechanical part of buttons and switches vibrate slightly when closed or opened causing multiple undesired false states (similar to noise). This library filters out these undesired state changes. More about debouncing: 
+* John Errington's Experiments with an Arduino : [Using digital inputs: Switch bounce and solutions to it](http://www.skillbank.co.uk/arduino/switchbounce.htm)
+* Wikipedia article : http://en.wikipedia.org/wiki/Debounce#Contact_bounce
 
 See the bottom of this page for a basic usage example and the "examples" folder for more.
 
