@@ -240,6 +240,9 @@ protected:
 /**
      @brief The Debouncer:Bounce:Button class. The Button class matches an electrical state to a physical action.
      */
+namespace Bounce2 {
+   // code declarations
+
 class Button : public Bounce{
 protected:
     bool stateForPressed = 1; // 
@@ -295,6 +298,7 @@ protected:
     return  changed() && !isPressed();
   };
 
+};
 };
 
 #endif

@@ -9,7 +9,7 @@
 Bounce	KEYWORD1
 Bounce2		KEYWORD1
 Button		KEYWORD1
-
+Bounce2NameSpace KEYWORD1
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################

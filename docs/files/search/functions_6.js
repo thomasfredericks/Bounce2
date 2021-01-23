@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pressed',['pressed',['../class_button.html#a8e37fb754907685539ea71183204b033',1,'Button']]],
-  ['previousduration',['previousDuration',['../class_debouncer.html#a89ab95e7ac24874bb8cb684dc36a98b9',1,'Debouncer']]]
+  ['interval_35',['interval',['../class_debouncer.html#a930bf3945e698d77b889f6309079857d',1,'Debouncer']]],
+  ['ispressed_36',['isPressed',['../class_bounce2_1_1_button.html#a94c31de8109c89d6ee577ed9b14ea676',1,'Bounce2::Button']]]
 ];

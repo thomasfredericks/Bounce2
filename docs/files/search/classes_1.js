@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['debouncer',['Debouncer',['../class_debouncer.html',1,'']]]
+  ['debouncer_24',['Debouncer',['../class_debouncer.html',1,'']]]
 ];
