@@ -96,7 +96,7 @@ void loop() {
  The Button class matches an electrical state to a physical action. 
  Use .setPressedState(LOW or HIGH) to set the detection state for when the button is pressed.
 
- INSCRUCTIONS
+ INSTRUCTIONS
  ====================
  Set BUTTON_PIN to the pin attached to the button.
  Set LED_PIN to the pin attached to a LED.
