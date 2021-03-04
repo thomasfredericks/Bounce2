@@ -69,10 +69,10 @@ private:
 
 private:
   inline void changeState();
-  inline void setStateFlag(const uint8_t flag)    {state |= flag;}
-  inline void unsetStateFlag(const uint8_t flag)  {state &= ~flag;}
-  inline void toggleStateFlag(const uint8_t flag) {state ^= flag;}
-  inline bool getStateFlag(const uint8_t flag)    {return((state & flag) != 0);}
+  inline void setStateFlag(const uint8_t flag)       {state |= flag;}
+  inline void unsetStateFlag(const uint8_t flag)     {state &= ~flag;}
+  inline void toggleStateFlag(const uint8_t flag)    {state ^= flag;}
+  inline bool getStateFlag(const uint8_t flag) const {return((state & flag) != 0);}
 
 public:
 	/*!
@@ -106,17 +106,17 @@ public:
 
      @return HIGH or LOW.
      */
-	bool read();
+	bool read() const;
 
     /**
     @brief Returns true if pin signal transitions from high to low.
     */
-	bool fell();
+	bool fell() const;
 
     /**
     @brief Returns true if pin signal transitions from low to high.
     */
-	bool rose();
+	bool rose() const;
 
 
 
@@ -126,7 +126,7 @@ public:
 
      @return True if the state changed on last update. Otherwise, returns false.
 */
-  bool changed( ) { return getStateFlag(CHANGED_STATE); }
+  bool changed( ) const { return getStateFlag(CHANGED_STATE); }
 
       /**
      @brief Returns the duration in milliseconds of the current state. 
@@ -136,7 +136,7 @@ public:
       @return The duration in milliseconds (unsigned long) of the current state.
      */
 
-  unsigned long duration();
+  unsigned long duration() const;
 
   /**
      @brief Returns the duration in milliseconds of the previous state. 
@@ -145,7 +145,7 @@ public:
     
       @return The duration in milliseconds (unsigned long) of the previous state. 
      */
-  unsigned long previousDuration();     
+  unsigned long previousDuration() const;
 
 protected:
   void begin();
@@ -209,11 +209,11 @@ public:
      /**
     @brief Deprecated (i.e. do not use). Included for partial compatibility for programs written with Bounce version 1
     */
-	bool risingEdge() { return rose(); }
+	bool risingEdge() const { return rose(); }
      /**
     @brief Deprecated (i.e. do not use). Included for partial compatibility for programs written with Bounce version 1
     */
-	bool fallingEdge() { return fell(); }
+	bool fallingEdge() const { return fell(); }
      /**
     @brief Deprecated (i.e. do not use). Included for partial compatibility for programs written with Bounce version 1
     */
@@ -273,28 +273,28 @@ protected:
   /*!
   @brief Get the electrical state (HIGH/LOW) that corresponds to a physical press. 
   */
-  inline bool getPressedState() {
+  inline bool getPressedState() const {
     return stateForPressed;
   };
 
   /*!
   @brief Returns true if the button is currently physically pressed.
   */
-  inline bool isPressed() {
+  inline bool isPressed() const {
     return read() == getPressedState();
   };
 
     /*!
     @brief Returns true if the button was physically pressed          
 */
-  inline bool pressed() {
+  inline bool pressed() const {
     return changed() && isPressed();
   };
 
         /*!
     @brief Returns true if the button was physically released          
 */
-  inline bool released() {
+  inline bool released() const {
     return  changed() && !isPressed();
   };
 
