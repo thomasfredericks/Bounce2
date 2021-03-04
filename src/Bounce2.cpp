@@ -100,11 +100,11 @@ bool Debouncer::update()
 }
 
 // WIP HELD
-unsigned long Debouncer::previousDuration() {
+unsigned long Debouncer::previousDuration() const {
 	return durationOfPreviousState;
 }
 
-unsigned long Debouncer::duration() {
+unsigned long Debouncer::duration() const {
 	return (millis() - stateChangeLastTime);
 }
 
@@ -115,17 +115,17 @@ inline void Debouncer::changeState() {
 	stateChangeLastTime = millis();
 }
 
-bool Debouncer::read()
+bool Debouncer::read() const
 {
     return  getStateFlag(DEBOUNCED_STATE);
 }
 
-bool Debouncer::rose()
+bool Debouncer::rose() const
 {
     return getStateFlag(DEBOUNCED_STATE) && getStateFlag(CHANGED_STATE);
 }
 
-bool Debouncer::fell()
+bool Debouncer::fell() const
 {
     return  !getStateFlag(DEBOUNCED_STATE) && getStateFlag(CHANGED_STATE);
 }
