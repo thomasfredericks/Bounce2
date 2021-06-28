@@ -161,7 +161,7 @@ protected:
 
 
 /**
-@brief The Debouncer:Bounce class. Links the Deboucing class to a hardware pin.
+@brief The Debouncer:Bounce class. Links the Deboucing class to a hardware pin.  This class is odly named, but it will be kept that so it stays compatible with previous code.
      
      */
 class Bounce : public Debouncer
@@ -202,6 +202,16 @@ public:
     attach(pin);
     interval(interval_millis);
   }
+ 
+
+ /**
+  @brief Return pin that this Bounce is attached to
+  
+  @return integer identifier of the coupled pin
+  */
+  inline int getPin() const {
+      return this->pin;
+  };
 
   ////////////////
   // Deprecated //
