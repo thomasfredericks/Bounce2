@@ -63,10 +63,11 @@ class Debouncer
 {
  // Note : this is private as it migh change in the futur
 private:
-  static const uint8_t DEBOUNCED_STATE = 0b00000001;
-  static const uint8_t UNSTABLE_STATE  = 0b00000010;
-  static const uint8_t CHANGED_STATE   = 0b00000100;
+  static const uint8_t DEBOUNCED_STATE = 0b00000001; // Final returned calculated debounced state
+  static const uint8_t UNSTABLE_STATE  = 0b00000010; // Actual last state value behind the scene
+  static const uint8_t CHANGED_STATE   = 0b00000100; // The DEBOUNCED_STATE has changed since last update()
 
+// Note : this is private as it migh change in the futur
 private:
   inline void changeState();
   inline void setStateFlag(const uint8_t flag)       {state |= flag;}
