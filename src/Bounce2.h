@@ -202,6 +202,15 @@ public:
     attach(pin);
     interval(interval_millis);
   }
+  
+  /**
+  @brief Return pin that this Bounce is attached to
+  
+  @return integer identifier of the coupled pin
+  */
+  inline int get_pin() const {
+      return this->pin;
+  };
 
   ////////////////
   // Deprecated //
