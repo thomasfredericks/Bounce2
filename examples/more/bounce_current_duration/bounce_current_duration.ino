@@ -2,8 +2,8 @@
 /*
   DESCRIPTION
   ====================
-  Simple example of the Bounce library that switches a LED when
-  a state change (from HIGH to LOW) is triggered (for example when a button is pressed).
+  Simple example of the Bounce library that switches on a LED when
+  the decounced input is held for more than 1000 milliseconds.
 
   Set BOUNCE_PIN to the pin attached to the input (a button for example).
   Set LED_PIN to the pin attached to a LED.
@@ -24,9 +24,9 @@
 #include <Bounce2.h>
 
 
-// INSTANTIATE A Bounce OBJECT
+// INSTANTIATE A Bounce OBJECT.
 Bounce bounce = Bounce();
-
+ 
 // SET A VARIABLE TO STORE THE LED STATE
 int ledState = LOW;
 
@@ -53,18 +53,15 @@ void loop() {
   // Update the Bounce instance (YOU MUST DO THIS EVERY LOOP)
   bounce.update();
 
-  // <Bounce>.changed() RETURNS true IF THE STATE CHANGED (FROM HIGH TO LOW OR LOW TO HIGH)
-  if ( bounce.changed() ) {
-    // THE STATE OF THE INPUT CHANGED
-    // GET THE STATE
-    int deboucedInput = bounce.read();
-    // IF THE CHANGED VALUE IS LOW
-    if ( deboucedInput == LOW ) {
-      ledState = !ledState; // SET ledState TO THE OPPOSITE OF ledState
-      digitalWrite(LED_PIN,ledState); // WRITE THE NEW ledState
-    }
+  // GET THE STATE WITH <Bounce.read()>
+  int debouncedState = bounce.read();
+
+  // <Bounce>.duration() RETURNS THE TIME IN MILLISECONDS THE CURRENT STATE HAS BEEN HELD.
+  // SO WE CHECK IF THE STATE IS LOW AND IF IT HAS BEEN LOW FOR MORE THAN 1 SECOND.
+  if ( debouncedState == LOW && bounce.currentDuration() > 1000 ) {
+    digitalWrite(LED_PIN,HIGH); // TURN THE LED ON
+  } else {
+    digitalWrite(LED_PIN,LOW); // TURN THE LED OFF
   }
-
-
-
+    
 }

@@ -24,6 +24,8 @@ duration	KEYWORD2
 pressed	KEYWORD2
 released	KEYWORD2
 setPressedState	KEYWORD2
+currentDuration	KEYWORD2
+previousDuration	KEYWORD2 
 
 #######################################
 # Instances (KEYWORD2)

@@ -2,8 +2,11 @@
 /*
   DESCRIPTION
   ====================
-  Simple example of the Bounce library that switches a LED when
-  a state change (from HIGH to LOW) is triggered (for example when a button is pressed).
+  Simple example of the Bounce library that switches the state of a LED
+  when the debounced input goes from LOW to HIGH. 
+
+  Also if the debounced input was previously held LOW for more than 1000 milliseconds,
+  the LED will blink.
 
   Set BOUNCE_PIN to the pin attached to the input (a button for example).
   Set LED_PIN to the pin attached to a LED.
@@ -24,11 +27,16 @@
 #include <Bounce2.h>
 
 
-// INSTANTIATE A Bounce OBJECT
+// INSTANTIATE A Bounce OBJECT.
 Bounce bounce = Bounce();
-
+ 
 // SET A VARIABLE TO STORE THE LED STATE
 int ledState = LOW;
+
+// SET A VARIABLE TO STORE THE BLINKING STATE
+bool blinkLed = false;
+// SET A VARIABLE TO STORE THE LAST TIME THE LED BLINKED
+unsigned long blinkLedLastTime;
 
 void setup() {
 
@@ -58,13 +66,23 @@ void loop() {
     // THE STATE OF THE INPUT CHANGED
     // GET THE STATE
     int deboucedInput = bounce.read();
-    // IF THE CHANGED VALUE IS LOW
-    if ( deboucedInput == LOW ) {
+    // IF THE CHANGED VALUE IS HIGH
+    if ( deboucedInput == HIGH ) {
+      ledState = !ledState; // SET ledState TO THE OPPOSITE OF ledState
+      digitalWrite(LED_PIN,ledState); // WRITE THE NEW ledState
+      // IF THE DURATION OF THE PREVIOUS STATE (LOW IN THIS CASE) WAS HELD LONGER THAN 1000 MILLISECONDS:
+      if ( bounce.previousDuration() > 1000 ) blinkLed = true;
+      else blinkLed = false;
+    } 
+  }
+
+  // IF WE HAVE TO BLINK THE LED
+  if ( blinkLed ) {
+    if ( millis() - blinkLedLastTime > 500 ) {
+      blinkLedLastTime = millis();
       ledState = !ledState; // SET ledState TO THE OPPOSITE OF ledState
       digitalWrite(LED_PIN,ledState); // WRITE THE NEW ledState
     }
   }
-
-
-
+    
 }

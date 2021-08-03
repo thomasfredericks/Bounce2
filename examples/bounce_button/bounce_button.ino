@@ -66,6 +66,7 @@ void loop() {
 
   // <Button>.pressed() RETURNS true IF THE STATE CHANGED
   // AND THE CURRENT STATE MATCHES <Button>.setPressedState(<HIGH or LOW>);
+  // WHICH IS LOW IN THIS EXAMPLE AS SET WITH button.setPressedState(LOW); IN setup()
   if ( button.pressed() ) {
     
     // TOGGLE THE LED STATE : 

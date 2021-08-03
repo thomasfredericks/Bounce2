@@ -104,7 +104,7 @@ unsigned long Debouncer::previousDuration() const {
 	return durationOfPreviousState;
 }
 
-unsigned long Debouncer::duration() const {
+unsigned long Debouncer::currentDuration() const {
 	return (millis() - stateChangeLastTime);
 }
 

@@ -137,7 +137,8 @@ public:
       @return The duration in milliseconds (unsigned long) of the current state.
      */
 
-  unsigned long duration() const;
+  unsigned long currentDuration() const;
+
 
   /**
      @brief Returns the duration in milliseconds of the previous state. 
