@@ -65,7 +65,7 @@ $(function() {
 <div class="title">bounce_basic.ino</div>  </div>
 </div><!--header-->
 <div class="contents">
-<p>Basic example of the <a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin.">Bounce</a> class.</p>
+<p>Basic example of the <a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin. This class is odly named,...">Bounce</a> class.</p>
 <div class="fragment"><div class="line"> </div>
 <div class="line">/*</div>
 <div class="line">  DESCRIPTION</div>
@@ -104,9 +104,9 @@ $(function() {
 <div class="line"> </div>
 <div class="line">  // SELECT ONE OF THE FOLLOWING :</div>
 <div class="line">  // 1) IF YOUR INPUT HAS AN INTERNAL PULL-UP</div>
-<div class="line">  // bounce.attach( BOUNCE_PIN ,  INPUT_PULLUP ); // USE INTERNAL PULL-UP</div>
+<div class="line">  bounce.attach( BOUNCE_PIN ,  INPUT_PULLUP ); // USE INTERNAL PULL-UP</div>
 <div class="line">  // 2) IF YOUR INPUT USES AN EXTERNAL PULL-UP</div>
-<div class="line">  bounce.attach( BOUNCE_PIN, INPUT ); // USE EXTERNAL PULL-UP</div>
+<div class="line">  //bounce.attach( BOUNCE_PIN, INPUT ); // USE EXTERNAL PULL-UP</div>
 <div class="line"> </div>
 <div class="line">  // DEBOUNCE INTERVAL IN MILLISECONDS</div>
 <div class="line">  bounce.interval(5); // interval in ms</div>

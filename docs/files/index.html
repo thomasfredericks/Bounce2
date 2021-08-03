@@ -73,12 +73,12 @@ $(function() {
 <p>See the bottom of this page for a basic usage example and the "examples" folder for more.</p>
 <p>The library is composed of three classes:</p><ul>
 <li><a class="el" href="class_debouncer.html" title="The Debouce class. Just the deboucing code separated from all harware.">Debouncer</a> : The code that does the actual debouncing. Only advanced users should play with this class.</li>
-<li><a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin.">Bounce</a> : This is the general use library. It links the <a class="el" href="class_debouncer.html" title="The Debouce class. Just the deboucing code separated from all harware.">Debouncer</a> to a hardware pin on your board.</li>
-<li>Button : A special version of <a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin.">Bounce</a> for buttons that are pressed.</li>
+<li><a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin. This class is odly named,...">Bounce</a> : This is the general use library. It links the <a class="el" href="class_debouncer.html" title="The Debouce class. Just the deboucing code separated from all harware.">Debouncer</a> to a hardware pin on your board.</li>
+<li>Button : A special version of <a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin. This class is odly named,...">Bounce</a> for buttons that are pressed.</li>
 </ul>
 <h1>INSTALLATION &amp; DOWNLOAD</h1>
 <p>Install through your software's Library Manager or download the latest version <a href="https://github.com/thomasfredericks/Bounce2/archive/master.zip">here</a> and put the "Bounce2" folder in your "libraries" folder.</p>
-<p>Please note that the original version of this library (<a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin.">Bounce</a> 1) is included in the "extras" folder of the download but not supported anymore.</p>
+<p>Please note that the original version of this library (<a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin. This class is odly named,...">Bounce</a> 1) is included in the "extras" folder of the download but not supported anymore.</p>
 <h2>BASIC USE</h2>
 <h3>INSTANTIATE</h3>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Bounce2.h&gt;</span></div>
@@ -88,9 +88,9 @@ $(function() {
 <div class="line">b.<a class="code" href="class_debouncer.html#a930bf3945e698d77b889f6309079857d">interval</a>( &lt;INTERVAL IN MS&gt; );</div>
 </div><!-- fragment --><h3>LOOP</h3>
 <div class="fragment"><div class="line">b.<a class="code" href="class_debouncer.html#a72f3e8d483555031d2ac21b0b7702c06">update</a>();</div>
-<div class="line"><span class="keywordflow">if</span> ( b.<a class="code" href="class_debouncer.html#a47c83f13a03920d21fbfafd8469ec06b">changed</a>() ) { </div>
+<div class="line"><span class="keywordflow">if</span> ( b.<a class="code" href="class_debouncer.html#a1bbd627f9d8809b5ee9e64e9fb21e248">changed</a>() ) { </div>
 <div class="line">  <span class="comment">// THE STATE OF THE INPUT CHANGED</span></div>
-<div class="line">  <span class="keywordtype">int</span> deboucedValue = b.<a class="code" href="class_debouncer.html#a2cae68910c19c778507f257842fc41bf">read</a>();</div>
+<div class="line">  <span class="keywordtype">int</span> deboucedValue = b.<a class="code" href="class_debouncer.html#aa5fcde9156f700c362fd49af5dd92ecd">read</a>();</div>
 <div class="line">  <span class="comment">// DO SOMETHING WITH THE VALUE</span></div>
 <div class="line">}</div>
 </div><!-- fragment --><h2>BOUNCE EXAMPLE</h2>
@@ -123,7 +123,7 @@ $(function() {
 <div class="line"> </div>
 <div class="line">   b.<a class="code" href="class_debouncer.html#a72f3e8d483555031d2ac21b0b7702c06">update</a>(); <span class="comment">// Update the Bounce instance</span></div>
 <div class="line">   </div>
-<div class="line">   <span class="keywordflow">if</span> ( b.<a class="code" href="class_debouncer.html#a1ef5a04b4ebe97352ff3bb227476035c">fell</a>() ) {  <span class="comment">// Call code if button transitions from HIGH to LOW</span></div>
+<div class="line">   <span class="keywordflow">if</span> ( b.<a class="code" href="class_debouncer.html#a80315de311b855f9787b4b6d5b7899e0">fell</a>() ) {  <span class="comment">// Call code if button transitions from HIGH to LOW</span></div>
 <div class="line">     ledState = !ledState; <span class="comment">// Toggle LED state</span></div>
 <div class="line">     digitalWrite(LED_PIN,ledState); <span class="comment">// Apply new LED state</span></div>
 <div class="line">   }</div>
@@ -137,7 +137,7 @@ $(function() {
 <div class="line"><span class="comment"> The Button class matches an electrical state to a physical action. </span></div>
 <div class="line"><span class="comment"> Use .setPressedState(LOW or HIGH) to set the detection state for when the button is pressed.</span></div>
 <div class="line"><span class="comment"></span> </div>
-<div class="line"><span class="comment"> INSCRUCTIONS</span></div>
+<div class="line"><span class="comment"> INSTRUCTIONS</span></div>
 <div class="line"><span class="comment"> ====================</span></div>
 <div class="line"><span class="comment"> Set BUTTON_PIN to the pin attached to the button.</span></div>
 <div class="line"><span class="comment"> Set LED_PIN to the pin attached to a LED.</span></div>
@@ -190,7 +190,7 @@ $(function() {
 <div class="line">  <span class="comment">// YOU MUST CALL THIS EVERY LOOP</span></div>
 <div class="line">  button.<a class="code" href="class_debouncer.html#a72f3e8d483555031d2ac21b0b7702c06">update</a>();</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordflow">if</span> ( button.<a class="code" href="class_bounce2_1_1_button.html#a3fbacfb9a631e03afcfaa5dc39686bad">pressed</a>() ) {</div>
+<div class="line">  <span class="keywordflow">if</span> ( button.<a class="code" href="class_bounce2_1_1_button.html#a61541ae21354cb7f5cc5bc8c05db59dd">pressed</a>() ) {</div>
 <div class="line">    </div>
 <div class="line">    <span class="comment">// TOGGLE THE LED STATE : </span></div>
 <div class="line">    ledState = !ledState; <span class="comment">// SET ledState TO THE OPPOSITE OF ledState</span></div>
@@ -206,7 +206,7 @@ $(function() {
 <p>Please post your questions <a href="http://forum.arduino.cc/index.php?topic=266132.0">here</a>.</p>
 <h1>ALTERNATE DEBOUNCE ALGORITHMS FOR ADVANCED USERS AND SPECIFIC CASES</h1>
 <h2>STABLE INTERVAL</h2>
-<p>By default, the <a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin.">Bounce</a> library uses a stable interval to process the debouncing. This is simpler to understand and can cancel unwanted noise.</p>
+<p>By default, the <a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin. This class is odly named,...">Bounce</a> library uses a stable interval to process the debouncing. This is simpler to understand and can cancel unwanted noise.</p>
 <p><img src="https://raw.github.com/thomasfredericks/Bounce-Arduino-Wiring/master/extras/BouncySwitch_stable.png" alt="" class="inline"/></p>
 <h2>LOCK-OUT INTERVAL</h2>
 <p>By defining "#define BOUNCE_LOCK_OUT" in "Bounce.h" (or in your code before including "Bounce.h") you can activate an alternative debouncing method. This method is a lot more responsive, but does not cancel noise.</p>
@@ -221,16 +221,16 @@ $(function() {
 <div class="fragment"><div class="line">#define BOUNCE_WITH_PROMPT_DETECTION</div>
 </div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
-<div class="ttc" id="aclass_bounce2_1_1_button_html"><div class="ttname"><a href="class_bounce2_1_1_button.html">Bounce2::Button</a></div><div class="ttdef"><b>Definition:</b> Bounce2.h:246</div></div>
-<div class="ttc" id="aclass_debouncer_html_a1ef5a04b4ebe97352ff3bb227476035c"><div class="ttname"><a href="class_debouncer.html#a1ef5a04b4ebe97352ff3bb227476035c">Debouncer::fell</a></div><div class="ttdeci">bool fell()</div><div class="ttdoc">Returns true if pin signal transitions from high to low.</div><div class="ttdef"><b>Definition:</b> Bounce2.cpp:128</div></div>
+<div class="ttc" id="aclass_bounce2_1_1_button_html"><div class="ttname"><a href="class_bounce2_1_1_button.html">Bounce2::Button</a></div><div class="ttdef"><b>Definition:</b> Bounce2.h:258</div></div>
 <div class="ttc" id="aclass_debouncer_html_a930bf3945e698d77b889f6309079857d"><div class="ttname"><a href="class_debouncer.html#a930bf3945e698d77b889f6309079857d">Debouncer::interval</a></div><div class="ttdeci">void interval(uint16_t interval_millis)</div><div class="ttdoc">Sets the debounce interval in milliseconds.</div><div class="ttdef"><b>Definition:</b> Bounce2.cpp:14</div></div>
-<div class="ttc" id="aclass_debouncer_html_a2cae68910c19c778507f257842fc41bf"><div class="ttname"><a href="class_debouncer.html#a2cae68910c19c778507f257842fc41bf">Debouncer::read</a></div><div class="ttdeci">bool read()</div><div class="ttdoc">Returns the pin's state (HIGH or LOW).</div><div class="ttdef"><b>Definition:</b> Bounce2.cpp:118</div></div>
-<div class="ttc" id="aclass_debouncer_html_a47c83f13a03920d21fbfafd8469ec06b"><div class="ttname"><a href="class_debouncer.html#a47c83f13a03920d21fbfafd8469ec06b">Debouncer::changed</a></div><div class="ttdeci">bool changed()</div><div class="ttdoc">Returns true if the state changed on last update.</div><div class="ttdef"><b>Definition:</b> Bounce2.h:129</div></div>
+<div class="ttc" id="aclass_bounce2_1_1_button_html_a61541ae21354cb7f5cc5bc8c05db59dd"><div class="ttname"><a href="class_bounce2_1_1_button.html#a61541ae21354cb7f5cc5bc8c05db59dd">Bounce2::Button::pressed</a></div><div class="ttdeci">bool pressed() const</div><div class="ttdoc">Returns true if the button was physically pressed</div><div class="ttdef"><b>Definition:</b> Bounce2.h:302</div></div>
 <div class="ttc" id="aclass_debouncer_html_a72f3e8d483555031d2ac21b0b7702c06"><div class="ttname"><a href="class_debouncer.html#a72f3e8d483555031d2ac21b0b7702c06">Debouncer::update</a></div><div class="ttdeci">bool update()</div><div class="ttdoc">Updates the pin's state.</div><div class="ttdef"><b>Definition:</b> Bounce2.cpp:32</div></div>
-<div class="ttc" id="aclass_bounce2_1_1_button_html_a3fbacfb9a631e03afcfaa5dc39686bad"><div class="ttname"><a href="class_bounce2_1_1_button.html#a3fbacfb9a631e03afcfaa5dc39686bad">Bounce2::Button::pressed</a></div><div class="ttdeci">bool pressed()</div><div class="ttdoc">Returns true if the button was physically pressed</div><div class="ttdef"><b>Definition:</b> Bounce2.h:290</div></div>
-<div class="ttc" id="aclass_bounce_html"><div class="ttname"><a href="class_bounce.html">Bounce</a></div><div class="ttdoc">The Debouncer:Bounce class. Links the Deboucing class to a hardware pin.</div><div class="ttdef"><b>Definition:</b> Bounce2.h:166</div></div>
-<div class="ttc" id="aclass_bounce2_1_1_button_html_a3c88b7938b26bca9dc2c7e72aedc442e"><div class="ttname"><a href="class_bounce2_1_1_button.html#a3c88b7938b26bca9dc2c7e72aedc442e">Bounce2::Button::setPressedState</a></div><div class="ttdeci">void setPressedState(bool state)</div><div class="ttdoc">Set the electrical state (HIGH/LOW) that corresponds to a physical press. By default,...</div><div class="ttdef"><b>Definition:</b> Bounce2.h:269</div></div>
+<div class="ttc" id="aclass_bounce_html"><div class="ttname"><a href="class_bounce.html">Bounce</a></div><div class="ttdoc">The Debouncer:Bounce class. Links the Deboucing class to a hardware pin. This class is odly named,...</div><div class="ttdef"><b>Definition:</b> Bounce2.h:168</div></div>
+<div class="ttc" id="aclass_bounce2_1_1_button_html_a3c88b7938b26bca9dc2c7e72aedc442e"><div class="ttname"><a href="class_bounce2_1_1_button.html#a3c88b7938b26bca9dc2c7e72aedc442e">Bounce2::Button::setPressedState</a></div><div class="ttdeci">void setPressedState(bool state)</div><div class="ttdoc">Set the electrical state (HIGH/LOW) that corresponds to a physical press. By default,...</div><div class="ttdef"><b>Definition:</b> Bounce2.h:281</div></div>
+<div class="ttc" id="aclass_debouncer_html_a80315de311b855f9787b4b6d5b7899e0"><div class="ttname"><a href="class_debouncer.html#a80315de311b855f9787b4b6d5b7899e0">Debouncer::fell</a></div><div class="ttdeci">bool fell() const</div><div class="ttdoc">Returns true if pin signal transitions from high to low.</div><div class="ttdef"><b>Definition:</b> Bounce2.cpp:128</div></div>
 <div class="ttc" id="aclass_bounce_html_aba08e592941465d033e3eba3dde66eaf"><div class="ttname"><a href="class_bounce.html#aba08e592941465d033e3eba3dde66eaf">Bounce::attach</a></div><div class="ttdeci">void attach(int pin, int mode)</div><div class="ttdoc">Attach to a pin and sets that pin's mode (INPUT, INPUT_PULLUP or OUTPUT).</div><div class="ttdef"><b>Definition:</b> Bounce2.cpp:149</div></div>
+<div class="ttc" id="aclass_debouncer_html_aa5fcde9156f700c362fd49af5dd92ecd"><div class="ttname"><a href="class_debouncer.html#aa5fcde9156f700c362fd49af5dd92ecd">Debouncer::read</a></div><div class="ttdeci">bool read() const</div><div class="ttdoc">Returns the pin's state (HIGH or LOW).</div><div class="ttdef"><b>Definition:</b> Bounce2.cpp:118</div></div>
+<div class="ttc" id="aclass_debouncer_html_a1bbd627f9d8809b5ee9e64e9fb21e248"><div class="ttname"><a href="class_debouncer.html#a1bbd627f9d8809b5ee9e64e9fb21e248">Debouncer::changed</a></div><div class="ttdeci">bool changed() const</div><div class="ttdoc">Returns true if the state changed on last update.</div><div class="ttdef"><b>Definition:</b> Bounce2.h:130</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

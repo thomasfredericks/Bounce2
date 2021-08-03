@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['read_16',['read',['../class_debouncer.html#a2cae68910c19c778507f257842fc41bf',1,'Debouncer']]],
-  ['released_17',['released',['../class_bounce2_1_1_button.html#a902d9df3cd993f80f59bcb205ed4be37',1,'Bounce2::Button']]],
-  ['risingedge_18',['risingEdge',['../class_bounce.html#a3417beb80eb6593d768c2e9884c57aa0',1,'Bounce']]],
-  ['rose_19',['rose',['../class_debouncer.html#a9990de6fa7256842c35c246d7dea8dbb',1,'Debouncer']]]
+  ['read_17',['read',['../class_debouncer.html#aa5fcde9156f700c362fd49af5dd92ecd',1,'Debouncer']]],
+  ['released_18',['released',['../class_bounce2_1_1_button.html#ae9bc1365cf132e57feda6dff112edbad',1,'Bounce2::Button']]],
+  ['risingedge_19',['risingEdge',['../class_bounce.html#adff02eed264355c2bf90d131768f84c2',1,'Bounce']]],
+  ['rose_20',['rose',['../class_debouncer.html#ab61244e043754ebdc7a156da1e1824bf',1,'Debouncer']]]
 ];
