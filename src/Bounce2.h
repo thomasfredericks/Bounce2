@@ -139,6 +139,18 @@ public:
 
   unsigned long currentDuration() const;
 
+  /**
+    @deprecated since 2.70
+    @brief Returns the duration in milliseconds of the current state.
+
+    Is reset to 0 once the pin rises ( rose() ) or falls ( fell() ).
+
+    This function is deprecated in favor of currentDuration() and may be removed in future versions.
+
+    @return The duration in milliseconds (unsigned long) of the current state.
+  */
+  unsigned long duration() const;
+
 
   /**
      @brief Returns the duration in milliseconds of the previous state. 

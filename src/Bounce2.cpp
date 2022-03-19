@@ -108,6 +108,10 @@ unsigned long Debouncer::currentDuration() const {
 	return (millis() - stateChangeLastTime);
 }
 
+unsigned long Debouncer::duration() const {
+  return (millis() - stateChangeLastTime);
+}
+
 inline void Debouncer::changeState() {
 	toggleStateFlag(DEBOUNCED_STATE);
 	setStateFlag(CHANGED_STATE) ;
