@@ -128,6 +128,9 @@ public:
      @return True if the state changed on last update. Otherwise, returns false.
 */
   bool changed( ) const { return getStateFlag(CHANGED_STATE); }
+  
+  
+  
 
       /**
      @brief Returns the duration in milliseconds of the current state. 
@@ -148,6 +151,19 @@ public:
       @return The duration in milliseconds (unsigned long) of the previous state. 
      */
   unsigned long previousDuration() const;
+  
+      /**
+     @brief DEPRECATED (i.e. do not use). Renamed currentDuration().
+	 
+	 This member function is DEPRECATED will be removed next major version. DO NOT USE IT. USE currentDuration() INSTEAD.
+	 It was renamed to avoid confusion with previousDuration().
+	 
+	  @return The duration in milliseconds (unsigned long) of the current state.
+     */
+    [[deprecated]]
+    unsigned long duration() {
+		return currentDuration();
+	};
 
 protected:
   void begin();
@@ -221,10 +237,12 @@ public:
      /**
     @brief Deprecated (i.e. do not use). Included for partial compatibility for programs written with Bounce version 1
     */
+	[[deprecated]]
 	bool risingEdge() const { return rose(); }
      /**
     @brief Deprecated (i.e. do not use). Included for partial compatibility for programs written with Bounce version 1
     */
+	[[deprecated]]
 	bool fallingEdge() const { return fell(); }
      /**
     @brief Deprecated (i.e. do not use). Included for partial compatibility for programs written with Bounce version 1
