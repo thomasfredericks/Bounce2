@@ -209,7 +209,7 @@ $(function() {
 <p>By default, the <a class="el" href="class_bounce.html" title="The Debouncer:Bounce class. Links the Deboucing class to a hardware pin. This class is odly named,...">Bounce</a> library uses a stable interval to process the debouncing. This is simpler to understand and can cancel unwanted noise.</p>
 <p><img src="https://raw.github.com/thomasfredericks/Bounce-Arduino-Wiring/master/extras/BouncySwitch_stable.png" alt="" class="inline"/></p>
 <h2>LOCK-OUT INTERVAL</h2>
-<p>By defining "#define BOUNCE_LOCK_OUT" in "Bounce.h" (or in your code before including "Bounce.h") you can activate an alternative debouncing method. This method is a lot more responsive, but does not cancel noise.</p>
+<p>By defining "#define BOUNCE_LOCK_OUT" in "Bounce.h" you can activate an alternative debouncing method. This method is a lot more responsive, but does not cancel noise.</p>
 <div class="fragment"><div class="line">#define BOUNCE_LOCK_OUT</div>
 </div><!-- fragment --><p><img src="https://raw.github.com/thomasfredericks/Bounce-Arduino-Wiring/master/extras/BouncySwitch_lockout.png" alt="" class="inline"/></p>
 <h2>WITH PROMPT DETECTION</h2>
