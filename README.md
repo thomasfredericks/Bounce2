@@ -185,7 +185,7 @@ By default, the Bounce library uses a stable interval to process the debouncing.
 
 ## LOCK-OUT INTERVAL
 
-By defining "#define BOUNCE_LOCK_OUT" in "Bounce.h" (or in your code before including "Bounce.h") you can activate an alternative debouncing method. This method is a lot more responsive, but does not cancel noise.
+By defining "#define BOUNCE_LOCK_OUT" in "Bounce.h" you can activate an alternative debouncing method. This method is a lot more responsive, but does not cancel noise.
 
 ```
 #define BOUNCE_LOCK_OUT
@@ -195,7 +195,7 @@ By defining "#define BOUNCE_LOCK_OUT" in "Bounce.h" (or in your code before incl
 
 ## WITH PROMPT DETECTION
 
-By defining "#define BOUNCE_WITH_PROMPT_DETECTION" in "Bounce.h" (or in your code before including "Bounce.h") you can activate an alternative debouncing method. Button state changes are available immediately so long as the previous state has been stable for the timeout period. Otherwise the state will be updated as soon as  the timeout period allows.
+By defining "#define BOUNCE_WITH_PROMPT_DETECTION" in "Bounce.h" you can activate an alternative debouncing method. Button state changes are available immediately so long as the previous state has been stable for the timeout period. Otherwise the state will be updated as soon as  the timeout period allows.
 
 * Able to report acurate switch time normally with no delay.
 * Use when accurate switch transition timing is important.
