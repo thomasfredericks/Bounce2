@@ -34,112 +34,132 @@ void Debouncer::begin(){
 }
 
 
+#ifdef BOUNCE_LOCK_OUT
+
+
 bool Debouncer::update(){
 
     unsetStateFlag(CHANGED_STATE);
 
-    #ifdef BOUNCE_LOCK_OUT
-    
-        // Ignore everything if we are locked out
+    // Ignore everything if we are locked out
 
-        if (millis() - previous_millis >= interval_millis) {
-            bool currentState = readCurrentState();
-            if ( currentState != getStateFlag(DEBOUNCED_STATE) ) {
-                previous_millis = millis();
-                changeState();
-            }
-        }
-        
-
-    #elif defined BOUNCE_WITH_PROMPT_DETECTION
-
-        /*
-         *  Switch Port State 🠖 Temporary Variable
-         */ 
-
-        bool readState = readCurrentState();
-
-
-        // Check if the button state has changed
-
-        if(readState != getStateFlag(DEBOUNCED_STATE)){
-
-
-            /*
-             *  Enough time has passed
-             *  ⤷ New state changes are allowed
-             * 
-             *  Set Flags:
-             *  - STATE_CHANGED
-             *  - DEBOUNCED_STATE
-             */
-
-            if(millis() - previous_millis >= interval_millis){
-                changeState();
-            }
-        }
-
-
-        /*
-         *  If readState ≠ to it's previous state
-         *  ⤷ Reset the debounce timer
-         * 
-         *  This is done, as input is still unstable
-         *  and we want to prevent new button state 
-         *  changes until the previous state has 
-         *  remained stable for the timeout.
-         */
-
-        if(readState != getStateFlag(UNSTABLE_STATE)){
-
-            // Update unstable bit to match readState
-
-            toggleStateFlag(UNSTABLE_STATE);
-            previous_millis = millis();
-        }
-        
-    
-    #else
-
-        /*
-         *  Switch Port State 🠖 Temporary Variable
-         */
+    if(millis() - previous_millis >= interval_millis){
 
         bool currentState = readCurrentState();
-        
+      
+        if(currentState != getStateFlag(DEBOUNCED_STATE)){
+            previous_millis = millis();
+            changeState();
+        }
+    }
+
+	return changed(); 
+}
+
+
+#elif defined BOUNCE_WITH_PROMPT_DETECTION
+
+
+bool Debouncer::update(){
+
+    unsetStateFlag(CHANGED_STATE);
+
+
+    /*
+     *  Switch Port State 🠖 Temporary Variable
+     */ 
+
+    bool readState = readCurrentState();
+
+
+    // Check if the button state has changed
+
+    if(readState != getStateFlag(DEBOUNCED_STATE)){
 
         /*
-         *  If the reading ≠ to it's previous state
-         *  ⤷ Reset the debounce counter
+         *  Enough time has passed
+         *  ⤷ New state changes are allowed
+         * 
+         *  Set Flags:
+         *  - STATE_CHANGED
+         *  - DEBOUNCED_STATE
          */
 
-        if(currentState != getStateFlag(UNSTABLE_STATE)){
-            previous_millis = millis();
-            toggleStateFlag(UNSTABLE_STATE);
-        } else
-        if(millis() - previous_millis >= interval_millis){
+        if(millis() - previous_millis >= interval_millis)
+            changeState();
+    }
 
-            /*
-             *  We have passed the threshold time
-             *  ⤷ The input is now stable
-             *   
-             *  If it is ≠ to it's previous state
-             *  ⤷ Set the STATE_CHANGED flag
-             */
 
-            if(currentState != getStateFlag(DEBOUNCED_STATE)){
-              
-                previous_millis = millis();
-                
-                changeState();
-            }
-        }
+    /*
+     *  If readState ≠ to it's previous state
+     *  ⤷ Reset the debounce timer
+     * 
+     *  This is done, as input is still unstable
+     *  and we want to prevent new button state 
+     *  changes until the previous state has 
+     *  remained stable for the timeout.
+     */
 
-    
-    #endif
+    if(readState != getStateFlag(UNSTABLE_STATE)){
 
-	return  changed(); 
+        // Update unstable bit to match readState
+
+        toggleStateFlag(UNSTABLE_STATE);
+        previous_millis = millis();
+    }
+        
+	return changed(); 
 }
+
+
+#else
+
+
+bool Debouncer::update(){
+
+    unsetStateFlag(CHANGED_STATE);
+
+
+    /*
+     *  Switch Port State 🠖 Temporary Variable
+     */
+
+    bool currentState = readCurrentState();
+    
+
+    /*
+     *  If the reading ≠ to it's previous state
+     *  ⤷ Reset the debounce counter
+     */
+
+    if(currentState != getStateFlag(UNSTABLE_STATE)){
+        previous_millis = millis();
+        toggleStateFlag(UNSTABLE_STATE);
+    } else
+    if(millis() - previous_millis >= interval_millis){
+
+        /*
+         *  We have passed the threshold time
+         *  ⤷ The input is now stable
+         *   
+         *  If it is ≠ to it's previous state
+         *  ⤷ Set the STATE_CHANGED flag
+         */
+
+        if(currentState != getStateFlag(DEBOUNCED_STATE)){
+            
+            previous_millis = millis();
+            
+            changeState();
+        }
+    }
+
+	return changed(); 
+}
+
+
+#endif
+
 
 
 /*
