@@ -29,7 +29,7 @@ void Debouncer::begin(){
 	#ifdef BOUNCE_LOCK_OUT
         previous_millis = 0;
     #else
-        previous_millis = millis();
+        updateTime();
     #endif
 }
 
@@ -48,7 +48,7 @@ bool Debouncer::update(){
         bool currentState = readCurrentState();
       
         if(currentState != getStateFlag(DEBOUNCED_STATE)){
-            previous_millis = millis();
+            updateTime();
             changeState();
         }
     }
@@ -105,7 +105,7 @@ bool Debouncer::update(){
         // Update unstable bit to match readState
 
         toggleStateFlag(UNSTABLE_STATE);
-        previous_millis = millis();
+        updateTime();
     }
         
 	return changed(); 
@@ -133,7 +133,7 @@ bool Debouncer::update(){
      */
 
     if(currentState != getStateFlag(UNSTABLE_STATE)){
-        previous_millis = millis();
+        updateTime();
         toggleStateFlag(UNSTABLE_STATE);
     } else
     if(thresholdPassed()){
@@ -147,9 +147,7 @@ bool Debouncer::update(){
          */
 
         if(currentState != getStateFlag(DEBOUNCED_STATE)){
-            
-            previous_millis = millis();
-            
+            updateTime();
             changeState();
         }
     }
@@ -206,4 +204,8 @@ bool Debouncer::fell() const {
 
 inline bool Debouncer::thresholdPassed(){
     return millis() - previous_millis >= interval_millis;
+}
+
+inline void Debouncer::updateTime(){
+    previous_millis = millis();
 }

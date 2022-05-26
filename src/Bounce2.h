@@ -75,6 +75,7 @@ private:
   inline void toggleStateFlag(const uint8_t flag)    {state ^= flag;}
   inline bool getStateFlag(const uint8_t flag) const {return((state & flag) != 0);}
   inline bool thresholdPassed();
+  inline void updateTime();
 
 public:
 	/*!
