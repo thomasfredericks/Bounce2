@@ -11,18 +11,22 @@
  */
 
 Bounce::Bounce()
-    : pin(0)
-{}
+    : pin(0) {}
 
-void Bounce::attach(int pin) {
-    this->pin = pin;
+
+void Bounce::attach(int pin){
+    
+    this -> pin = pin;
     
     // Set Initial State
 
     begin();
 }
 
-void Bounce::attach(int pin, int mode){
-    setPinMode(pin, mode);
-    this->attach(pin);
+
+void Bounce::attach(int pin,int mode){
+
+    setPinMode(pin,mode);
+    
+    this -> attach(pin);
 }
