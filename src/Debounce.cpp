@@ -45,9 +45,9 @@ bool Debouncer::update(){
 
     if(thresholdPassed()){
 
-        bool currentState = readCurrentState();
+        const bool state = readCurrentState();
       
-        if(currentState != getStateFlag(DEBOUNCED_STATE)){
+        if(!isDebouncing(state)){
             updateTime();
             changeState();
         }
@@ -74,7 +74,7 @@ bool Debouncer::update(){
 
     // Check if the button state has changed
 
-    if(state != getStateFlag(DEBOUNCED_STATE)){
+    if(!isDebouncing(state)){
 
         /*
          *  Enough time has passed
@@ -100,7 +100,7 @@ bool Debouncer::update(){
      *  remained stable for the timeout.
      */
 
-    if(state != getStateFlag(UNSTABLE_STATE)){
+    if(!isUnstable(state)){
 
         // Update unstable bit to match readState
 
@@ -132,7 +132,7 @@ bool Debouncer::update(){
      *  ⤷ Reset the debounce counter
      */
 
-    if(state != getStateFlag(UNSTABLE_STATE)){
+    if(!isUnstable(state)){
         
         updateTime();
         toggleStateFlag(UNSTABLE_STATE);
@@ -150,7 +150,7 @@ bool Debouncer::update(){
          *  ⤷ Set the STATE_CHANGED flag
          */
 
-        if(state != getStateFlag(DEBOUNCED_STATE)){
+        if(!isDebouncing(state)){
             updateTime();
             changeState();
         }
@@ -206,10 +206,18 @@ bool Debouncer::fell() const {
 }
 
 
-inline bool Debouncer::thresholdPassed(){
+inline bool Debouncer::thresholdPassed() const {
     return millis() - previous_millis >= interval_millis;
 }
 
-inline void Debouncer::updateTime(){
+inline void Debouncer::updateTime() const {
     previous_millis = millis();
+}
+
+inline bool Debouncer::isDebouncing(const bool state) const {
+    return state == getStateFlag(DEBOUNCED_STATE);
+}
+
+inline bool Debouncer::isUnstable(const bool state) const {
+    return state == getStateFlag(UNSTABLE_STATE);
 }

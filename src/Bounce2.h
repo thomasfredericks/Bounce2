@@ -74,8 +74,10 @@ private:
   inline void unsetStateFlag(const uint8_t flag)     {state &= ~flag;}
   inline void toggleStateFlag(const uint8_t flag)    {state ^= flag;}
   inline bool getStateFlag(const uint8_t flag) const {return((state & flag) != 0);}
-  inline bool thresholdPassed();
-  inline void updateTime();
+  inline bool thresholdPassed() const;
+  inline void updateTime() const;
+  inline bool isDebouncing(const bool state) const;
+  inline bool isUnstable(const bool state) const;
 
 public:
 	/*!
