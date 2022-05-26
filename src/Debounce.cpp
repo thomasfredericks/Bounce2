@@ -43,7 +43,7 @@ bool Debouncer::update(){
 
     // Ignore everything if we are locked out
 
-    if(millis() - previous_millis >= interval_millis){
+    if(thresholdPassed()){
 
         bool currentState = readCurrentState();
       
@@ -85,7 +85,7 @@ bool Debouncer::update(){
          *  - DEBOUNCED_STATE
          */
 
-        if(millis() - previous_millis >= interval_millis)
+        if(thresholdPassed())
             changeState();
     }
 
@@ -136,7 +136,7 @@ bool Debouncer::update(){
         previous_millis = millis();
         toggleStateFlag(UNSTABLE_STATE);
     } else
-    if(millis() - previous_millis >= interval_millis){
+    if(thresholdPassed()){
 
         /*
          *  We have passed the threshold time
@@ -201,4 +201,9 @@ bool Debouncer::rose() const {
 bool Debouncer::fell() const {
     return ! getStateFlag(DEBOUNCED_STATE) 
         &&   getStateFlag(CHANGED_STATE);
+}
+
+
+inline bool Debouncer::thresholdPassed(){
+    return millis() - previous_millis >= interval_millis;
 }
