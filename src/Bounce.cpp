@@ -1,7 +1,14 @@
-////////////
-// BOUNCE //
-////////////
 
+/*
+ *  Check Bounce2.h for licensing / authors.
+ */
+
+#include "Bounce2.h"
+
+
+/*
+ *  Bounce
+ */
 
 Bounce::Bounce()
     : pin(0)
@@ -10,7 +17,8 @@ Bounce::Bounce()
 void Bounce::attach(int pin) {
     this->pin = pin;
     
-    // SET INITIAL STATE
+    // Set Initial State
+
     begin();
 }
 
