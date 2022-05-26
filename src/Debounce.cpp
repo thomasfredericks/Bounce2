@@ -210,7 +210,7 @@ inline bool Debouncer::thresholdPassed() const {
     return millis() - previous_millis >= interval_millis;
 }
 
-inline void Debouncer::updateTime() const {
+inline void Debouncer::updateTime(){
     previous_millis = millis();
 }
 
