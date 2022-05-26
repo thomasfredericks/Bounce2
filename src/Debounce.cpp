@@ -69,12 +69,12 @@ bool Debouncer::update(){
      *  Switch Port State 🠖 Temporary Variable
      */ 
 
-    bool readState = readCurrentState();
+    const bool state = readCurrentState();
 
 
     // Check if the button state has changed
 
-    if(readState != getStateFlag(DEBOUNCED_STATE)){
+    if(state != getStateFlag(DEBOUNCED_STATE)){
 
         /*
          *  Enough time has passed
@@ -100,7 +100,7 @@ bool Debouncer::update(){
      *  remained stable for the timeout.
      */
 
-    if(readState != getStateFlag(UNSTABLE_STATE)){
+    if(state != getStateFlag(UNSTABLE_STATE)){
 
         // Update unstable bit to match readState
 
@@ -124,7 +124,7 @@ bool Debouncer::update(){
      *  Switch Port State 🠖 Temporary Variable
      */
 
-    bool currentState = readCurrentState();
+    const bool state = readCurrentState();
     
 
     /*
@@ -132,10 +132,14 @@ bool Debouncer::update(){
      *  ⤷ Reset the debounce counter
      */
 
-    if(currentState != getStateFlag(UNSTABLE_STATE)){
+    if(state != getStateFlag(UNSTABLE_STATE)){
+        
         updateTime();
         toggleStateFlag(UNSTABLE_STATE);
-    } else
+
+        return changed();
+    }
+
     if(thresholdPassed()){
 
         /*
@@ -146,7 +150,7 @@ bool Debouncer::update(){
          *  ⤷ Set the STATE_CHANGED flag
          */
 
-        if(currentState != getStateFlag(DEBOUNCED_STATE)){
+        if(state != getStateFlag(DEBOUNCED_STATE)){
             updateTime();
             changeState();
         }
