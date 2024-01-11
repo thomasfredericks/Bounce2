@@ -1,4 +1,4 @@
-# BOUNCE 2
+# Bounce2
 
 Debouncing library for Arduino and Wiring by Thomas Ouellet Fredericks and many [contributors](https://github.com/thomasfredericks/Bounce2/graphs/contributors).
 
@@ -11,26 +11,26 @@ The library is composed of three classes:
 * `Debouncer` : The code that does the actual debouncing. Only advanced users should use this class for creating their own implememtations.
 * `Bounce` : This class links the `Debouncer` class to a hardware pin on your board. It is odly named because it needs to be backward compatible to previous versions of this library.
 
-# HAVE A USAGE QUESTION?
+# Need Help?
 
 Please post your usage questions on the [Arduino Forums](https://forum.arduino.cc/latest).
 
-# INSTALLATION & DOWNLOAD
+# Installation
 
 Install through your software's Library Manager or download the latest version [here](https://github.com/thomasfredericks/Bounce2/archive/master.zip) and put the "Bounce2" folder in your "libraries" folder. 
 
 Please note that the original version of this library (Bounce 1) is included in the "extras" folder of the download but not supported anymore.
 
-# BASIC USE
+# Basic Use
 
-## ADD TO THE GLOBAL SPACE
+## Global Space
 
 ```cpp
 #include <Bounce2.h> 
 Bounce2::Button button = Bounce2::Button(); // INSTANTIATE A Bounce2::Button OBJECT
 ```
 
-## CONFIGURE IN SETUP()
+## Configuration in `setup()`
 
 In the code sample below :
 * Change *PIN* to the hardware pin of the button. 
@@ -45,7 +45,7 @@ button.setPressedState( PRESSED_STATE );
 ```
 
 
-## USE IN LOOP()
+## Use in `loop()`
 
 ```cpp
 // UPDATE THE BUTTON BY CALLING .update() AT THE BEGINNING OF THE LOOP:
@@ -57,13 +57,9 @@ if ( button.pressed() ) {
 }
 ```
 
+# Examples
 
-
-# EXAMPLES
-
-You can find many examples in the **examples** folder.
-
-## EXAMPLE OF Bounce2::Button TOGGLING THE STATE OF A LED
+## A Button Toggling a LED
 
 ```cpp
 /* 
@@ -137,7 +133,11 @@ void loop() {
 }
 ```
 
-# DOCUMENTATION
+## More Examples
+
+You can find more examples in the **examples** folder. 
+
+# Documentation
 
 ## Bounce2::Button
 
@@ -197,21 +197,18 @@ The `Debouncer` class. Just the debouncing code separated from all harware.
 | `bool`  `fell()` | Returns true if pin signal transitions from high to low since the last update. |
 | `bool`  `rose()` | Returns true if pin signal transitions from low to high since the last update. |
 
-# GITHUB PAGE (SOURCE CODE)
 
-https://github.com/thomasfredericks/Bounce2
+# Alternate Algorithms
 
+The following alternate debouncing algorithms are for **advanced** users or specific cases.
 
-# ALTERNATE DEBOUNCE ALGORITHMS FOR **ADVANCED** USERS AND SPECIFIC CASES
-
-
-## STABLE INTERVAL
+## Stable Interval
 
 By default, the Bounce library uses a stable interval to process the debouncing. This is simpler to understand and can cancel unwanted noise.
 
 ![](https://raw.github.com/thomasfredericks/Bounce-Arduino-Wiring/master/extras/BouncySwitch_stable.png)
 
-## LOCK-OUT INTERVAL
+## Lock-out Interval
 
 By defining "#define BOUNCE_LOCK_OUT" in "Bounce.h" you can activate an alternative debouncing method. This method is a lot more responsive, but does not cancel noise.
 
@@ -221,7 +218,7 @@ By defining "#define BOUNCE_LOCK_OUT" in "Bounce.h" you can activate an alternat
 
 ![](https://raw.github.com/thomasfredericks/Bounce-Arduino-Wiring/master/extras/BouncySwitch_lockout.png)
 
-## WITH PROMPT DETECTION
+## Prompt Detection
 
 By defining "#define BOUNCE_WITH_PROMPT_DETECTION" in "Bounce.h" you can activate an alternative debouncing method. Button state changes are available immediately so long as the previous state has been stable for the timeout period. Otherwise the state will be updated as soon as  the timeout period allows.
 
