@@ -33,15 +33,15 @@ Bounce2::Button button = Bounce2::Button(); // INSTANTIATE A Bounce2::Button OBJ
 ## CONFIGURE IN SETUP()
 
 In the code sample below :
-* Change <PIN> to the hardware pin of the button. 
-* Change <PIN_MODE> to INPUT_PULLUP if using an internal pullup, or INPUT if using an external pullup. 
-* Change <INTERVAL_IN_MS> to the debounce interval in millisecons. 5 is a good value.
-* Change <PRESSED_STATE> to LOW if the button outputs a LOW when pressed, or to HIGH of the button outputs a HIGH when pressed.  
+* Change *PIN* to the hardware pin of the button. 
+* Change *PIN_MODE* to `INPUT_PULLUP` if using an internal pullup, or `INPUT` if using an external pullup. 
+* Change *INTERVAL_IN_MS* to the debounce interval in millisecons. `5` is a good value.
+* Change *PRESSED_STATE* to `LOW` if the button outputs a `LOW` when pressed, or to `HIGH` if the button outputs a `HIGH` when pressed.  
 
 ```cpp
-button.attach ( <PIN> , <PIN_MODE> );
-button.interval( <INTERVAL_IN_MS> );
-button.setPressedState( <PRESSED_STATE> ); 
+button.attach ( PIN , PIN_MODE );
+button.interval( INTERVAL_IN_MS );
+button.setPressedState( PRESSED_STATE ); 
 ```
 
 
