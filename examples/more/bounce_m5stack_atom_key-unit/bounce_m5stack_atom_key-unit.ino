@@ -53,13 +53,13 @@ void loop() {
   // IF THE BUTTON WAS PRESSED THIS LOOP:
   if (button.pressed()) {
     // DO SOMETHING IF THE BUTTON WAS PRESSED THIS LOOP...
-    
-    if ( ledToggle ) {
+
+    if (ledToggle) {
       ledToggle = false;
       mesPixels[0] = CRGB(0, 0, 0);
     } else {
       ledToggle = true;
-      mesPixels[0] = CRGB(255,255,255);
+      mesPixels[0] = CRGB(255, 255, 255);
     }
 
     FastLED.show();
