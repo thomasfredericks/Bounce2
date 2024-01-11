@@ -3,15 +3,15 @@
 Debouncing library for Arduino and Wiring by Thomas Ouellet Fredericks and many [contributors](https://github.com/thomasfredericks/Bounce2/graphs/contributors).
 
 The mechanical part of buttons and switches vibrate slightly when closed or opened causing multiple undesired false states (similar to noise). This library filters out these undesired state changes. You can learn more about debouncing here: 
-* John Errington's Experiments with an Arduino : [Using digital inputs: Switch bounce and solutions to it](http://www.skillbank.co.uk/arduino/switchbounce.htm)
-* Wikipedia article : http://en.wikipedia.org/wiki/Debounce#Contact_bounce
+* [John Errington's Experiments with an Arduino - Using digital inputs: Switch bounce and solutions to it](http://www.skillbank.co.uk/arduino/switchbounce.htm)
+* [Wikipedia article on contact Debouncing](http://en.wikipedia.org/wiki/Debounce#Contact_bounce)
 
 The library is composed of three classes:
-* Bounce2::Button : The most feature rich class for deboucing hardware buttons. The one that most people will use.
-* Debouncer : The code that does the actual debouncing. Only advanced users should play with this class.
-* Bounce : This class links the Debouncer to a hardware pin on your board. It is odly named because it needs to be backward compatible to previous versions of this library.
+* `Bounce2::Button` : The class that most people will use. It is the most feature rich class for deboucing hardware buttons. 
+* `Debouncer` : The code that does the actual debouncing. Only advanced users should use this class for creating their own implememtations.
+* `Bounce` : This class links the `Debouncer` class to a hardware pin on your board. It is odly named because it needs to be backward compatible to previous versions of this library.
 
-# HAVE A QUESTION?
+# HAVE A USAGE QUESTION?
 
 Please post your usage questions on the [Arduino Forums](https://forum.arduino.cc/latest).
 
