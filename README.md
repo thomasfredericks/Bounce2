@@ -20,17 +20,17 @@ Please post your usage questions on the [Arduino Forums](https://forum.arduino.c
 Install through your software's Library Manager or download the latest version [here](https://github.com/thomasfredericks/Bounce2/archive/master.zip) and put the "Bounce2" folder in your "libraries" folder. 
 
 Please note that the original version of this library (Bounce 1) is included in the "extras" folder of the download but not supported anymore.
-## BASIC USE
 
+# BASIC USE
 
-### ADD TO THE GLOBAL SPACE
+## ADD TO THE GLOBAL SPACE
 
 ```cpp
 #include <Bounce2.h> 
 Bounce2::Button button = Bounce2::Button(); // INSTANTIATE A Bounce2::Button OBJECT
 ```
 
-### CONFIGURE IN SETUP()
+## CONFIGURE IN SETUP()
 
 In the code sample below :
 * Change <PIN> to the hardware pin of the button. 
@@ -45,7 +45,7 @@ button.setPressedState( <PRESSED_STATE> );
 ```
 
 
-### USE IN LOOP()
+## USE IN LOOP()
 
 ```cpp
 // UPDATE THE BUTTON BY CALLING .update() AT THE BEGINNING OF THE LOOP:
@@ -58,7 +58,12 @@ if ( button.pressed() ) {
 ```
 
 
-## EXAMPLE
+
+# EXAMPLES
+
+You can find many examples in the **examples** folder.
+
+## EXAMPLE OF Bounce2::Button TOGGLING THE STATE OF A LED
 
 ```cpp
 /* 
@@ -132,9 +137,9 @@ void loop() {
 }
 ```
 
-## DOCUMENTATION
+# DOCUMENTATION
 
-### Bounce2::Button
+## Bounce2::Button
 
 The `Bounce2::Button` class extends `Bounce` and adds  `pressed()` and `released()` methods. It is the most feature rich class of the library.
 
@@ -158,7 +163,7 @@ The `Bounce2::Button` class extends `Bounce` and adds  `pressed()` and `released
 | `bool`  `rose()` | Returns true if pin signal transitions from low to high since the last update. |
 
 
-### Bounce
+## Bounce
 
 The `Bounce` class extends `Debouncer` and links it to a hardware pin. This class is odly named, but it will be kept that so it stays compatible with previous code.
 
@@ -176,7 +181,7 @@ The `Bounce` class extends `Debouncer` and links it to a hardware pin. This clas
 | `bool`  `fell()` | Returns true if pin signal transitions from high to low since the last update. |
 | `bool`  `rose()` | Returns true if pin signal transitions from low to high since the last update. |
 
-### Debouncer
+## Debouncer
 
 The `Debouncer` class. Just the debouncing code separated from all harware.
 
@@ -192,10 +197,9 @@ The `Debouncer` class. Just the debouncing code separated from all harware.
 | `bool`  `fell()` | Returns true if pin signal transitions from high to low since the last update. |
 | `bool`  `rose()` | Returns true if pin signal transitions from low to high since the last update. |
 
-## GITHUB PAGE (SOURCE CODE)
+# GITHUB PAGE (SOURCE CODE)
 
 https://github.com/thomasfredericks/Bounce2
-
 
 
 # ALTERNATE DEBOUNCE ALGORITHMS FOR **ADVANCED** USERS AND SPECIFIC CASES
