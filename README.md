@@ -152,10 +152,39 @@ void loop() {
 | `unsigned long`  `currentDuration()` | Returns the duration in milliseconds of the current state. Is reset to 0 when the state changes.  |
 | `bool`  `changed()` | Returns true if the state changed on last update. |
 | `bool`  `read()` | Returns the pin's state (HIGH or LOW). |
-| `bool`  `fell()` | Returns true if pin signal transitions from high to low. |
-| `bool`  `rose()` | Returns true if pin signal transitions from low to high. |
+| `bool`  `fell()` | Returns true if pin signal transitions from high to low since the last update. |
+| `bool`  `rose()` | Returns true if pin signal transitions from low to high since the last update. |
 
 
+### Bounce
+
+| Method | Description |
+| --------------- | --------------- |
+|   `Bounce()` | Create an instance of the Bounce class. |
+| `void`  `update()` | Updates the pin's state. Because Bounce does not use interrupts, you have to "update" the object before reading its value and it has to be done as often as possible (that means to include it in your `loop()`). Only call `update()` for each Bounce instance once per `loop()`. |
+| `void`  `attach(int pin, int mode)` | Attach to a pin and sets that pin's mode (INPUT, INPUT_PULLUP or OUTPUT). |
+| `int`  `getPin()` | Return pin that this instance is attached to.  |
+| `void`  `interval ( uint16_t  interval_millis )` | Sets the debounce interval in milliseconds. |
+| `unsigned long`  `previousDuration()` | Returns the duration in milliseconds of the previous state. |
+| `unsigned long`  `currentDuration()` | Returns the duration in milliseconds of the current state. Is reset to 0 when the state changes.  |
+| `bool`  `changed()` | Returns true if the state changed on last update. |
+| `bool`  `read()` | Returns the pin's state (HIGH or LOW). |
+| `bool`  `fell()` | Returns true if pin signal transitions from high to low since the last update. |
+| `bool`  `rose()` | Returns true if pin signal transitions from low to high since the last update. |
+
+### Debouncer
+
+| Method | Description |
+| --------------- | --------------- |
+| `Debouncer()` | Create an instance of the Debouncer class.|
+| `void`  `update()` | Updates the pin's state. Because Bounce does not use interrupts, you have to "update" the object before reading its value and it has to be done as often as possible (that means to include it in your `loop()`). Only call `update()` for each Bounce instance once per `loop()`. |
+| `void`  `interval ( uint16_t  interval_millis )` | Sets the debounce interval in milliseconds. |
+| `unsigned long`  `previousDuration()` | Returns the duration in milliseconds of the previous state. |
+| `unsigned long`  `currentDuration()` | Returns the duration in milliseconds of the current state. Is reset to 0 when the state changes.  |
+| `bool`  `changed()` | Returns true if the state changed on last update. |
+| `bool`  `read()` | Returns the pin's state (HIGH or LOW). |
+| `bool`  `fell()` | Returns true if pin signal transitions from high to low since the last update. |
+| `bool`  `rose()` | Returns true if pin signal transitions from low to high since the last update. |
 
 ## GITHUB PAGE (SOURCE CODE)
 
