@@ -136,24 +136,24 @@ void loop() {
 
 ### Bounce2::Button
 
-| Returns | Method | Description |
-| --------------- | --------------- | --------------- |
-|   | `Button()` | Create an instance of the Button class. By default, the pressed state is matched to a HIGH electrical level. |
-| `void`  | `update()` | Updates the pin's state. Because Bounce does not use interrupts, you have to "update" the object before reading its value and it has to be done as often as possible (that means to include it in your `loop()`). Only call `update()` for each Bounce instance once per `loop()`. |
-| `void`  | `setPressedState(bool state)` | Set the electrical state (HIGH/LOW) that corresponds to a physical press. By default, the pressed state is matched to a HIGH electrical level. |
-| `bool`  | `getPressedState()` | Get the electrical state (HIGH/LOW) that corresponds to a physical press. |
-| `bool `  | `isPressed() ` | Returns true if the button **is** currently pressed. |
-| `bool `  | `pressed()` | Returns true if the button **was** pressed |
-| `bool `  | `released()` | Returns true if the button **was** released |
-| `void`  | `attach(int pin, int mode)` | Attach to a pin and sets that pin's mode (INPUT, INPUT_PULLUP or OUTPUT). |
-| `int`  | `getPin()` | Return pin that this instance is attached to.  |
-| `void`  | `interval ( uint16_t  interval_millis )` | Sets the debounce interval in milliseconds. |
-| `unsigned long`  | `previousDuration()` | Returns the duration in milliseconds of the previous state. |
-| `unsigned long`  | `currentDuration()` | Returns the duration in milliseconds of the current state. Is reset to 0 when the state changes.  |
-| `bool`  | `changed()` | Returns true if the state changed on last update. |
-| `bool`  | `read()` | Returns the pin's state (HIGH or LOW). |
-| `bool`  | `fell()` | Returns true if pin signal transitions from high to low. |
-| `bool`  | `rose()` | Returns true if pin signal transitions from low to high. |
+| Method | Description |
+| --------------- | --------------- |
+|   `Button()` | Create an instance of the Button class. By default, the pressed state is matched to a HIGH electrical level. |
+| `void`  `update()` | Updates the pin's state. Because Bounce does not use interrupts, you have to "update" the object before reading its value and it has to be done as often as possible (that means to include it in your `loop()`). Only call `update()` for each Bounce instance once per `loop()`. |
+| `void`  `setPressedState(bool state)` | Set the electrical state (HIGH/LOW) that corresponds to a physical press. By default, the pressed state is matched to a HIGH electrical level. |
+| `bool`  `getPressedState()` | Get the electrical state (HIGH/LOW) that corresponds to a physical press. |
+| `bool `  `isPressed() ` | Returns true if the button **is** currently pressed. |
+| `bool `  `pressed()` | Returns true if the button **was** pressed |
+| `bool `  `released()` | Returns true if the button **was** released |
+| `void`  `attach(int pin, int mode)` | Attach to a pin and sets that pin's mode (INPUT, INPUT_PULLUP or OUTPUT). |
+| `int`  `getPin()` | Return pin that this instance is attached to.  |
+| `void`  `interval ( uint16_t  interval_millis )` | Sets the debounce interval in milliseconds. |
+| `unsigned long`  `previousDuration()` | Returns the duration in milliseconds of the previous state. |
+| `unsigned long`  `currentDuration()` | Returns the duration in milliseconds of the current state. Is reset to 0 when the state changes.  |
+| `bool`  `changed()` | Returns true if the state changed on last update. |
+| `bool`  `read()` | Returns the pin's state (HIGH or LOW). |
+| `bool`  `fell()` | Returns true if pin signal transitions from high to low. |
+| `bool`  `rose()` | Returns true if pin signal transitions from low to high. |
 
 
 
