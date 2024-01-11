@@ -1,91 +1,64 @@
 # BOUNCE 2
 
-Debouncing library for Arduino and Wiring by Thomas Ouellet Fredericks with many contributions from the community : https://github.com/thomasfredericks/Bounce2/graphs/contributors
+Debouncing library for Arduino and Wiring by Thomas Ouellet Fredericks and many [contributors](https://github.com/thomasfredericks/Bounce2/graphs/contributors).
 
-Basically, the mechanical part of buttons and switches vibrate slightly when closed or opened causing multiple undesired false states (similar to noise). This library filters out these undesired state changes. More about debouncing: 
+The mechanical part of buttons and switches vibrate slightly when closed or opened causing multiple undesired false states (similar to noise). This library filters out these undesired state changes. You can learn more about debouncing here: 
 * John Errington's Experiments with an Arduino : [Using digital inputs: Switch bounce and solutions to it](http://www.skillbank.co.uk/arduino/switchbounce.htm)
 * Wikipedia article : http://en.wikipedia.org/wiki/Debounce#Contact_bounce
 
-See the bottom of this page for a basic usage example and the "examples" folder for more.
-
 The library is composed of three classes:
+* Bounce2::Button : The most feature rich class for deboucing hardware buttons. The one that most people will use.
 * Debouncer : The code that does the actual debouncing. Only advanced users should play with this class.
-* Bounce : This is the general use library. It links the Debouncer to a hardware pin on your board.
-* Button : A special version of Bounce for buttons that are pressed.
+* Bounce : This class links the Debouncer to a hardware pin on your board. It is odly named because it needs to be backward compatible to previous versions of this library.
+
+# HAVE A QUESTION?
+
+Please post your usage questions on the [Arduino Forums](https://forum.arduino.cc/latest).
 
 # INSTALLATION & DOWNLOAD
 
 Install through your software's Library Manager or download the latest version [here](https://github.com/thomasfredericks/Bounce2/archive/master.zip) and put the "Bounce2" folder in your "libraries" folder. 
 
 Please note that the original version of this library (Bounce 1) is included in the "extras" folder of the download but not supported anymore.
-
 ## BASIC USE
 
-### INSTANTIATE
+
+### ADD TO THE GLOBAL SPACE
 
 ```cpp
-#include <Bounce2.h>
-Bounce b = Bounce(); // Instantiate a Bounce object
+#include <Bounce2.h> 
+Bounce2::Button button = Bounce2::Button(); // INSTANTIATE A Bounce2::Button OBJECT
 ```
 
-### SETUP
+### CONFIGURE IN SETUP()
+
+In the code sample below :
+* Change <PIN> to the hardware pin of the button. 
+* Change <PIN_MODE> to INPUT_PULLUP if using an internal pullup, or INPUT if using an external pullup. 
+* Change <INTERVAL_IN_MS> to the debounce interval in millisecons. 5 is a good value.
+* Change <PRESSED_STATE> to LOW if the button outputs a LOW when pressed, or to HIGH of the button outputs a HIGH when pressed.  
 
 ```cpp
-b.attach ( <PIN> , <PIN MODE> );
-b.interval( <INTERVAL IN MS> );
+button.attach ( <PIN> , <PIN_MODE> );
+button.interval( <INTERVAL_IN_MS> );
+button.setPressedState( <PRESSED_STATE> ); 
 ```
-### LOOP
+
+
+### USE IN LOOP()
 
 ```cpp
-b.update();
-if ( b.changed() ) { 
-  // THE STATE OF THE INPUT CHANGED
-  int deboucedValue = b.read();
-  // DO SOMETHING WITH THE VALUE
+// UPDATE THE BUTTON BY CALLING .update() AT THE BEGINNING OF THE LOOP:
+button.update();
+
+// IF THE BUTTON WAS PRESSED THIS LOOP:
+if ( button.pressed() ) {
+    // DO SOMETHING IF THE BUTTON WAS PRESSED THIS LOOP...
 }
 ```
 
 
-## BOUNCE EXAMPLE
-
-```cpp
-// This example toggles the debug LED (pin 13) on or off when a button on pin 2 is pressed.
-
-// Include the Bounce2 library found here :
-// https://github.com/thomasfredericks/Bounce2
-#include <Bounce2.h>
-
-#define BUTTON_PIN 2
-#define LED_PIN 13
-
-int ledState = LOW;
-
-
-Bounce b = Bounce(); // Instantiate a Bounce object
-
-void setup() {
-  
-  b.attach(BUTTON_PIN,INPUT_PULLUP); // Attach the debouncer to a pin with INPUT_PULLUP mode
-  b.interval(25); // Use a debounce interval of 25 milliseconds
-  
-  
-  pinMode(LED_PIN,OUTPUT); // Setup the LED
-  digitalWrite(LED_PIN,ledState); // Turn off the LED
- 
-}
-
-void loop() {
-
-   b.update(); // Update the Bounce instance
-   
-   if ( b.fell() ) {  // Call code if button transitions from HIGH to LOW
-     ledState = !ledState; // Toggle LED state
-     digitalWrite(LED_PIN,ledState); // Apply new LED state
-   }
-}
-```
-
-## BUTTON EXAMPLE
+## EXAMPLE
 
 ```cpp
 /* 
@@ -159,22 +132,38 @@ void loop() {
 }
 ```
 
+## DOCUMENTATION
 
-# DOCUMENTATION
+### Bounce2::Button
 
-The complete class documentation can be found in the "docs" folder or [online here](http://thomasfredericks.github.io/Bounce2/).
+| Returns | Method | Description |
+| --------------- | --------------- | --------------- |
+|   | `Button()` | Create an instance of the Button class. By default, the pressed state is matched to a HIGH electrical level. |
+| `void`  | `update()` | Updates the pin's state. Because Bounce does not use interrupts, you have to "update" the object before reading its value and it has to be done as often as possible (that means to include it in your `loop()`). Only call `update()` for each Bounce instance once per `loop()`. |
+| `void`  | `setPressedState(bool state)` | Set the electrical state (HIGH/LOW) that corresponds to a physical press. By default, the pressed state is matched to a HIGH electrical level. |
+| `bool`  | `getPressedState()` | Get the electrical state (HIGH/LOW) that corresponds to a physical press. |
+| `bool `  | `isPressed() ` | Returns true if the button **is** currently pressed. |
+| `bool `  | `pressed()` | Returns true if the button **was** pressed |
+| `bool `  | `released()` | Returns true if the button **was** released |
+| `void`  | `attach(int pin, int mode)` | Attach to a pin and sets that pin's mode (INPUT, INPUT_PULLUP or OUTPUT). |
+| `int`  | `getPin()` | Return pin that this instance is attached to.  |
+| `void`  | `interval ( uint16_t  interval_millis )` | Sets the debounce interval in milliseconds. |
+| `unsigned long`  | `previousDuration()` | Returns the duration in milliseconds of the previous state. |
+| `unsigned long`  | `currentDuration()` | Returns the duration in milliseconds of the current state. Is reset to 0 when the state changes.  |
+| `bool`  | `changed()` | Returns true if the state changed on last update. |
+| `bool`  | `read()` | Returns the pin's state (HIGH or LOW). |
+| `bool`  | `fell()` | Returns true if pin signal transitions from high to low. |
+| `bool`  | `rose()` | Returns true if pin signal transitions from low to high. |
+
+
 
 ## GITHUB PAGE (SOURCE CODE)
 
 https://github.com/thomasfredericks/Bounce2
 
-# HAVE A QUESTION?
-
-Please post your questions [here](http://forum.arduino.cc/index.php?topic=266132.0).
 
 
-
-# ALTERNATE DEBOUNCE ALGORITHMS FOR ADVANCED USERS AND SPECIFIC CASES
+# ALTERNATE DEBOUNCE ALGORITHMS FOR **ADVANCED** USERS AND SPECIFIC CASES
 
 
 ## STABLE INTERVAL
