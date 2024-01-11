@@ -136,6 +136,8 @@ void loop() {
 
 ### Bounce2::Button
 
+The `Bounce2::Button` class extends `Bounce` and adds  `pressed()` and `released()` methods. It is the most feature rich class of the library.
+
 | Method | Description |
 | --------------- | --------------- |
 |   `Button()` | Create an instance of the Button class. By default, the pressed state is matched to a HIGH electrical level. |
@@ -158,6 +160,8 @@ void loop() {
 
 ### Bounce
 
+The `Bounce` class extends `Debouncer` and links it to a hardware pin. This class is odly named, but it will be kept that so it stays compatible with previous code.
+
 | Method | Description |
 | --------------- | --------------- |
 |   `Bounce()` | Create an instance of the Bounce class. |
@@ -173,6 +177,8 @@ void loop() {
 | `bool`  `rose()` | Returns true if pin signal transitions from low to high since the last update. |
 
 ### Debouncer
+
+The `Debouncer` class. Just the debouncing code separated from all harware.
 
 | Method | Description |
 | --------------- | --------------- |
