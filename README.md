@@ -183,7 +183,7 @@ The `Bounce` class extends `Debouncer` and links it to a hardware pin. This clas
 
 ## Debouncer
 
-The `Debouncer` class. Just the debouncing code separated from all harware.
+The `Debouncer` class. Just the debouncing code separated from all hardware.
 
 | Method | Description |
 | --------------- | --------------- |
