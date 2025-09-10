@@ -9,7 +9,7 @@ The mechanical part of buttons and switches vibrate slightly when closed or open
 The library is composed of three classes:
 * `Bounce2::Button` : The class that most people will use. It is the most feature rich class for deboucing hardware buttons. 
 * `Debouncer` : The code that does the actual debouncing. Only advanced users should use this class for creating their own implememtations.
-* `Bounce` : This class links the `Debouncer` class to a hardware pin on your board. It is odly named because it needs to be backward compatible to previous versions of this library.
+* `Bounce` : This class links the `Debouncer` class to a hardware pin on your board. (The odd naming of ```Bounce``` ensures backward compatibility with previous versions of this library.
 
 # Need Help?
 
