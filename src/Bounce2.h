@@ -215,7 +215,7 @@ public:
     */
 	void attach(int pin);
 
-  Bounce(uint8_t pin, unsigned long interval_millis ) : Bounce() {
+  Bounce(int pin, unsigned long interval_millis ) : Bounce() {
     attach(pin);
     interval(interval_millis);
   }
@@ -252,7 +252,7 @@ public:
 protected:
 
 
-	uint8_t pin;
+	int pin;
 
 	virtual bool readCurrentState() { return digitalRead(pin); }
 	virtual void setPinMode(int pin, int mode) {
